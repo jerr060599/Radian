@@ -4,7 +4,7 @@ using System.Collections;
 public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
-    public GameObject death, itemIcon, baseSpawn, lightBar, darkBar;
+    public GameObject death, itemIcon, spawn, lightBar, darkBar;
     public bool controllable = true, usingLight = true;
     public float charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
     public float meleeCost = 0.05f, dashCost = 0.01f;
@@ -14,9 +14,9 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     float dashTime = 0f, meleeTime = 0f;
     SpriteRenderer sr;
-    GameObject curSpawn;
     Consumable item;
     Vector2 lastJuicePos, dashPos;
+    CircleCollider2D cc;
     // Use this for initialization
     void Start()
     {
@@ -26,14 +26,15 @@ public class CharCtrl : MonoBehaviour
         script = this;
         pysc = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        curSpawn = baseSpawn;
         lastJuicePos = pysc.position;
+        cc = GetComponent<CircleCollider2D>();
     }
     public void kill()
     {
         //((GameObject)Instantiate(death, transform.position + (new Vector3(0f, 12f, 0f)), transform.rotation)).GetComponent<RespawnAni>().player = this;
         //gameObject.SetActive(false);
         //SoundManager.script.playOnListener (SoundManager.script.death0, 0.4f);
+        respawn();
     }
 
     public void respawn()
@@ -41,6 +42,7 @@ public class CharCtrl : MonoBehaviour
         //gameObject.SetActive(true);
         //pysc.velocity = Vector2.zero;
         //transform.position = new Vector3(curSpawn.transform.position.x, curSpawn.transform.position.y - 4f, 0f);
+        transform.position = spawn.transform.position;
     }
 
     public bool eat(Consumable c)
@@ -61,11 +63,14 @@ public class CharCtrl : MonoBehaviour
         dashTime -= Time.deltaTime;
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
-        foreach (RaycastHit2D rh in Physics2D.CircleCastAll(transform.position, 0.5f, Vector2.down, 0f))
+        Vector2 center = pysc.position + cc.offset;
+        bool isDashing = dashPos.sqrMagnitude > 0.1f;
+        foreach (RaycastHit2D rh in Physics2D.CircleCastAll(center, 0.5f, Vector2.down, 0f))
             if (rh.collider.isTrigger)
-                if (rh.collider.gameObject.GetComponent<Air>())
+                if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
                 {
-                    controllable = false;
+                    //controllable = false;
+                    kill();
                     break;
                 }
                 else if (rh.collider.gameObject.GetComponent<MovementRedirect>())
@@ -81,12 +86,12 @@ public class CharCtrl : MonoBehaviour
             }
             else
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
-            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - pysc.position).normalized;
+            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - center).normalized;
             if (dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
                 float closest = dashDist;
-                foreach (RaycastHit2D rh in Physics2D.RaycastAll(pysc.position, rPos, dashDist))
-                    if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody.gameObject && rh.collider.attachedRigidbody.gameObject == gameObject))
+                foreach (RaycastHit2D rh in Physics2D.RaycastAll(center, rPos, dashDist))
+                    if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
                         closest = rh.distance;
                 dashPos = rPos * closest;
                 dashTime = dashCoolDown;
@@ -95,7 +100,7 @@ public class CharCtrl : MonoBehaviour
             if (meleeTime <= 0f && Input.GetMouseButtonDown(0))
             {
                 BasicEnemy be = null;
-                foreach (RaycastHit2D rh in Physics2D.CircleCastAll(transform.position, meleeRadius, Vector2.down, 0f))
+                foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
                     if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPos) >= meleeField)
                         be.damage(meleeDamage);
                 meleeTime = meleeCoolDown;
