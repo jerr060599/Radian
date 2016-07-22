@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 8a63107fd6460b14292f5dcb3be2a931
+timeCreated: 1469220629
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Up Down Arms_0
+    21300002: Up Down Arms_1
+    21300004: Up Down Arms_2
+    21300006: Up Down Arms_3
+    21300008: Up Down Arms_4
+    21300010: Up Down Arms_5
+    21300012: Up Down Arms_6
+    21300014: Up Down Arms_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 40
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Up Down Arms_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.7304935, y: 0.38298035}
+        - {x: -14.730494, y: -4.6170197}
+        - {x: -14.730494, y: -7.6170197}
+        - {x: -11.730494, y: -17.61702}
+        - {x: -5.7304935, y: -24.61702}
+        - {x: 8.269506, y: -24.61702}
+        - {x: 10.269506, y: -21.61702}
+        - {x: 10.269506, y: -4.6170197}
+        - {x: 7.2695065, y: 0.38298035}
+    - name: Up Down Arms_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 160
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.7304916, y: 0.38298035}
+        - {x: -19.730492, y: -11.61702}
+        - {x: -19.730492, y: -15.61702}
+        - {x: -18.730492, y: -19.61702}
+        - {x: -11.730492, y: -20.61702}
+        - {x: 6.2695084, y: -20.61702}
+        - {x: 15.269508, y: -19.61702}
+        - {x: 16.269508, y: -16.61702}
+        - {x: 16.269508, y: -10.61702}
+        - {x: 5.2695084, y: 0.38298035}
+    - name: Up Down Arms_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 160
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.269501, y: 0.38298035}
+        - {x: -6.7304993, y: 0.38298035}
+        - {x: -19.7305, y: -4.6170197}
+        - {x: -19.7305, y: -19.61702}
+        - {x: -16.7305, y: -20.61702}
+        - {x: 17.2695, y: -20.61702}
+        - {x: 23.2695, y: -15.61702}
+        - {x: 23.2695, y: -6.6170197}
+        - {x: 22.2695, y: -4.6170197}
+    - name: Up Down Arms_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 80
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.269501, y: 1.3829803}
+        - {x: -7.7304993, y: 1.3829803}
+        - {x: -19.7305, y: -3.6170197}
+        - {x: -19.7305, y: -20.61702}
+        - {x: -12.730499, y: -22.61702}
+        - {x: 18.2695, y: -22.61702}
+        - {x: 22.2695, y: -18.61702}
+        - {x: 23.2695, y: -13.61702}
+        - {x: 23.2695, y: -6.6170197}
+    - name: Up Down Arms_4
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 80
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.269508, y: 0.38298035}
+        - {x: -6.7304916, y: 0.38298035}
+        - {x: -19.730492, y: -4.6170197}
+        - {x: -19.730492, y: -19.61702}
+        - {x: -16.730492, y: -20.61702}
+        - {x: 17.269508, y: -20.61702}
+        - {x: 23.269508, y: -15.61702}
+        - {x: 23.269508, y: -6.6170197}
+        - {x: 22.269508, y: -4.6170197}
+    - name: Up Down Arms_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.269506, y: 0.38298035}
+        - {x: -6.7304935, y: 0.38298035}
+        - {x: -19.730494, y: -4.6170197}
+        - {x: -19.730494, y: -19.61702}
+        - {x: -16.730494, y: -20.61702}
+        - {x: 17.269506, y: -20.61702}
+        - {x: 23.269506, y: -15.61702}
+        - {x: 23.269506, y: -6.6170197}
+        - {x: 22.269506, y: -4.6170197}
+    - name: Up Down Arms_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.730494, y: 1.3829803}
+        - {x: -13.730494, y: 0.38298035}
+        - {x: -19.730494, y: -10.61702}
+        - {x: -19.730494, y: -26.61702}
+        - {x: -17.730494, y: -27.61702}
+        - {x: 7.2695065, y: -27.61702}
+        - {x: 24.269506, y: -24.61702}
+        - {x: 24.269506, y: -6.6170197}
+        - {x: 8.269506, y: 1.3829803}
+    - name: Up Down Arms_7
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 60
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4621749, y: 0.67021275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.2695084, y: 1.3829803}
+        - {x: -8.730492, y: 1.3829803}
+        - {x: -8.730492, y: -6.6170197}
+        - {x: -5.7304916, y: -7.6170197}
+        - {x: -1.7304916, y: -7.6170197}
+        - {x: 0.26950836, y: -8.61702}
+        - {x: -7.7304916, y: -7.6170197}
+        - {x: -18.730492, y: -4.6170197}
+        - {x: -19.730492, y: -6.6170197}
+        - {x: -19.730492, y: -17.61702}
+        - {x: -10.730492, y: -20.61702}
+        - {x: 17.269508, y: -20.61702}
+        - {x: 23.269508, y: -15.61702}
+        - {x: 23.269508, y: -8.61702}
+        - {x: 22.269508, y: -5.6170197}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

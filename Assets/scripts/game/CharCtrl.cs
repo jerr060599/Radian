@@ -4,7 +4,7 @@ using System.Collections;
 public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
-    public GameObject death, itemIcon, spawn, lightBar, darkBar;
+    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject;
     public bool controllable = true, usingLight = true;
     public float charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
     public float meleeCost = 0.05f, dashCost = 0.01f;
@@ -12,6 +12,7 @@ public class CharCtrl : MonoBehaviour
     public int meleeDamage = 1;
     public Rigidbody2D pysc = null;
     public BarCtrl light, dark;
+    public GemCtrl gem;
     float dashTime = 0f, meleeTime = 0f;
     SpriteRenderer sr;
     Consumable item;
@@ -28,6 +29,7 @@ public class CharCtrl : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         lastJuicePos = pysc.position;
         cc = GetComponent<CircleCollider2D>();
+        gem = gemObject.GetComponent<GemCtrl>();
     }
     public void kill()
     {
@@ -106,6 +108,11 @@ public class CharCtrl : MonoBehaviour
                 meleeTime = meleeCoolDown;
                 cost(meleeCost);
             }
+            if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
+            {
+                usingLight = !usingLight;
+                gem.isLight = usingLight;
+            }
         }
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
@@ -115,6 +122,6 @@ public class CharCtrl : MonoBehaviour
         if (usingLight)
             light.barPercent -= cost;
         else
-            dark.barPercent += +cost;
+            dark.barPercent += cost / darkMultiplyer;
     }
 }
