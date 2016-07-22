@@ -1,0 +1,359 @@
+fileFormatVersion: 2
+guid: 3408d79a82624e44eaa674e48496984c
+timeCreated: 1469216850
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ranger Front Dash_0
+    21300002: Ranger Front Dash_1
+    21300004: Ranger Front Dash_2
+    21300006: Ranger Front Dash_3
+    21300008: Ranger Front Dash_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ranger Front Dash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -212}
+        - {x: 11, y: -214}
+        - {x: 17, y: -204}
+        - {x: 8, y: -260}
+        - {x: 8, y: -280}
+        - {x: 10, y: -282}
+        - {x: 40, y: -282}
+        - {x: 42, y: -280}
+        - {x: 42, y: -260}
+        - {x: 40, y: -258}
+        - {x: 42, y: -213}
+        - {x: 61, y: -204}
+        - {x: 76, y: -193}
+        - {x: 104, y: -156}
+        - {x: 112, y: -140}
+        - {x: 112, y: 120}
+        - {x: 110, y: 122}
+        - {x: 123, y: 155}
+        - {x: 161, y: 196}
+        - {x: 172, y: 210}
+        - {x: 172, y: 240}
+        - {x: 170, y: 242}
+        - {x: 139, y: 244}
+        - {x: 136, y: 234}
+        - {x: 66, y: 232}
+        - {x: 54, y: 219}
+        - {x: 52, y: 255}
+        - {x: 44, y: 291}
+        - {x: 33, y: 315}
+        - {x: 15, y: 332}
+        - {x: -50, y: 332}
+        - {x: -74, y: 314}
+        - {x: -94, y: 254}
+        - {x: -133, y: 225}
+        - {x: -152, y: 203}
+        - {x: -152, y: 168}
+        - {x: -143, y: 166}
+        - {x: -152, y: 122}
+        - {x: -152, y: -145}
+        - {x: -132, y: -166}
+        - {x: -112, y: -162}
+        - {x: -112, y: -190}
+        - {x: -104, y: -202}
+        - {x: -81, y: -214}
+        - {x: -85, y: -259}
+        - {x: -82, y: -282}
+        - {x: -50, y: -282}
+        - {x: -48, y: -280}
+        - {x: -46, y: -259}
+        - {x: -57, y: -256}
+    - name: Ranger Front Dash_1
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 800
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: -212}
+        - {x: 10, y: -212}
+        - {x: 12, y: -210}
+        - {x: 8, y: -230}
+        - {x: 8, y: -255}
+        - {x: 45, y: -252}
+        - {x: 44, y: -229}
+        - {x: 33, y: -226}
+        - {x: 75, y: -182}
+        - {x: 94, y: -152}
+        - {x: 112, y: -100}
+        - {x: 132, y: 0}
+        - {x: 132, y: 110}
+        - {x: 127, y: 144}
+        - {x: 142, y: 156}
+        - {x: 172, y: 184}
+        - {x: 172, y: 220}
+        - {x: 171, y: 224}
+        - {x: 139, y: 224}
+        - {x: 136, y: 213}
+        - {x: 55, y: 215}
+        - {x: 54, y: 241}
+        - {x: 43, y: 261}
+        - {x: 1, y: 284}
+        - {x: -30, y: 292}
+        - {x: -73, y: 292}
+        - {x: -84, y: 271}
+        - {x: -103, y: 183}
+        - {x: -123, y: 161}
+        - {x: -142, y: 120}
+        - {x: -144, y: 89}
+        - {x: -135, y: 85}
+        - {x: -154, y: -9}
+        - {x: -185, y: -78}
+        - {x: -202, y: -94}
+        - {x: -202, y: -135}
+        - {x: -194, y: -151}
+        - {x: -181, y: -174}
+        - {x: -160, y: -182}
+        - {x: -95, y: -213}
+        - {x: -84, y: -241}
+        - {x: -73, y: -244}
+        - {x: -85, y: -289}
+        - {x: -82, y: -312}
+        - {x: -50, y: -312}
+        - {x: -48, y: -310}
+        - {x: -46, y: -289}
+        - {x: -57, y: -286}
+    - name: Ranger Front Dash_2
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 800
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: -233}
+        - {x: 1, y: -224}
+        - {x: 41, y: -224}
+        - {x: 62, y: -190}
+        - {x: 74, y: -151}
+        - {x: 94, y: -122}
+        - {x: 122, y: 120}
+        - {x: 131, y: 126}
+        - {x: 172, y: 166}
+        - {x: 172, y: 204}
+        - {x: 139, y: 204}
+        - {x: 136, y: 193}
+        - {x: 55, y: 195}
+        - {x: 54, y: 221}
+        - {x: 43, y: 241}
+        - {x: 4, y: 262}
+        - {x: -26, y: 262}
+        - {x: -51, y: 254}
+        - {x: -62, y: 243}
+        - {x: -82, y: 183}
+        - {x: -92, y: 173}
+        - {x: -122, y: 141}
+        - {x: -142, y: 101}
+        - {x: -152, y: 70}
+        - {x: -194, y: -8}
+        - {x: -222, y: -25}
+        - {x: -232, y: -40}
+        - {x: -232, y: -110}
+        - {x: -224, y: -122}
+        - {x: -201, y: -134}
+        - {x: -194, y: -151}
+        - {x: -181, y: -174}
+        - {x: -150, y: -172}
+        - {x: -145, y: -172}
+        - {x: -134, y: -160}
+        - {x: -131, y: -185}
+        - {x: -113, y: -204}
+        - {x: -94, y: -232}
+        - {x: -84, y: -261}
+        - {x: -73, y: -264}
+        - {x: -85, y: -309}
+        - {x: -82, y: -332}
+        - {x: -50, y: -332}
+        - {x: -48, y: -330}
+        - {x: -46, y: -309}
+        - {x: -57, y: -306}
+    - name: Ranger Front Dash_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: -212}
+        - {x: 10, y: -212}
+        - {x: 12, y: -210}
+        - {x: 8, y: -230}
+        - {x: 8, y: -255}
+        - {x: 45, y: -252}
+        - {x: 44, y: -229}
+        - {x: 33, y: -226}
+        - {x: 75, y: -182}
+        - {x: 94, y: -152}
+        - {x: 112, y: -100}
+        - {x: 132, y: 0}
+        - {x: 132, y: 110}
+        - {x: 127, y: 144}
+        - {x: 142, y: 156}
+        - {x: 172, y: 184}
+        - {x: 172, y: 220}
+        - {x: 171, y: 224}
+        - {x: 139, y: 224}
+        - {x: 136, y: 213}
+        - {x: 55, y: 215}
+        - {x: 54, y: 241}
+        - {x: 43, y: 261}
+        - {x: 1, y: 284}
+        - {x: -30, y: 292}
+        - {x: -73, y: 292}
+        - {x: -84, y: 271}
+        - {x: -103, y: 183}
+        - {x: -123, y: 161}
+        - {x: -142, y: 120}
+        - {x: -144, y: 89}
+        - {x: -135, y: 85}
+        - {x: -154, y: -9}
+        - {x: -185, y: -78}
+        - {x: -202, y: -94}
+        - {x: -202, y: -135}
+        - {x: -194, y: -151}
+        - {x: -181, y: -174}
+        - {x: -160, y: -182}
+        - {x: -95, y: -213}
+        - {x: -84, y: -241}
+        - {x: -73, y: -244}
+        - {x: -85, y: -289}
+        - {x: -82, y: -312}
+        - {x: -50, y: -312}
+        - {x: -48, y: -310}
+        - {x: -46, y: -289}
+        - {x: -57, y: -286}
+    - name: Ranger Front Dash_4
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -212}
+        - {x: 11, y: -214}
+        - {x: 17, y: -204}
+        - {x: 8, y: -260}
+        - {x: 8, y: -280}
+        - {x: 10, y: -282}
+        - {x: 40, y: -282}
+        - {x: 42, y: -280}
+        - {x: 42, y: -260}
+        - {x: 40, y: -258}
+        - {x: 42, y: -213}
+        - {x: 61, y: -204}
+        - {x: 76, y: -193}
+        - {x: 104, y: -156}
+        - {x: 112, y: -140}
+        - {x: 112, y: 120}
+        - {x: 110, y: 122}
+        - {x: 123, y: 155}
+        - {x: 161, y: 196}
+        - {x: 172, y: 210}
+        - {x: 172, y: 240}
+        - {x: 170, y: 242}
+        - {x: 139, y: 244}
+        - {x: 136, y: 234}
+        - {x: 66, y: 232}
+        - {x: 54, y: 219}
+        - {x: 52, y: 255}
+        - {x: 44, y: 291}
+        - {x: 33, y: 315}
+        - {x: 15, y: 332}
+        - {x: -50, y: 332}
+        - {x: -74, y: 314}
+        - {x: -94, y: 254}
+        - {x: -133, y: 225}
+        - {x: -152, y: 203}
+        - {x: -152, y: 168}
+        - {x: -143, y: 166}
+        - {x: -152, y: 122}
+        - {x: -152, y: -145}
+        - {x: -132, y: -166}
+        - {x: -112, y: -162}
+        - {x: -112, y: -190}
+        - {x: -104, y: -202}
+        - {x: -81, y: -214}
+        - {x: -85, y: -259}
+        - {x: -82, y: -282}
+        - {x: -50, y: -282}
+        - {x: -48, y: -280}
+        - {x: -46, y: -259}
+        - {x: -57, y: -256}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

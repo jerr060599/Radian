@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: 5ef6f6ebd28ef75419a354d2d8a7839a
+timeCreated: 1469214689
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ranger Side Dash_0
+    21300002: Ranger Side Dash_1
+    21300004: Ranger Side Dash_2
+    21300006: Ranger Side Dash_3
+    21300008: Ranger Side Dash_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ranger Side Dash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 90, y: -172}
+        - {x: 92, y: -170}
+        - {x: 92, y: -20}
+        - {x: 90, y: -18}
+        - {x: 82, y: -18}
+        - {x: 101, y: 51}
+        - {x: 102, y: 54}
+        - {x: 102, y: 85}
+        - {x: 93, y: 84}
+        - {x: 94, y: 221}
+        - {x: 86, y: 252}
+        - {x: 57, y: 276}
+        - {x: 74, y: 279}
+        - {x: 74, y: 301}
+        - {x: 62, y: 315}
+        - {x: 34, y: 332}
+        - {x: -40, y: 332}
+        - {x: -52, y: 325}
+        - {x: -73, y: 301}
+        - {x: -82, y: 280}
+        - {x: -92, y: 150}
+        - {x: -92, y: -140}
+        - {x: -90, y: -142}
+        - {x: -84, y: -181}
+        - {x: -73, y: -211}
+        - {x: -43, y: -223}
+        - {x: -52, y: -250}
+        - {x: -52, y: -260}
+        - {x: -50, y: -262}
+        - {x: -8, y: -265}
+        - {x: -2, y: -234}
+        - {x: -2, y: -272}
+        - {x: 35, y: -272}
+        - {x: 52, y: -213}
+        - {x: 62, y: -200}
+        - {x: 62, y: -172}
+    - name: Ranger Side Dash_1
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 800
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 178, y: -174}
+        - {x: 182, y: -153}
+        - {x: 182, y: -111}
+        - {x: 163, y: -94}
+        - {x: 145, y: -47}
+        - {x: 134, y: -19}
+        - {x: 134, y: 41}
+        - {x: 129, y: 83}
+        - {x: 109, y: 134}
+        - {x: 84, y: 181}
+        - {x: 71, y: 204}
+        - {x: 39, y: 204}
+        - {x: 24, y: 221}
+        - {x: 25, y: 272}
+        - {x: 6, y: 282}
+        - {x: -30, y: 282}
+        - {x: -71, y: 274}
+        - {x: -91, y: 264}
+        - {x: -112, y: 233}
+        - {x: -112, y: 182}
+        - {x: -104, y: 169}
+        - {x: -104, y: 89}
+        - {x: -93, y: 86}
+        - {x: -92, y: -138}
+        - {x: -102, y: -135}
+        - {x: -105, y: -202}
+        - {x: -100, y: -202}
+        - {x: -92, y: -230}
+        - {x: -112, y: -250}
+        - {x: -112, y: -270}
+        - {x: -110, y: -272}
+        - {x: -79, y: -274}
+        - {x: -58, y: -240}
+        - {x: -58, y: -212}
+        - {x: 55, y: -261}
+        - {x: 57, y: -281}
+        - {x: 60, y: -282}
+        - {x: 90, y: -282}
+        - {x: 102, y: -246}
+        - {x: 83, y: -215}
+        - {x: 99, y: -180}
+    - name: Ranger Side Dash_2
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 800
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 145, y: -172}
+        - {x: 172, y: -165}
+        - {x: 182, y: -153}
+        - {x: 182, y: -115}
+        - {x: 164, y: -92}
+        - {x: 154, y: -69}
+        - {x: 144, y: -49}
+        - {x: 125, y: 32}
+        - {x: 96, y: 72}
+        - {x: 64, y: 151}
+        - {x: 53, y: 162}
+        - {x: 13, y: 177}
+        - {x: 2, y: 222}
+        - {x: -64, y: 222}
+        - {x: -81, y: 213}
+        - {x: -103, y: 194}
+        - {x: -125, y: 172}
+        - {x: -122, y: 115}
+        - {x: -112, y: 90}
+        - {x: -114, y: 49}
+        - {x: -103, y: 46}
+        - {x: -104, y: -51}
+        - {x: -93, y: -54}
+        - {x: -105, y: -139}
+        - {x: -135, y: -209}
+        - {x: -155, y: -234}
+        - {x: -162, y: -245}
+        - {x: -162, y: -266}
+        - {x: -119, y: -264}
+        - {x: -84, y: -254}
+        - {x: -49, y: -234}
+        - {x: 3, y: -222}
+        - {x: 89, y: -246}
+        - {x: 99, y: -272}
+        - {x: 123, y: -272}
+        - {x: 131, y: -264}
+        - {x: 136, y: -238}
+        - {x: 113, y: -176}
+    - name: Ranger Side Dash_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 174, y: -169}
+        - {x: 182, y: -153}
+        - {x: 182, y: -117}
+        - {x: 164, y: -94}
+        - {x: 134, y: -19}
+        - {x: 124, y: 61}
+        - {x: 116, y: 102}
+        - {x: 84, y: 141}
+        - {x: 74, y: 181}
+        - {x: 61, y: 214}
+        - {x: 17, y: 226}
+        - {x: 25, y: 272}
+        - {x: 6, y: 282}
+        - {x: -30, y: 282}
+        - {x: -71, y: 274}
+        - {x: -91, y: 264}
+        - {x: -112, y: 233}
+        - {x: -112, y: 182}
+        - {x: -104, y: 169}
+        - {x: -104, y: 89}
+        - {x: -93, y: 86}
+        - {x: -92, y: -138}
+        - {x: -102, y: -135}
+        - {x: -105, y: -202}
+        - {x: -100, y: -202}
+        - {x: -92, y: -230}
+        - {x: -112, y: -250}
+        - {x: -112, y: -270}
+        - {x: -110, y: -272}
+        - {x: -79, y: -274}
+        - {x: -58, y: -240}
+        - {x: -58, y: -212}
+        - {x: 55, y: -261}
+        - {x: 57, y: -281}
+        - {x: 60, y: -282}
+        - {x: 90, y: -282}
+        - {x: 102, y: -246}
+        - {x: 83, y: -215}
+        - {x: 99, y: -180}
+    - name: Ranger Side Dash_4
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 600
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 90, y: -172}
+        - {x: 92, y: -170}
+        - {x: 92, y: -20}
+        - {x: 102, y: 10}
+        - {x: 102, y: 210}
+        - {x: 94, y: 222}
+        - {x: 64, y: 224}
+        - {x: 64, y: 251}
+        - {x: 53, y: 254}
+        - {x: 72, y: 280}
+        - {x: 74, y: 301}
+        - {x: 62, y: 315}
+        - {x: 34, y: 332}
+        - {x: -40, y: 332}
+        - {x: -52, y: 325}
+        - {x: -73, y: 301}
+        - {x: -82, y: 280}
+        - {x: -92, y: 150}
+        - {x: -92, y: -140}
+        - {x: -90, y: -142}
+        - {x: -82, y: -142}
+        - {x: -84, y: -181}
+        - {x: -73, y: -184}
+        - {x: -73, y: -211}
+        - {x: -43, y: -223}
+        - {x: -52, y: -250}
+        - {x: -52, y: -260}
+        - {x: -50, y: -262}
+        - {x: -8, y: -265}
+        - {x: -2, y: -234}
+        - {x: -2, y: -272}
+        - {x: 35, y: -272}
+        - {x: 52, y: -213}
+        - {x: 62, y: -200}
+        - {x: 62, y: -172}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
