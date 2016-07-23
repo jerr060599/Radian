@@ -5,7 +5,7 @@ public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject;
-    public bool controllable = true, usingLight = true;
+    public bool controllable = true, usingLight = true, isDashing = false;
     public float charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
     public float meleeCost = 0.05f, dashCost = 0.01f;
     public float darkMultiplyer = 2f;
@@ -14,6 +14,7 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     public GemCtrl gem;
     float dashTime = 0f, meleeTime = 0f;
+    Animator ani;
     SpriteRenderer sr;
     Consumable item;
     Vector2 lastJuicePos, dashPos;
@@ -30,6 +31,7 @@ public class CharCtrl : MonoBehaviour
         lastJuicePos = pysc.position;
         cc = GetComponent<CircleCollider2D>();
         gem = gemObject.GetComponent<GemCtrl>();
+        ani = GetComponent<Animator>();
     }
     public void kill()
     {
@@ -66,7 +68,7 @@ public class CharCtrl : MonoBehaviour
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
         Vector2 center = pysc.position + cc.offset;
-        bool isDashing = dashPos.sqrMagnitude > 0.1f;
+        isDashing = dashPos.sqrMagnitude > 0.1f;
         foreach (RaycastHit2D rh in Physics2D.CircleCastAll(center, 0.5f, Vector2.down, 0f))
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
@@ -85,9 +87,21 @@ public class CharCtrl : MonoBehaviour
                 input = input.normalized;
                 input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
                 pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
+                if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+                    if (input.x > 0)
+                        ani.Play("RightWalk", 0);
+                    else
+                        ani.Play("LeftWalk", 0);
+                else if (input.y > 0)
+                    ani.Play("UpWalk", 0);
+                else
+                    ani.Play("DownWalk", 0);
             }
             else
+            {
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
+                ani.Play("idleDown", 0);
+            }
             Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - center).normalized;
             if (dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
@@ -114,6 +128,8 @@ public class CharCtrl : MonoBehaviour
                 gem.isLight = usingLight;
             }
         }
+        else
+            ani.Play("idleDown", 0);
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
     }
