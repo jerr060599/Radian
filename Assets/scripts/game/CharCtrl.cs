@@ -138,7 +138,7 @@ public class CharCtrl : MonoBehaviour
                 BasicEnemy be = null;
                 foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
                     if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPos) >= meleeField)
-                        be.damage(meleeDamage);
+                        be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
                 meleeTime = meleeCoolDown;
                 cost(meleeCost);
             }
