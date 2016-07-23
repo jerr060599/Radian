@@ -97,7 +97,7 @@ public class CharCtrl : MonoBehaviour
                     input = input.normalized;
                     input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
                     pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
-                    if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+                    if (Mathf.Abs(input.x) >= Mathf.Abs(input.y))
                         if (input.x > 0)
                             ani.Play("RightWalk", 0);
                         else
