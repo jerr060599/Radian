@@ -33,6 +33,10 @@ public class CharCtrl : MonoBehaviour
         gem = gemObject.GetComponent<GemCtrl>();
         ani = GetComponent<Animator>();
     }
+    public void damage(float amount)
+    {
+        light.barPercent -= amount;
+    }
     public void kill()
     {
         //((GameObject)Instantiate(death, transform.position + (new Vector3(0f, 12f, 0f)), transform.rotation)).GetComponent<RespawnAni>().player = this;
@@ -46,6 +50,8 @@ public class CharCtrl : MonoBehaviour
         //gameObject.SetActive(true);
         //pysc.velocity = Vector2.zero;
         //transform.position = new Vector3(curSpawn.transform.position.x, curSpawn.transform.position.y - 4f, 0f);
+        light.barPercent = 1f;
+        dark.barPercent = 0f;
         transform.position = spawn.transform.position;
     }
 
@@ -64,6 +70,8 @@ public class CharCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (light.barPercent <= 0f)
+            kill();
         dashTime -= Time.deltaTime;
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;

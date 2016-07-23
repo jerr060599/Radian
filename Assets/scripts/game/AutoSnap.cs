@@ -17,5 +17,7 @@ public class AutoSnap : MonoBehaviour
             float yp = Mathf.Floor((-uy * transform.localPosition.x + ux * transform.localPosition.y + 0.5f / dpu) * dpu) / dpu + yOffset;
             transform.localPosition = new Vector3(ux * xp - uy * yp, uy * xp + ux * yp, transform.localPosition.z);
         }
+        else
+            Destroy(this);
     }
 }
