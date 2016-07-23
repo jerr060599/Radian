@@ -82,26 +82,38 @@ public class CharCtrl : MonoBehaviour
         if (controllable)
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if (input.sqrMagnitude != 0f)
+            if (!isDashing)
             {
-                input = input.normalized;
-                input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
-                pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
-                if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
-                    if (input.x > 0)
-                        ani.Play("RightWalk", 0);
+                if (input.sqrMagnitude != 0f)
+                {
+                    input = input.normalized;
+                    input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
+                    pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
+                    if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+                        if (input.x > 0)
+                            ani.Play("RightWalk", 0);
+                        else
+                            ani.Play("LeftWalk", 0);
+                    else if (input.y > 0)
+                        ani.Play("UpWalk", 0);
                     else
-                        ani.Play("LeftWalk", 0);
-                else if (input.y > 0)
-                    ani.Play("UpWalk", 0);
+                        ani.Play("DownWalk", 0);
+                }
                 else
-                    ani.Play("DownWalk", 0);
+                {
+                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
+                    ani.Play("idleDown", 0);
+                }
             }
+            else if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
+                if (dashPos.x > 0)
+                    ani.Play("RightDash", 0);
+                else
+                    ani.Play("LeftDash", 0);
+            else if (dashPos.y > 0)
+                ani.Play("UpDash", 0);
             else
-            {
-                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
-                ani.Play("idleDown", 0);
-            }
+                ani.Play("DownDash", 0);
             Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - center).normalized;
             if (dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
