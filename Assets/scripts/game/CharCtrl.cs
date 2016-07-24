@@ -119,15 +119,7 @@ public class CharCtrl : MonoBehaviour
                 else
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
-                    if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
-                        if (lastInput.x > 0)
-                            ani.Play("idleRight", 0);
-                        else
-                            ani.Play("idleLeft", 0);
-                    else if (lastInput.y > 0)
-                        ani.Play("idleUp", 0);
-                    else
-                        ani.Play("idleDown", 0);
+                    playIdleAnimation();
                 }
             }
             else if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
@@ -140,9 +132,10 @@ public class CharCtrl : MonoBehaviour
             else
                 ani.Play("DownDash", 0);
             Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - center).normalized;
-            if (dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
+            if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
                 float closest = dashDist;
+                lastInput = rPos;
                 foreach (RaycastHit2D rh in Physics2D.RaycastAll(center, rPos, dashDist))
                     if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
                         closest = rh.distance;
@@ -166,9 +159,21 @@ public class CharCtrl : MonoBehaviour
             }
         }
         else
-            ani.Play("idleDown", 0);
+            playIdleAnimation();
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
+    }
+    public void playIdleAnimation()
+    {
+        if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
+            if (lastInput.x > 0)
+                ani.Play("idleRight", 0);
+            else
+                ani.Play("idleLeft", 0);
+        else if (lastInput.y > 0)
+            ani.Play("idleUp", 0);
+        else
+            ani.Play("idleDown", 0);
     }
     public void cost(float cost)
     {
