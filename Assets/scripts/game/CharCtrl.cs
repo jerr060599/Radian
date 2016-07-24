@@ -10,6 +10,7 @@ public class CharCtrl : MonoBehaviour
     public float meleeCost = 0.05f, dashCost = 0.01f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
+    public int dashLayer = 9;
     public Rigidbody2D pysc = null;
     public BarCtrl light, dark;
     public GemCtrl gem;
@@ -76,7 +77,10 @@ public class CharCtrl : MonoBehaviour
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
         Vector2 center = pysc.position + cc.offset;
-        isDashing = dashPos.sqrMagnitude > 0.1f;
+        if (isDashing = dashPos.sqrMagnitude > 0.1f)
+            gameObject.layer = dashLayer;
+        else
+            gameObject.layer = 0;
         foreach (RaycastHit2D rh in Physics2D.CircleCastAll(center, 0.5f, Vector2.down, 0f))
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
