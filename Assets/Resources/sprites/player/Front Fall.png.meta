@@ -1,0 +1,276 @@
+fileFormatVersion: 2
+guid: 31909a623e4b9ea4e9803ebcd2641dda
+timeCreated: 1469402339
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Front Fall_0
+    21300002: Front Fall_1
+    21300004: Front Fall_2
+    21300006: Front Fall_3
+    21300008: Front Fall_4
+    21300010: Front Fall_5
+    21300012: Front Fall_6
+    21300014: Front Fall_7
+    21300016: Front Fall_8
+    21300018: Front Fall_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 40
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Front Fall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: -7}
+        - {x: -21, y: -28}
+        - {x: 20, y: -28}
+        - {x: 26, y: -26}
+        - {x: 26, y: 2}
+        - {x: 20, y: 29}
+        - {x: 2, y: 35}
+        - {x: -9, y: 35}
+        - {x: -29, y: 9}
+    - name: Front Fall_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 34}
+        - {x: -27, y: 21}
+        - {x: -30, y: 18}
+        - {x: -30, y: -16}
+        - {x: -26, y: -28}
+        - {x: 0, y: -28}
+        - {x: 18, y: -21}
+        - {x: 29, y: -13}
+        - {x: 29, y: 10}
+        - {x: 12, y: 34}
+    - name: Front Fall_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 35}
+        - {x: -30, y: 20}
+        - {x: -30, y: -3}
+        - {x: -19, y: -25}
+        - {x: -12, y: -27}
+        - {x: 11, y: -27}
+        - {x: 30, y: -4}
+        - {x: 30, y: 26}
+        - {x: 12, y: 35}
+    - name: Front Fall_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 35}
+        - {x: -5, y: 35}
+        - {x: -11, y: 33}
+        - {x: -30, y: 19}
+        - {x: -30, y: -16}
+        - {x: -26, y: -27}
+        - {x: -24, y: -28}
+        - {x: 7, y: -28}
+        - {x: 21, y: -22}
+        - {x: 29, y: -10}
+        - {x: 29, y: 3}
+        - {x: 16, y: 26}
+    - name: Front Fall_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: -7}
+        - {x: -21, y: -28}
+        - {x: 20, y: -28}
+        - {x: 26, y: -26}
+        - {x: 26, y: 2}
+        - {x: 20, y: 29}
+        - {x: 2, y: 35}
+        - {x: -9, y: 35}
+        - {x: -29, y: 9}
+    - name: Front Fall_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 34}
+        - {x: -27, y: 21}
+        - {x: -30, y: 18}
+        - {x: -30, y: -16}
+        - {x: -26, y: -28}
+        - {x: 0, y: -28}
+        - {x: 18, y: -21}
+        - {x: 29, y: -13}
+        - {x: 29, y: 10}
+        - {x: 12, y: 34}
+    - name: Front Fall_6
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 35}
+        - {x: -30, y: 20}
+        - {x: -30, y: -3}
+        - {x: -19, y: -25}
+        - {x: -12, y: -27}
+        - {x: 11, y: -27}
+        - {x: 30, y: -4}
+        - {x: 30, y: 26}
+        - {x: 12, y: 35}
+    - name: Front Fall_7
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 35}
+        - {x: -5, y: 35}
+        - {x: -11, y: 33}
+        - {x: -30, y: 19}
+        - {x: -30, y: -16}
+        - {x: -26, y: -27}
+        - {x: -24, y: -28}
+        - {x: 7, y: -28}
+        - {x: 21, y: -22}
+        - {x: 29, y: -10}
+        - {x: 29, y: 3}
+        - {x: 16, y: 26}
+    - name: Front Fall_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: -7}
+        - {x: -21, y: -28}
+        - {x: 20, y: -28}
+        - {x: 26, y: -26}
+        - {x: 26, y: 2}
+        - {x: 20, y: 29}
+        - {x: 2, y: 35}
+        - {x: -9, y: 35}
+        - {x: -29, y: 9}
+    - name: Front Fall_9
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 34}
+        - {x: -27, y: 21}
+        - {x: -30, y: 18}
+        - {x: -30, y: -16}
+        - {x: -26, y: -28}
+        - {x: 0, y: -28}
+        - {x: 18, y: -21}
+        - {x: 29, y: -13}
+        - {x: 29, y: 10}
+        - {x: 12, y: 34}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
