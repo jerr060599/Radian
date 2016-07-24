@@ -72,7 +72,10 @@ public class CharCtrl : MonoBehaviour
     void Update()
     {
         if (light.barPercent <= 0f)
+        {
             kill();
+            return;
+        }
         dashTime -= Time.deltaTime;
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
