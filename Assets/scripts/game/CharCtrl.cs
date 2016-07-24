@@ -63,7 +63,7 @@ public class CharCtrl : MonoBehaviour
         {
             item = c;
             itemIcon.GetComponent<UnityEngine.UI.Image>().sprite = c.icon;
-            SoundManager.script.playOnListener(SoundManager.script.pickup0, 0.8f);
+            //SoundManager.script.playOnListener(SoundManager.script.pickup0, 0.8f);
             itemIcon.SetActive(true);
             return true;
         }
