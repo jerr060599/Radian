@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
+    public float autoOrderOffset = -0.6f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
     public float meleeCost = 0.05f, dashCost = 0.01f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -54,6 +54,7 @@ public class CharCtrl : MonoBehaviour
         //transform.position = new Vector3(curSpawn.transform.position.x, curSpawn.transform.position.y - 4f, 0f);
         light.barPercent = 1f;
         dark.barPercent = 0f;
+        controllable = true;
         transform.position = spawn.transform.position;
     }
 
@@ -81,6 +82,7 @@ public class CharCtrl : MonoBehaviour
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
         Vector2 center = pysc.position + cc.offset;
+
         if (isDashing = dashPos.sqrMagnitude > 0.1f)
             gameObject.layer = dashLayer;
         else
@@ -89,7 +91,7 @@ public class CharCtrl : MonoBehaviour
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
                 {
-                    //controllable = false;
+                    controllable = false;
                     kill();
                     break;
                 }
@@ -162,6 +164,7 @@ public class CharCtrl : MonoBehaviour
             playIdleAnimation();
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
+        transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }
     public void playIdleAnimation()
     {
