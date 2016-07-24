@@ -1,0 +1,279 @@
+fileFormatVersion: 2
+guid: 794cada0c52b951489200faf997893db
+timeCreated: 1469319749
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Fall_0
+    21300002: Fall_1
+    21300004: Fall_2
+    21300006: Fall_3
+    21300008: Fall_4
+    21300010: Fall_5
+    21300012: Fall_6
+    21300014: Fall_7
+    21300016: Fall_8
+    21300018: Fall_9
+    21300020: Fall_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Fall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 18}
+        - {x: 3, y: 24}
+        - {x: -17, y: 24}
+        - {x: -18, y: 21}
+        - {x: -18, y: -29}
+        - {x: 15, y: -29}
+        - {x: 16, y: -27}
+        - {x: 20, y: -16}
+        - {x: 20, y: -5}
+    - name: Fall_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 24}
+        - {x: -10, y: 24}
+        - {x: -14, y: 17}
+        - {x: -14, y: -31}
+        - {x: -11, y: -32}
+        - {x: 11, y: -32}
+        - {x: 13, y: -30}
+        - {x: 21, y: -21}
+        - {x: 26, y: -11}
+        - {x: 26, y: -1}
+    - name: Fall_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 24}
+        - {x: -15, y: 18}
+        - {x: -15, y: -26}
+        - {x: -5, y: -36}
+        - {x: 18, y: -36}
+        - {x: 23, y: -35}
+        - {x: 30, y: -11}
+        - {x: 30, y: 19}
+        - {x: 7, y: 24}
+    - name: Fall_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 160
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 38}
+        - {x: -16, y: 20}
+        - {x: -18, y: 16}
+        - {x: -18, y: -22}
+        - {x: -10, y: -39}
+        - {x: 18, y: -39}
+        - {x: 30, y: -12}
+        - {x: 30, y: 36}
+        - {x: 29, y: 38}
+    - name: Fall_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -17, y: 26}
+        - {x: -17, y: -22}
+        - {x: -7, y: -39}
+        - {x: 21, y: -39}
+        - {x: 30, y: 0}
+        - {x: 30, y: 40}
+    - name: Fall_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: 40}
+        - {x: -17, y: 23}
+        - {x: -17, y: -32}
+        - {x: -9, y: -39}
+        - {x: 24, y: -39}
+        - {x: 30, y: -5}
+        - {x: 30, y: 40}
+    - name: Fall_6
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 38}
+        - {x: -17, y: 20}
+        - {x: -17, y: -23}
+        - {x: -7, y: -39}
+        - {x: 21, y: -39}
+        - {x: 30, y: -1}
+        - {x: 30, y: 38}
+    - name: Fall_7
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: 40}
+        - {x: -17, y: 23}
+        - {x: -17, y: -32}
+        - {x: -9, y: -39}
+        - {x: 24, y: -39}
+        - {x: 30, y: -5}
+        - {x: 30, y: 40}
+    - name: Fall_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 38}
+        - {x: -11, y: 27}
+        - {x: -17, y: 20}
+        - {x: -17, y: -27}
+        - {x: -11, y: -39}
+        - {x: 21, y: -39}
+        - {x: 30, y: -14}
+        - {x: 30, y: 35}
+        - {x: 29, y: 38}
+    - name: Fall_9
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: 40}
+        - {x: -17, y: 23}
+        - {x: -17, y: -32}
+        - {x: -9, y: -39}
+        - {x: 24, y: -39}
+        - {x: 30, y: -5}
+        - {x: 30, y: 40}
+    - name: Fall_10
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 38}
+        - {x: -11, y: 27}
+        - {x: -17, y: 20}
+        - {x: -17, y: -27}
+        - {x: -11, y: -39}
+        - {x: 21, y: -39}
+        - {x: 30, y: -14}
+        - {x: 30, y: 35}
+        - {x: 29, y: 38}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
