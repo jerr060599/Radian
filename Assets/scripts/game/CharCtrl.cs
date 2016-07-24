@@ -15,6 +15,7 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     public GemCtrl gem;
     float dashTime = 0f, meleeTime = 0f;
+    Vector2 lastInput = Vector2.down;
     Animator ani;
     SpriteRenderer sr;
     Consumable item;
@@ -101,6 +102,7 @@ public class CharCtrl : MonoBehaviour
             {
                 if (input.sqrMagnitude != 0f)
                 {
+                    lastInput = input;
                     input = input.normalized;
                     input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
                     pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
@@ -117,7 +119,15 @@ public class CharCtrl : MonoBehaviour
                 else
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
-                    ani.Play("idleDown", 0);
+                    if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
+                        if (lastInput.x > 0)
+                            ani.Play("idleRight", 0);
+                        else
+                            ani.Play("idleLeft", 0);
+                    else if (lastInput.y > 0)
+                        ani.Play("idleUp", 0);
+                    else
+                        ani.Play("idleDown", 0);
                 }
             }
             else if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
