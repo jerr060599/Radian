@@ -40,6 +40,8 @@ public class SoundManager : MonoBehaviour
         src.GetComponent<AudioSource>().volume = 0f;
         bgmVolume = volume;
         src.GetComponent<AudioSource>().Play();
+        if (lastBGM)
+            Destroy(lastBGM);
         lastBGM = curBGM;
         return curBGM = src.GetComponent<AudioSource>();
     }
