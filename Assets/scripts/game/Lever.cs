@@ -28,12 +28,12 @@ public class Lever : Activatable
 
 	public override void onActivation (CharCtrl player)
 	{
-		SoundManager.script.playOnListener (SoundManager.script.click0, 0.2f);
+		//SoundManager.script.playOnListener (SoundManager.script.click0, 0.2f);
 	}
 
 	public override void onDeactivation (CharCtrl player)
 	{
-		SoundManager.script.playOnListener (SoundManager.script.click0, 0.2f);
+		//SoundManager.script.playOnListener (SoundManager.script.click0, 0.2f);
 	}
 
 	void Update ()

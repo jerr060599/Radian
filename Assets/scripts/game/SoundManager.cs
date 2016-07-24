@@ -5,7 +5,7 @@ public class SoundManager : MonoBehaviour
 {
     public GameObject defSrc, bgmSrc;
     public static SoundManager script;
-    public AudioClip jump0, jump1, jump2, click0, death0, punch0, climb0, climb1, walk0, walk1, pickup0, checkpoint0, explosion0, win0;
+    public AudioClip grassFootStep, treesBackground,radianceSource;
     public AudioSource lastBGM = null, curBGM = null;
     public float smooth = 0.1f;
     public float bgmVolume = 0f;
