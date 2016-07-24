@@ -15,17 +15,27 @@ public class SoundManager : MonoBehaviour
     }
     public AudioSource playOnListener(AudioClip clip, float volume = 1f)
     {
-        GameObject src = (GameObject)Instantiate(defSrc, transform.position, transform.rotation);
-        src.transform.SetParent(gameObject.transform);
+        GameObject src = (GameObject)Instantiate(defSrc, CharCtrl.script.gameObject.transform.position, transform.rotation);
+        src.transform.SetParent(CharCtrl.script.gameObject.transform);
         src.GetComponent<AudioSource>().clip = clip;
         src.GetComponent<AudioSource>().volume = volume;
         src.GetComponent<AudioSource>().Play();
         return src.GetComponent<AudioSource>();
     }
 
-    public AudioSource playOn(Vector2 pos, AudioClip clip, float volume = 1f)
+    public AudioSource playOn(Transform pos, AudioClip clip, float volume = 1f)
     {
-        GameObject src = (GameObject)Instantiate(defSrc, pos, Quaternion.identity);
+        GameObject src = (GameObject)Instantiate(defSrc, pos.position, Quaternion.identity);
+        src.GetComponent<AudioSource>().clip = clip;
+        src.GetComponent<AudioSource>().volume = volume;
+        src.GetComponent<AudioSource>().Play();
+        return src.GetComponent<AudioSource>();
+    }
+
+    public AudioSource playAndFollow(Transform pos, AudioClip clip, float volume = 1f)
+    {
+        GameObject src = (GameObject)Instantiate(defSrc, pos.position, Quaternion.identity);
+        src.transform.SetParent(pos);
         src.GetComponent<AudioSource>().clip = clip;
         src.GetComponent<AudioSource>().volume = volume;
         src.GetComponent<AudioSource>().Play();
