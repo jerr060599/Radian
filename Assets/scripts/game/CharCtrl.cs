@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float autoOrderOffset = -0.6f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
+    public float charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
     public float meleeCost = 0.05f, dashCost = 0.01f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -14,7 +14,7 @@ public class CharCtrl : MonoBehaviour
     public Rigidbody2D pysc = null;
     public BarCtrl light, dark;
     public GemCtrl gem;
-    float dashTime = 0f, meleeTime = 0f;
+    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f;
     Vector2 lastInput = Vector2.down;
     Animator ani;
     SpriteRenderer sr;
@@ -34,6 +34,7 @@ public class CharCtrl : MonoBehaviour
         cc = GetComponent<CircleCollider2D>();
         gem = gemObject.GetComponent<GemCtrl>();
         ani = GetComponent<Animator>();
+        autoOrderOffset = GetComponent<AutoOrder>().offset;
     }
     public void damage(float amount)
     {
