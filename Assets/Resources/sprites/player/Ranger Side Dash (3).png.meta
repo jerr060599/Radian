@@ -1,17 +1,18 @@
 fileFormatVersion: 2
-guid: 6c2062aeb76ee4545af58a38300a4fac
-timeCreated: 1469407508
+guid: 5384a89fbf39cae40bb95e812a251854
+timeCreated: 1469408338
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Ranger Side Dash (2)_0
-    21300002: Ranger Side Dash (2)_1
-    21300004: Ranger Side Dash (2)_2
-    21300006: Ranger Side Dash (2)_3
-    21300008: Ranger Side Dash (2)_4
-    21300010: Ranger Side Dash (2)_5
-    21300012: Ranger Side Dash (2)_6
-    21300014: Ranger Side Dash (2)_7
+    21300000: Ranger Side Dash (3)_0
+    21300002: Ranger Side Dash (3)_1
+    21300004: Ranger Side Dash (3)_2
+    21300006: Ranger Side Dash (3)_3
+    21300008: Ranger Side Dash (3)_4
+    21300010: Ranger Side Dash (3)_5
+    21300012: Ranger Side Dash (3)_6
+    21300014: Ranger Side Dash (3)_7
+    21300016: Ranger Side Dash (3)_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +59,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Ranger Side Dash (2)_0
+    - name: Ranger Side Dash (3)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -69,17 +70,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 8, y: 35}
-        - {x: -8, y: 35}
-        - {x: -9, y: 34}
-        - {x: -12, y: 29}
-        - {x: -12, y: -23}
-        - {x: -7, y: -29}
-        - {x: 5, y: -29}
-        - {x: 11, y: -18}
-        - {x: 12, y: -15}
-        - {x: 12, y: 25}
-    - name: Ranger Side Dash (2)_1
+      - - {x: -13, y: 26}
+        - {x: -18, y: 22}
+        - {x: -18, y: -30}
+        - {x: 26, y: -30}
+        - {x: 26, y: 3}
+        - {x: -2, y: 26}
+    - name: Ranger Side Dash (3)_1
       rect:
         serializedVersion: 2
         x: 60
@@ -90,13 +87,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -14, y: 31}
-        - {x: -14, y: -30}
-        - {x: 10, y: -30}
-        - {x: 20, y: -22}
-        - {x: 20, y: 21}
-        - {x: 6, y: 31}
-    - name: Ranger Side Dash (2)_2
+      - - {x: 11, y: 27}
+        - {x: -18, y: 27}
+        - {x: -18, y: -30}
+        - {x: 19, y: -30}
+        - {x: 26, y: -26}
+        - {x: 26, y: 2}
+    - name: Ranger Side Dash (3)_2
       rect:
         serializedVersion: 2
         x: 120
@@ -107,16 +104,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -1, y: 26}
-        - {x: -16, y: 26}
-        - {x: -18, y: 23}
-        - {x: -18, y: 1}
-        - {x: -14, y: -32}
-        - {x: 16, y: -32}
-        - {x: 24, y: -31}
-        - {x: 26, y: -23}
-        - {x: 26, y: 6}
-    - name: Ranger Side Dash (2)_3
+      - - {x: -13, y: 26}
+        - {x: -18, y: 22}
+        - {x: -18, y: -30}
+        - {x: 26, y: -30}
+        - {x: 26, y: 3}
+        - {x: -2, y: 26}
+    - name: Ranger Side Dash (3)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -127,22 +121,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 21, y: -19}
-        - {x: 16, y: -11}
-        - {x: 25, y: -7}
-        - {x: 26, y: -5}
-        - {x: 26, y: 0}
-        - {x: -1, y: 27}
-        - {x: -8, y: 27}
-        - {x: -18, y: 24}
-        - {x: -18, y: -20}
-        - {x: -12, y: -31}
-        - {x: -10, y: -32}
-        - {x: -4, y: -32}
-        - {x: -3, y: -31}
-        - {x: 19, y: -26}
-        - {x: 20, y: -23}
-    - name: Ranger Side Dash (2)_4
+      - - {x: 11, y: 27}
+        - {x: -18, y: 27}
+        - {x: -18, y: -30}
+        - {x: 19, y: -30}
+        - {x: 26, y: -26}
+        - {x: 26, y: 2}
+    - name: Ranger Side Dash (3)_4
       rect:
         serializedVersion: 2
         x: 60
@@ -153,16 +138,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -1, y: 26}
-        - {x: -16, y: 26}
-        - {x: -18, y: 23}
-        - {x: -18, y: 1}
-        - {x: -14, y: -32}
-        - {x: 16, y: -32}
-        - {x: 24, y: -31}
-        - {x: 26, y: -23}
-        - {x: 26, y: 6}
-    - name: Ranger Side Dash (2)_5
+      - - {x: -13, y: 26}
+        - {x: -18, y: 22}
+        - {x: -18, y: -30}
+        - {x: 26, y: -30}
+        - {x: 26, y: 3}
+        - {x: -2, y: 26}
+    - name: Ranger Side Dash (3)_5
       rect:
         serializedVersion: 2
         x: 120
@@ -173,22 +155,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 21, y: -19}
-        - {x: 16, y: -11}
-        - {x: 25, y: -7}
-        - {x: 26, y: -5}
-        - {x: 26, y: 0}
-        - {x: -1, y: 27}
-        - {x: -10, y: 27}
-        - {x: -18, y: 25}
-        - {x: -18, y: -20}
-        - {x: -12, y: -31}
-        - {x: -10, y: -32}
-        - {x: -4, y: -32}
-        - {x: -3, y: -31}
-        - {x: 19, y: -26}
-        - {x: 20, y: -23}
-    - name: Ranger Side Dash (2)_6
+      - - {x: 11, y: 27}
+        - {x: -18, y: 27}
+        - {x: -18, y: -30}
+        - {x: 19, y: -30}
+        - {x: 26, y: -26}
+        - {x: 26, y: 2}
+    - name: Ranger Side Dash (3)_6
       rect:
         serializedVersion: 2
         x: 0
@@ -199,19 +172,33 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -1, y: 26}
-        - {x: -16, y: 26}
-        - {x: -18, y: 23}
-        - {x: -18, y: 1}
-        - {x: -14, y: -32}
-        - {x: 16, y: -32}
-        - {x: 24, y: -31}
-        - {x: 26, y: -23}
-        - {x: 26, y: 6}
-    - name: Ranger Side Dash (2)_7
+      - - {x: -13, y: 26}
+        - {x: -18, y: 22}
+        - {x: -18, y: -30}
+        - {x: 26, y: -30}
+        - {x: 26, y: 3}
+        - {x: -2, y: 26}
+    - name: Ranger Side Dash (3)_7
       rect:
         serializedVersion: 2
         x: 60
+        y: 0
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 27}
+        - {x: -18, y: 27}
+        - {x: -18, y: -30}
+        - {x: 19, y: -30}
+        - {x: 26, y: -26}
+        - {x: 26, y: 2}
+    - name: Ranger Side Dash (3)_8
+      rect:
+        serializedVersion: 2
+        x: 120
         y: 0
         width: 60
         height: 80
