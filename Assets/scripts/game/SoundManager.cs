@@ -5,13 +5,14 @@ public class SoundManager : MonoBehaviour
 {
     public GameObject defSrc, bgmSrc;
     public static SoundManager script;
-    public AudioClip grassFootStep, treesBackground,radianceSource;
+    public AudioClip grassFootStep, radianceSource,dash;
     public AudioSource lastBGM = null, curBGM = null;
     public float smooth = 0.1f;
     public float bgmVolume = 0f;
     void Start()
     {
         script = this;
+	
     }
     public AudioSource playOnListener(AudioClip clip, float volume = 1f)
     {
