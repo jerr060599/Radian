@@ -194,6 +194,7 @@ public class CharCtrl : MonoBehaviour
                 dashPos = rPos * closest;
                 dashTime = dashCoolDown;
                 cost(dashCost);
+                SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
             }
             if (meleeTime <= 0f && Input.GetMouseButtonDown(0))
             {
