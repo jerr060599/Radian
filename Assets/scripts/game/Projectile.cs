@@ -17,6 +17,6 @@ public class Projectile : MonoBehaviour
     public void setVelocity(Vector2 velocity)
     {
         GetComponent<Rigidbody2D>().velocity = velocity;
-        transform.localRotation = Quaternion.LookRotation(Vector3.forward, -velocity);
+        transform.localRotation = Quaternion.LookRotation(Vector3.forward, -new Vector3(velocity.y, -velocity.x));
     }
 }

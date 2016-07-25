@@ -4,18 +4,18 @@ using System.Collections;
 public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
-    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand;
+    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
-    public float meleeCost = 0.05f, dashCost = 0.01f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
+    public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
-    public int dashLayer = 9;
+    public int dashLayer = 8, playerLayer = 10;
     public Rigidbody2D pysc = null;
     public BarCtrl light, dark;
     public GemCtrl gem;
     public Vector2 center;
-    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f;
+    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime = 0f;
     bool isFalling = false, rooted = false;
     Vector2 lastInput = Vector2.down;
     Animator ani, handAni;
@@ -59,7 +59,7 @@ public class CharCtrl : MonoBehaviour
         dark.barPercent = 0f;
         controllable = true;
         isFalling = false;
-        gameObject.layer = 0;
+        gameObject.layer = playerLayer;
         pysc.gravityScale = 0f;
         pysc.velocity = Vector2.zero;
         transform.position = spawn.transform.position;
@@ -96,12 +96,13 @@ public class CharCtrl : MonoBehaviour
         }
         dashTime -= Time.deltaTime;
         meleeTime -= Time.deltaTime;
+        arrowTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
         center = pysc.position + cc.offset;
         if (isDashing = dashPos.sqrMagnitude > 0.1f)
             gameObject.layer = dashLayer;
         else
-            gameObject.layer = 0;
+            gameObject.layer = playerLayer;
         foreach (RaycastHit2D rh in Physics2D.CircleCastAll(center, 0.5f, Vector2.down, 0f))
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
@@ -123,7 +124,7 @@ public class CharCtrl : MonoBehaviour
         if (controllable)
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - CharCtrl.script.center).normalized;
+            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - center).normalized;
             if (!isDashing)
             {
                 if (input.sqrMagnitude != 0f)
@@ -219,13 +220,19 @@ public class CharCtrl : MonoBehaviour
     }
     public void fire(Vector2 dir)
     {
+        if (arrowTime > 0f)
+            return;
+        cost(arrowCost);
         rooted = true;
-        if(dir.x > 0)
+        arrowTime = arrowCoolDown;
+        if (dir.x > 0)
             handAni.Play("FireUpDownFliped");
         else
             handAni.Play("FireUpDown");
         //fireArm.transform.localRotation = Quaternion.Euler(0f, 0f, dir.x == 0f ? dir.y > 0 ? 90f : -90f : Mathf.Atan(dir.y / dir.x) / Mathf.PI * 180f);
         fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -dir);
+        GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireArm.transform.position, Quaternion.identity));
+        tmp.GetComponent<Projectile>().setVelocity(((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - pysc.position).normalized * arrowSpeed);
     }
     public void playIdleAnimation()
     {
