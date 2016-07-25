@@ -15,6 +15,7 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     public GemCtrl gem;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f;
+    bool isFalling = false;
     Vector2 lastInput = Vector2.down;
     Animator ani;
     SpriteRenderer sr;
@@ -45,6 +46,7 @@ public class CharCtrl : MonoBehaviour
         //((GameObject)Instantiate(death, transform.position + (new Vector3(0f, 12f, 0f)), transform.rotation)).GetComponent<RespawnAni>().player = this;
         //gameObject.SetActive(false);
         //SoundManager.script.playOnListener (SoundManager.script.death0, 0.4f);
+        controllable = false;
         respawn();
     }
 
@@ -56,6 +58,10 @@ public class CharCtrl : MonoBehaviour
         light.barPercent = 1f;
         dark.barPercent = 0f;
         controllable = true;
+        isFalling = false;
+        gameObject.layer = 0;
+        pysc.gravityScale = 0f;
+        pysc.velocity = Vector2.zero;
         transform.position = spawn.transform.position;
     }
 
@@ -74,6 +80,14 @@ public class CharCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isFalling)
+        {
+            pysc.gravityScale = 10f;
+            gameObject.layer = dashLayer;
+            if (pysc.velocity.y < -100f)
+                kill();
+            return;
+        }
         if (light.barPercent <= 0f)
         {
             kill();
@@ -83,7 +97,6 @@ public class CharCtrl : MonoBehaviour
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
         Vector2 center = pysc.position + cc.offset;
-
         if (isDashing = dashPos.sqrMagnitude > 0.1f)
             gameObject.layer = dashLayer;
         else
@@ -92,9 +105,17 @@ public class CharCtrl : MonoBehaviour
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
                 {
-                    controllable = false;
-                    kill();
-                    break;
+                    isFalling = true;
+                    if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
+                        if (lastInput.x > 0)
+                            ani.Play("RightFall", 0);
+                        else
+                            ani.Play("LeftFall", 0);
+                    else if (lastInput.y > 0)
+                        ani.Play("UpFall", 0);
+                    else
+                        ani.Play("DownFall", 0);
+                    return;
                 }
                 else if (rh.collider.gameObject.GetComponent<MovementRedirect>())
                     redirect = rh.collider.gameObject.GetComponent<MovementRedirect>().dir;
