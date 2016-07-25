@@ -83,7 +83,7 @@ public class CharCtrl : MonoBehaviour
     {
         if (isFalling)
         {
-            pysc.gravityScale = 10f;
+            pysc.gravityScale = 7f;
             gameObject.layer = dashLayer;
             if (pysc.velocity.y < -100f)
                 kill();
@@ -149,14 +149,26 @@ public class CharCtrl : MonoBehaviour
                     if (rooted)
                     {
                         if (Mathf.Abs(rPos.x) > Mathf.Abs(rPos.y))
+                        {
                             if (rPos.x > 0)
                                 ani.Play("RightFireState", 0);
                             else
                                 ani.Play("LeftFireState", 0);
+                            if (fireHand.transform.localPosition.z != 0.01f)
+                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                        }
                         else if (rPos.y > 0)
+                        {
                             ani.Play("UpFireState", 0);
+                            if (fireHand.transform.localPosition.z != 0.01f)
+                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                        }
                         else
+                        {
                             ani.Play("DownFireState", 0);
+                            if (fireHand.transform.localPosition.z != -0.01f)
+                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
+                        }
                     }
                     else
                         playIdleAnimation();
@@ -208,7 +220,12 @@ public class CharCtrl : MonoBehaviour
     public void fire(Vector2 dir)
     {
         rooted = true;
-        handAni.Play("FireUpDown");
+        if(dir.x > 0)
+            handAni.Play("FireUpDownFliped");
+        else
+            handAni.Play("FireUpDown");
+        //fireArm.transform.localRotation = Quaternion.Euler(0f, 0f, dir.x == 0f ? dir.y > 0 ? 90f : -90f : Mathf.Atan(dir.y / dir.x) / Mathf.PI * 180f);
+        fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -dir);
     }
     public void playIdleAnimation()
     {
