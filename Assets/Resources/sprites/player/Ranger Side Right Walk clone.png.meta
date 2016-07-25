@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: aa4ef7b2de12cb64fa9ac7ea1f2e0876
-timeCreated: 1469409998
+guid: 62803532bfd42c94e88ef428140f1b8a
+timeCreated: 1469469432
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Ranger Side Right Walk (3)_0
-    21300002: Ranger Side Right Walk (3)_1
-    21300004: Ranger Side Right Walk (3)_2
-    21300006: Ranger Side Right Walk (3)_3
-    21300008: Ranger Side Right Walk (3)_4
-    21300010: Ranger Side Right Walk (3)_5
-    21300012: Ranger Side Right Walk (3)_6
-    21300014: Ranger Side Right Walk (3)_7
+    21300000: Ranger Side Right Walk clone_0
+    21300002: Ranger Side Right Walk clone_1
+    21300004: Ranger Side Right Walk clone_2
+    21300006: Ranger Side Right Walk clone_3
+    21300008: Ranger Side Right Walk clone_4
+    21300010: Ranger Side Right Walk clone_5
+    21300012: Ranger Side Right Walk clone_6
+    21300014: Ranger Side Right Walk clone_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +58,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Ranger Side Right Walk (3)_0
+    - name: Ranger Side Right Walk clone_0
       rect:
         serializedVersion: 2
         x: 0
@@ -70,12 +70,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -14, y: 35}
-        - {x: -18, y: 29}
-        - {x: -18, y: -31}
-        - {x: 28, y: -31}
+        - {x: -17, y: 32}
+        - {x: -17, y: -4}
+        - {x: -15, y: -31}
+        - {x: 8, y: -31}
+        - {x: 27, y: -25}
+        - {x: 28, y: -23}
         - {x: 28, y: 2}
-        - {x: 1, y: 35}
-    - name: Ranger Side Right Walk (3)_1
+        - {x: 4, y: 35}
+    - name: Ranger Side Right Walk clone_1
       rect:
         serializedVersion: 2
         x: 60
@@ -86,13 +89,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -12, y: 34}
-        - {x: -17, y: 30}
-        - {x: -17, y: -32}
-        - {x: 28, y: -32}
-        - {x: 28, y: 5}
-        - {x: 2, y: 34}
-    - name: Ranger Side Right Walk (3)_2
+      - - {x: -13, y: 34}
+        - {x: -17, y: 31}
+        - {x: -17, y: -23}
+        - {x: -11, y: -32}
+        - {x: 14, y: -32}
+        - {x: 28, y: -16}
+        - {x: 28, y: -5}
+        - {x: 3, y: 34}
+    - name: Ranger Side Right Walk clone_2
       rect:
         serializedVersion: 2
         x: 120
@@ -112,7 +117,7 @@ TextureImporter:
         - {x: 23, y: -20}
         - {x: 23, y: 10}
         - {x: 6, y: 31}
-    - name: Ranger Side Right Walk (3)_3
+    - name: Ranger Side Right Walk clone_3
       rect:
         serializedVersion: 2
         x: 0
@@ -132,7 +137,7 @@ TextureImporter:
         - {x: 24, y: -27}
         - {x: 24, y: 6}
         - {x: 6, y: 33}
-    - name: Ranger Side Right Walk (3)_4
+    - name: Ranger Side Right Walk clone_4
       rect:
         serializedVersion: 2
         x: 60
@@ -143,15 +148,17 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -16, y: 35}
+      - - {x: 3, y: 35}
+        - {x: -11, y: 35}
         - {x: -18, y: 32}
         - {x: -18, y: 9}
-        - {x: -14, y: -31}
-        - {x: 15, y: -31}
+        - {x: -14, y: -30}
+        - {x: -11, y: -31}
+        - {x: 5, y: -31}
         - {x: 27, y: -29}
-        - {x: 27, y: 2}
-        - {x: 9, y: 35}
-    - name: Ranger Side Right Walk (3)_5
+        - {x: 27, y: 1}
+        - {x: 7, y: 32}
+    - name: Ranger Side Right Walk clone_5
       rect:
         serializedVersion: 2
         x: 120
@@ -170,7 +177,7 @@ TextureImporter:
         - {x: 26, y: -13}
         - {x: 28, y: -8}
         - {x: 28, y: 0}
-    - name: Ranger Side Right Walk (3)_6
+    - name: Ranger Side Right Walk clone_6
       rect:
         serializedVersion: 2
         x: 0
@@ -189,7 +196,7 @@ TextureImporter:
         - {x: 23, y: -31}
         - {x: 23, y: 24}
         - {x: 8, y: 33}
-    - name: Ranger Side Right Walk (3)_7
+    - name: Ranger Side Right Walk clone_7
       rect:
         serializedVersion: 2
         x: 60
@@ -200,15 +207,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -11, y: 35}
-        - {x: -17, y: 32}
-        - {x: -17, y: -5}
-        - {x: -10, y: -27}
-        - {x: -3, y: -31}
-        - {x: 11, y: -31}
-        - {x: 25, y: -10}
-        - {x: 25, y: 3}
-        - {x: 3, y: 35}
+      - - {x: -17, y: 35}
+        - {x: -17, y: -11}
+        - {x: -12, y: -31}
+        - {x: 13, y: -31}
+        - {x: 25, y: -16}
+        - {x: 25, y: -2}
+        - {x: 1, y: 35}
     outline: []
   spritePackingTag: 
   userData: 
