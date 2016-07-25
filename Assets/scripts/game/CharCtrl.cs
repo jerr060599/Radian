@@ -4,7 +4,7 @@ using System.Collections;
 public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
-    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject;
+    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand;
     public bool controllable = true, usingLight = true, isDashing = false;
     public float charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
     public float meleeCost = 0.05f, dashCost = 0.01f;
@@ -16,9 +16,9 @@ public class CharCtrl : MonoBehaviour
     public GemCtrl gem;
     public Vector2 center;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f;
-    bool isFalling = false;
+    bool isFalling = false, rooted = false;
     Vector2 lastInput = Vector2.down;
-    Animator ani;
+    Animator ani, handAni;
     SpriteRenderer sr;
     Consumable item;
     Vector2 dashPos;
@@ -35,7 +35,7 @@ public class CharCtrl : MonoBehaviour
         gem = gemObject.GetComponent<GemCtrl>();
         ani = GetComponent<Animator>();
         autoOrderOffset = GetComponent<AutoOrder>().offset;
-
+        handAni = fireHand.GetComponent<Animator>();
     }
     public void damage(float amount)
     {
@@ -123,10 +123,12 @@ public class CharCtrl : MonoBehaviour
         if (controllable)
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - CharCtrl.script.center).normalized;
             if (!isDashing)
             {
                 if (input.sqrMagnitude != 0f)
                 {
+                    rooted = false;
                     lastInput = input;
                     input = input.normalized;
                     input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
@@ -144,7 +146,20 @@ public class CharCtrl : MonoBehaviour
                 else
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
-                    playIdleAnimation();
+                    if (rooted)
+                    {
+                        if (Mathf.Abs(rPos.x) > Mathf.Abs(rPos.y))
+                            if (rPos.x > 0)
+                                ani.Play("RightFireState", 0);
+                            else
+                                ani.Play("LeftFireState", 0);
+                        else if (rPos.y > 0)
+                            ani.Play("UpFireState", 0);
+                        else
+                            ani.Play("DownFireState", 0);
+                    }
+                    else
+                        playIdleAnimation();
                 }
             }
             else if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
@@ -156,7 +171,6 @@ public class CharCtrl : MonoBehaviour
                 ani.Play("UpDash", 0);
             else
                 ani.Play("DownDash", 0);
-            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - CharCtrl.script.center).normalized;
             if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
                 float closest = dashDist;
@@ -177,6 +191,8 @@ public class CharCtrl : MonoBehaviour
                 meleeTime = meleeCoolDown;
                 cost(meleeCost);
             }
+            if (Input.GetMouseButtonDown(1))
+                fire(rPos);
             if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
             {
                 usingLight = !usingLight;
@@ -188,6 +204,11 @@ public class CharCtrl : MonoBehaviour
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
+    }
+    public void fire(Vector2 dir)
+    {
+        rooted = true;
+        handAni.Play("FireUpDown");
     }
     public void playIdleAnimation()
     {
