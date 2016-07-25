@@ -21,5 +21,6 @@ public class BasicEnemy : MonoBehaviour
     public virtual void kill()
     {
         Debug.Log("Thou hath killed");
+		Destroy (gameObject);
     }
 }
