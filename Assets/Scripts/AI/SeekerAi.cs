@@ -7,6 +7,8 @@ public class SeekerAi : BasicEnemy
 	bool agroStay=false;
 	float timer=1.5f;
 	float accumulator;
+	float deathTimer=2;
+	bool die=false;
 	void Start()
 	{
 		pysc = GetComponent<Rigidbody2D> ();
@@ -16,6 +18,12 @@ public class SeekerAi : BasicEnemy
     // Update is called once per frame
     protected void Update()
     {
+		if (die) {
+			deathTimer -= Time.deltaTime;
+
+		}
+		if (deathTimer < 0.01f)
+			Destroy (gameObject);
 		//pysc.position += dashPos * dashLerp;
 		//dashPos *= 1 - dashLerp;
         agro = (CharCtrl.script.pysc.position - pysc.position).sqrMagnitude <= agroRadius * agroRadius;
@@ -60,8 +68,12 @@ public class SeekerAi : BasicEnemy
             pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
     }
 
-    public override void kill()
+	public override void kill(int damageType = 0)
     {
-        Destroy(gameObject);
+		if (damageType == MELEE_DAMAGE)
+			GetComponent<Animator> ().Play ("EnemyMeleeDeath");
+		else if (damageType == RANGED_DAMAGE)
+			GetComponent<Animator> ().Play ("EnemyArrowDeath");
+		die = true;
     }
 }

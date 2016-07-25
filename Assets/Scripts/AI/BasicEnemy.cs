@@ -16,9 +16,9 @@ public class BasicEnemy : MonoBehaviour
     {
         health -= d;
         if (health <= 0)
-            kill();
+			kill(damageType);
     }
-    public virtual void kill()
+	public virtual void kill(int damageType = 0)
     {
         Debug.Log("Thou hath killed");
 		Destroy (gameObject);
