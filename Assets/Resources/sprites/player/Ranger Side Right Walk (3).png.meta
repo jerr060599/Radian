@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: d81a8402905319b44beaab7e011f6e4c
-timeCreated: 1469331354
+guid: aa4ef7b2de12cb64fa9ac7ea1f2e0876
+timeCreated: 1469409998
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: RightWalk_0
-    21300002: RightWalk_1
-    21300004: RightWalk_2
-    21300006: RightWalk_3
-    21300008: RightWalk_4
-    21300010: RightWalk_5
-    21300012: RightWalk_6
-    21300014: RightWalk_7
+    21300000: Ranger Side Right Walk (3)_0
+    21300002: Ranger Side Right Walk (3)_1
+    21300004: Ranger Side Right Walk (3)_2
+    21300006: Ranger Side Right Walk (3)_3
+    21300008: Ranger Side Right Walk (3)_4
+    21300010: Ranger Side Right Walk (3)_5
+    21300012: Ranger Side Right Walk (3)_6
+    21300014: Ranger Side Right Walk (3)_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +58,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: RightWalk_0
+    - name: Ranger Side Right Walk (3)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -69,14 +69,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -13, y: 34}
-        - {x: -16, y: 26}
-        - {x: -16, y: -23}
-        - {x: -14, y: -31}
+      - - {x: -14, y: 35}
+        - {x: -18, y: 29}
+        - {x: -18, y: -31}
         - {x: 28, y: -31}
-        - {x: 28, y: 12}
-        - {x: 2, y: 34}
-    - name: RightWalk_1
+        - {x: 28, y: 2}
+        - {x: 1, y: 35}
+    - name: Ranger Side Right Walk (3)_1
       rect:
         serializedVersion: 2
         x: 60
@@ -87,19 +86,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 6, y: 30}
-        - {x: -2, y: 32}
-        - {x: -14, y: 32}
+      - - {x: -12, y: 34}
         - {x: -17, y: 30}
-        - {x: -17, y: -4}
-        - {x: -16, y: -20}
-        - {x: -9, y: -31}
-        - {x: -8, y: -32}
-        - {x: 8, y: -32}
-        - {x: 16, y: -28}
-        - {x: 29, y: -4}
-        - {x: 29, y: 2}
-    - name: RightWalk_2
+        - {x: -17, y: -32}
+        - {x: 28, y: -32}
+        - {x: 28, y: 5}
+        - {x: 2, y: 34}
+    - name: Ranger Side Right Walk (3)_2
       rect:
         serializedVersion: 2
         x: 120
@@ -110,17 +103,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 2, y: 32}
-        - {x: -15, y: 32}
-        - {x: -17, y: 23}
-        - {x: -17, y: -4}
-        - {x: -12, y: -14}
+      - - {x: -3, y: 34}
+        - {x: -10, y: 34}
+        - {x: -17, y: 27}
+        - {x: -17, y: -17}
         - {x: -2, y: -31}
-        - {x: 12, y: -31}
-        - {x: 25, y: -8}
-        - {x: 25, y: 9}
-        - {x: 6, y: 30}
-    - name: RightWalk_3
+        - {x: 16, y: -31}
+        - {x: 23, y: -20}
+        - {x: 23, y: 10}
+        - {x: 6, y: 31}
+    - name: Ranger Side Right Walk (3)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -131,15 +123,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 4, y: 34}
-        - {x: -17, y: 34}
-        - {x: -17, y: -8}
-        - {x: -14, y: -31}
-        - {x: 16, y: -31}
-        - {x: 18, y: -28}
-        - {x: 30, y: -6}
-        - {x: 30, y: 10}
-    - name: RightWalk_4
+      - - {x: 0, y: 35}
+        - {x: -14, y: 35}
+        - {x: -18, y: 30}
+        - {x: -18, y: 17}
+        - {x: -16, y: -31}
+        - {x: 22, y: -31}
+        - {x: 24, y: -27}
+        - {x: 24, y: 6}
+        - {x: 6, y: 33}
+    - name: Ranger Side Right Walk (3)_4
       rect:
         serializedVersion: 2
         x: 60
@@ -150,16 +143,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 5, y: 34}
-        - {x: -16, y: 34}
-        - {x: -17, y: 33}
-        - {x: -17, y: -28}
-        - {x: -11, y: -31}
-        - {x: 2, y: -31}
-        - {x: 26, y: -25}
-        - {x: 27, y: -24}
-        - {x: 27, y: 11}
-    - name: RightWalk_5
+      - - {x: -16, y: 35}
+        - {x: -18, y: 32}
+        - {x: -18, y: 9}
+        - {x: -14, y: -31}
+        - {x: 15, y: -31}
+        - {x: 27, y: -29}
+        - {x: 27, y: 2}
+        - {x: 9, y: 35}
+    - name: Ranger Side Right Walk (3)_5
       rect:
         serializedVersion: 2
         x: 120
@@ -170,20 +162,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 5, y: 30}
-        - {x: 0, y: 32}
-        - {x: -13, y: 32}
-        - {x: -16, y: 26}
-        - {x: -17, y: 22}
-        - {x: -17, y: 1}
-        - {x: -12, y: -21}
-        - {x: -8, y: -30}
-        - {x: -7, y: -31}
-        - {x: 10, y: -31}
-        - {x: 17, y: -28}
-        - {x: 30, y: -13}
-        - {x: 30, y: 7}
-    - name: RightWalk_6
+      - - {x: 3, y: 33}
+        - {x: -15, y: 33}
+        - {x: -18, y: 32}
+        - {x: -18, y: -31}
+        - {x: 16, y: -31}
+        - {x: 26, y: -13}
+        - {x: 28, y: -8}
+        - {x: 28, y: 0}
+    - name: Ranger Side Right Walk (3)_6
       rect:
         serializedVersion: 2
         x: 0
@@ -194,17 +181,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 4, y: 32}
-        - {x: -15, y: 32}
-        - {x: -17, y: 24}
-        - {x: -17, y: -9}
-        - {x: -15, y: -16}
-        - {x: -7, y: -31}
-        - {x: 14, y: -31}
-        - {x: 23, y: -20}
-        - {x: 23, y: 8}
-        - {x: 6, y: 31}
-    - name: RightWalk_7
+      - - {x: -12, y: 33}
+        - {x: -18, y: 29}
+        - {x: -18, y: 4}
+        - {x: -12, y: -20}
+        - {x: -2, y: -31}
+        - {x: 23, y: -31}
+        - {x: 23, y: 24}
+        - {x: 8, y: 33}
+    - name: Ranger Side Right Walk (3)_7
       rect:
         serializedVersion: 2
         x: 60
@@ -215,16 +200,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 1, y: 34}
-        - {x: -13, y: 34}
-        - {x: -16, y: 26}
-        - {x: -16, y: -17}
-        - {x: -15, y: -23}
+      - - {x: -11, y: 35}
+        - {x: -17, y: 32}
+        - {x: -17, y: -5}
+        - {x: -10, y: -27}
         - {x: -3, y: -31}
         - {x: 11, y: -31}
-        - {x: 15, y: -23}
-        - {x: 28, y: -8}
-        - {x: 28, y: 3}
+        - {x: 25, y: -10}
+        - {x: 25, y: 3}
+        - {x: 3, y: 35}
     outline: []
   spritePackingTag: 
   userData: 
