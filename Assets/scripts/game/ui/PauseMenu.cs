@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
         canvas = GetComponent<CanvasRenderer>();
         canvas.SetAlpha(alpha);
         Time.timeScale = 1f;
-        paused = false;
+        //paused = false;
     }
 
     // Update is called once per frame
@@ -25,8 +25,6 @@ public class PauseMenu : MonoBehaviour
             paused = !paused;
             Time.timeScale = paused ? 0f : 1f;
             alpha = paused ? 0.9f : 0f;
-            //Cursor.visible = paused;
-            Debug.Log(Settings.defCursor);
             lastVolume = SoundManager.script.bgmVolume;
             SoundManager.script.bgmVolume = paused ? 0f : lastVolume;
         }

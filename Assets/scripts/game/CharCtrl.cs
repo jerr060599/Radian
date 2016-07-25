@@ -14,28 +14,28 @@ public class CharCtrl : MonoBehaviour
     public Rigidbody2D pysc = null;
     public BarCtrl light, dark;
     public GemCtrl gem;
+    public Vector2 center;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f;
     bool isFalling = false;
     Vector2 lastInput = Vector2.down;
     Animator ani;
     SpriteRenderer sr;
     Consumable item;
-    Vector2 lastJuicePos, dashPos;
+    Vector2 dashPos;
     CircleCollider2D cc;
     // Use this for initialization
     void Start()
     {
         light = lightBar.GetComponent<BarCtrl>();
         dark = darkBar.GetComponent<BarCtrl>();
-        Cursor.SetCursor(Settings.defCursor, Settings.defCursorCenter, CursorMode.Auto);
         script = this;
         pysc = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        lastJuicePos = pysc.position;
         cc = GetComponent<CircleCollider2D>();
         gem = gemObject.GetComponent<GemCtrl>();
         ani = GetComponent<Animator>();
         autoOrderOffset = GetComponent<AutoOrder>().offset;
+
     }
     public void damage(float amount)
     {
@@ -63,6 +63,7 @@ public class CharCtrl : MonoBehaviour
         pysc.gravityScale = 0f;
         pysc.velocity = Vector2.zero;
         transform.position = spawn.transform.position;
+        center = pysc.position + cc.offset;
     }
 
     public bool eat(Consumable c)
@@ -96,7 +97,7 @@ public class CharCtrl : MonoBehaviour
         dashTime -= Time.deltaTime;
         meleeTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
-        Vector2 center = pysc.position + cc.offset;
+        center = pysc.position + cc.offset;
         if (isDashing = dashPos.sqrMagnitude > 0.1f)
             gameObject.layer = dashLayer;
         else
@@ -155,7 +156,7 @@ public class CharCtrl : MonoBehaviour
                 ani.Play("UpDash", 0);
             else
                 ani.Play("DownDash", 0);
-            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - center).normalized;
+            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - CharCtrl.script.center).normalized;
             if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
                 float closest = dashDist;
