@@ -9,6 +9,7 @@ public class SeekerAi : BasicEnemy
 	float accumulator;
 	float deathTimer=2;
 	bool die=false;
+	Vector2 dPos;
 	void Start()
 	{
 		pysc = GetComponent<Rigidbody2D> ();
@@ -18,6 +19,7 @@ public class SeekerAi : BasicEnemy
     // Update is called once per frame
     protected void Update()
     {
+		dPos = CharCtrl.script.pysc.position - pysc.position;
 		if (die) {
 			deathTimer -= Time.deltaTime;
 
@@ -30,14 +32,18 @@ public class SeekerAi : BasicEnemy
 		if (agro || agroStay)
         {
 			agroStay = true;
-            Vector2 dPos = CharCtrl.script.pysc.position - pysc.position;
+        
 			if (dPos.sqrMagnitude > parkRadius * parkRadius) {
+				if (!die) {
 				pysc.AddForce (Vector2.ClampMagnitude (((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity) * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-				if (dPos.x <= 0)
-					GetComponent<Animator> ().Play ("EnemyWalk");
+
+					if (dPos.x <= 0)
+						GetComponent<Animator> ().Play ("EnemyWalk");
+					else
+						GetComponent<Animator> ().Play ("EnemyWalkFlipped");
+				}
 				else
-					GetComponent<Animator> ().Play ("EnemyWalkFlipped");
-				
+				pysc.AddForce (Vector2.ClampMagnitude (-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
 			} else {
 				pysc.AddForce (Vector2.ClampMagnitude (-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
 				if (dPos.x <= 0) {
@@ -70,10 +76,18 @@ public class SeekerAi : BasicEnemy
 
 	public override void kill(int damageType = 0)
     {
-		if (damageType == MELEE_DAMAGE)
+		if (damageType == MELEE_DAMAGE) {
+			if (dPos.x <= 0)
 			GetComponent<Animator> ().Play ("EnemyMeleeDeath");
-		else if (damageType == RANGED_DAMAGE)
+			else
+				GetComponent<Animator> ().Play ("EnemyMeleeDeathFlipped");
+				
+		} else if (damageType == RANGED_DAMAGE) {
+			if (dPos.x <= 0)
 			GetComponent<Animator> ().Play ("EnemyArrowDeath");
+			else
+				GetComponent<Animator> ().Play ("EnemyArrowDeathFlipped");
+		}
 		die = true;
     }
 }
