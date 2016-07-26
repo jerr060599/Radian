@@ -4,118 +4,63 @@ using System.Collections;
 public class SeekerAi : BasicEnemy
 {
     public float agroRadius = 2f, parkRadius = 1.1f, maxImpulse = 1f;
-	bool agroStay=false;
-	float timer=1.5f;
-	float accumulator;
-	float deathTimer=2;
-	bool die=false;
-	bool hit=false;
-	Vector2 dPos;
-	float hitAccumulator;
-	float hitTimer;
-	void Start()
-	{
-		pysc = GetComponent<Rigidbody2D> ();
-		accumulator = timer;
-		hitTimer = 0.5f;
-		hitAccumulator = hitTimer;
-
-	}
-    // Update is called once per frame
+    float timer = 1.5f;
+    public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f;
+    float deathTimer = float.PositiveInfinity, stunTimer = 0f, atkTimer = 0f;
+    Vector2 dPos;
+    void Start()
+    {
+        pysc = GetComponent<Rigidbody2D>();
+    }
     protected void Update()
     {
-		if (hit) {
-			hitAccumulator -= Time.deltaTime;
-			if (hitAccumulator < 0.01f) {
-				hitAccumulator = hitTimer;
-				hit = false;
-
-			}
-		}
-
-		dPos = CharCtrl.script.pysc.position - pysc.position;
-		if (die) {
-			deathTimer -= Time.deltaTime;
-
-		}
-		if (deathTimer < 0.01f)
-			Destroy (gameObject);
-		//pysc.position += dashPos * dashLerp;
-		//dashPos *= 1 - dashLerp;
-        agro = (CharCtrl.script.pysc.position - pysc.position).sqrMagnitude <= agroRadius * agroRadius;
-		if (agro || agroStay)
+        dPos = CharCtrl.script.pysc.position - pysc.position;
+        deathTimer -= Time.deltaTime;
+        stunTimer -= Time.deltaTime;
+        if (deathTimer <= 0f)
+            Destroy(gameObject);
+        agro = agro ? true : (CharCtrl.script.pysc.position - pysc.position).sqrMagnitude <= agroRadius * agroRadius;
+        if (agro && deathTimer > deathTime)
         {
-			agroStay = true;
-        
-			if (dPos.sqrMagnitude > parkRadius * parkRadius) {
-				if (!die && ! hit) {
-				pysc.AddForce (Vector2.ClampMagnitude (((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity) * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-
-					if (dPos.x <= 0)
-						GetComponent<Animator> ().Play ("EnemyWalk");
-					else
-						GetComponent<Animator> ().Play ("EnemyWalkFlipped");
-				}
-				else
-				pysc.AddForce (Vector2.ClampMagnitude (-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-			} else {
-				pysc.AddForce (Vector2.ClampMagnitude (-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-				if (dPos.x <= 0) {
-
-					accumulator -= Time.deltaTime;
-
-					if (accumulator <= 0.01f) {
-						CharCtrl.script.damage (0.10f);
-						accumulator = timer;
-						GetComponent<Animator> ().Play ("EnemyMelee");
-
-					}
-				} else {
-					accumulator -= Time.deltaTime;
-
-					if (accumulator <= 0.01f) {
-						CharCtrl.script.damage (0.10f);
-						accumulator = timer;
-						GetComponent<Animator> ().Play ("EnemyMeleeFlipped");
-					}
-
-
-				}
-			}
-	
+            if (dPos.sqrMagnitude > parkRadius * parkRadius)
+                if (stunTimer <= 0f)
+                {
+                    pysc.AddForce(Vector2.ClampMagnitude(((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity) * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                    GetComponent<Animator>().Play(dPos.x <= 0 ? "EnemyWalk" : "EnemyWalkFlipped");
+                }
+                else
+                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+            else
+            {
+                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                atkTimer += Time.deltaTime;
+                if (atkTimer >= atkWindUp)
+                {
+                    CharCtrl.script.damage(0.10f);
+                    atkTimer = 0f;
+                    GetComponent<Animator>().Play(dPos.x < 0f ? "EnemyMelee" : "EnemyMeleeFlipped");
+                }
+            }
         }
         else
             pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
     }
-
-	public override void kill(int damageType = 0)
+    public override void kill(int damageType = 0)
     {
-		if (damageType == MELEE_DAMAGE) {
-			if (dPos.x <= 0)
-			GetComponent<Animator> ().Play ("EnemyMeleeDeath");
-			else
-				GetComponent<Animator> ().Play ("EnemyMeleeDeathFlipped");
-				
-		} else if (damageType == RANGED_DAMAGE) {
-			if (dPos.x <= 0)
-			GetComponent<Animator> ().Play ("EnemyArrowDeath");
-			else
-				GetComponent<Animator> ().Play ("EnemyArrowDeathFlipped");
-		}
-		die = true;
+        if (damageType == MELEE_DAMAGE || damageType == 0)
+            GetComponent<Animator>().Play(dPos.x <= 0 ? "EnemyMeleeDeath" : "EnemyMeleeDeathFlipped");
+        else
+            GetComponent<Animator>().Play(dPos.x <= 0 ? "EnemyArrowDeath" : "EnemyArrowDeathFlipped");
+        deathTimer = deathTime;
     }
-
-	public override void damage(int amount,int damageType = 0)
-	{
-		base.damage (amount, damageType);
-		hit = true;
-		if (!die) {
-			if (dPos.x <= 0)
-				GetComponent<Animator> ().Play ("EnemyStagger");
-			else
-				GetComponent<Animator> ().Play ("EnemyStaggerFlipped");
-		}
-
-
-	}
+    public override void damage(int amount, int damageType = 0)
+    {
+        base.damage(amount, damageType);
+        atkTimer = 0f;
+        if (deathTimer > deathTime)
+        {
+            GetComponent<Animator>().Play(dPos.x <= 0 ? "EnemyStagger" : "EnemyStaggerFlipped");
+            stunTimer = stunTime;
+        }
+    }
 }
