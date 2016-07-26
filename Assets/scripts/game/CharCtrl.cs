@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -17,7 +17,7 @@ public class CharCtrl : MonoBehaviour
     public Vector2 feetPos, armPos;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime = 0f, fallTime = 100000000f;
     bool rooted = false;
-    Vector2 lastInput = Vector2.down;
+    Vector2 lastInput = Vector2.down, lastJuicePosition;
     Animator ani, handAni;
     SpriteRenderer sr;
     Consumable item;
@@ -36,6 +36,7 @@ public class CharCtrl : MonoBehaviour
         ani = GetComponent<Animator>();
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
+        lastJuicePosition = pysc.position;
     }
     public void damage(float amount)
     {
@@ -224,6 +225,11 @@ public class CharCtrl : MonoBehaviour
         {
             playIdleAnimation();
             brake();
+        }
+        if ((lastJuicePosition - pysc.position).sqrMagnitude >= sqrUnitPerSound)
+        {
+            lastJuicePosition = pysc.position;
+            SoundManager.script.playOnListener(SoundManager.script.grassFootStep, 0.8f);
         }
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
