@@ -229,7 +229,8 @@ public class CharCtrl : MonoBehaviour
         if ((lastJuicePosition - pysc.position).sqrMagnitude >= sqrUnitPerSound)
         {
             lastJuicePosition = pysc.position;
-            SoundManager.script.playOnListener(SoundManager.script.grassFootStep, 0.8f);
+            if(!isDashing && fallTime > deathFallTime)
+                SoundManager.script.playOnListener(SoundManager.script.grassFootStep, 0.8f);
         }
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
