@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -15,8 +15,8 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
-    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime = 0f;
-    bool isFalling = false, rooted = false;
+    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime = 0f, fallTime = 100000000f;
+    bool rooted = false;
     Vector2 lastInput = Vector2.down;
     Animator ani, handAni;
     SpriteRenderer sr;
@@ -58,7 +58,7 @@ public class CharCtrl : MonoBehaviour
         light.barPercent = 1f;
         dark.barPercent = 0f;
         controllable = true;
-        isFalling = false;
+        fallTime = float.PositiveInfinity;
         gameObject.layer = playerLayer;
         pysc.gravityScale = 0f;
         pysc.velocity = Vector2.zero;
@@ -81,11 +81,12 @@ public class CharCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isFalling)
+        if (fallTime <= deathFallTime)
         {
+            fallTime -= Time.deltaTime;
             pysc.gravityScale = 7f;
             gameObject.layer = dashLayer;
-            if (pysc.velocity.y < -100f)
+            if (fallTime <= 0f)
                 kill();
             return;
         }
@@ -108,7 +109,7 @@ public class CharCtrl : MonoBehaviour
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
                 {
-                    isFalling = true;
+                    fallTime = deathFallTime;
                     if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
                         if (lastInput.x > 0)
                             ani.Play("RightFall", 0);
