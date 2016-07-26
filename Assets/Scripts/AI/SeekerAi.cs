@@ -90,4 +90,16 @@ public class SeekerAi : BasicEnemy
 		}
 		die = true;
     }
+
+	public override void damage(int amount,int damageType = 0)
+	{
+		base.damage (amount, damageType);
+		if (!die) {
+			if (dPos.x <= 0)
+				GetComponent<Animator> ().Play ("EnemyStagger");
+			else
+				GetComponent<Animator> ().Play ("EnemyStaggerFlipped");
+		}
+
+	}
 }
