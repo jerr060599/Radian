@@ -43,7 +43,11 @@ public class SeekerAi : BasicEnemy
             }
         }
         else
+        {
             pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+            if(stunTimer < 0f)
+                GetComponent<Animator>().Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
+        }
     }
     public override void kill(int damageType = 0)
     {
