@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -81,6 +81,7 @@ public class CharCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timedUncontrollable -= Time.deltaTime;
         if (fallTime <= deathFallTime)
         {
             fallTime -= Time.deltaTime;
@@ -123,13 +124,13 @@ public class CharCtrl : MonoBehaviour
                 }
                 else if (rh.collider.gameObject.GetComponent<MovementRedirect>())
                     redirect = rh.collider.gameObject.GetComponent<MovementRedirect>().dir;
-        if (controllable)
+        if (controllable && timedUncontrollable < 0f)
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             Vector2 rPosFromArm = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - armPos).normalized;
             if (!isDashing)
             {
-                if (input.sqrMagnitude != 0f)
+                if (input.sqrMagnitude != 0f && arrowTime <= 0f)
                 {
                     rooted = false;
                     lastInput = input;
@@ -148,7 +149,7 @@ public class CharCtrl : MonoBehaviour
                 }
                 else
                 {
-                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
+                    brake();
                     if (rooted)
                     {
                         if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y))
@@ -179,7 +180,7 @@ public class CharCtrl : MonoBehaviour
             }
             else
             {
-                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
+                brake();
                 if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
                     if (dashPos.x > 0)
                         ani.Play("RightDash", 0);
@@ -220,10 +221,17 @@ public class CharCtrl : MonoBehaviour
             }
         }
         else
+        {
             playIdleAnimation();
+            brake();
+        }
         pysc.position += dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
+    }
+    public void brake()
+    {
+        pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
     }
     public void fire(Vector2 dir)
     {
