@@ -4,7 +4,7 @@ using System.Collections;
 public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
-    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow;
+    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public bool controllable = true, usingLight = true, isDashing = false;
     public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
@@ -56,6 +56,7 @@ public class CharCtrl : MonoBehaviour
         //gameObject.SetActive(true);
         //pysc.velocity = Vector2.zero;
         //transform.position = new Vector3(curSpawn.transform.position.x, curSpawn.transform.position.y - 4f, 0f);
+        shadow.SetActive(true);
         light.barPercent = 1f;
         dark.barPercent = 0f;
         controllable = true;
@@ -104,9 +105,17 @@ public class CharCtrl : MonoBehaviour
         feetPos = pysc.position + cc.offset;
         armPos = pysc.position + (Vector2)(fireArm.transform.localPosition);
         if (isDashing = dashPos.sqrMagnitude > 0.1f)
+        {
             gameObject.layer = dashLayer;
+            if (shadow.activeSelf)
+                shadow.SetActive(false);
+        }
         else
+        {
             gameObject.layer = playerLayer;
+            if (!shadow.activeSelf)
+                shadow.SetActive(true);
+        }
         foreach (RaycastHit2D rh in Physics2D.CircleCastAll(feetPos, 0.5f, Vector2.down, 0f))
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
@@ -229,7 +238,7 @@ public class CharCtrl : MonoBehaviour
         if ((lastJuicePosition - pysc.position).sqrMagnitude >= sqrUnitPerSound)
         {
             lastJuicePosition = pysc.position;
-            if(!isDashing && fallTime > deathFallTime)
+            if (!isDashing && fallTime > deathFallTime)
                 SoundManager.script.playOnListener(SoundManager.script.grassFootStep, 0.8f);
         }
         pysc.position += dashPos * dashLerp;
