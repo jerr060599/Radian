@@ -14,7 +14,7 @@ public class CharCtrl : MonoBehaviour
     public Rigidbody2D pysc = null;
     public BarCtrl light, dark;
     public GemCtrl gem;
-    public Vector2 center;
+    public Vector2 feetPos, armPos;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime = 0f;
     bool isFalling = false, rooted = false;
     Vector2 lastInput = Vector2.down;
@@ -63,7 +63,7 @@ public class CharCtrl : MonoBehaviour
         pysc.gravityScale = 0f;
         pysc.velocity = Vector2.zero;
         transform.position = spawn.transform.position;
-        center = pysc.position + cc.offset;
+        feetPos = pysc.position + cc.offset;
     }
 
     public bool eat(Consumable c)
@@ -98,12 +98,13 @@ public class CharCtrl : MonoBehaviour
         meleeTime -= Time.deltaTime;
         arrowTime -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
-        center = pysc.position + cc.offset;
+        feetPos = pysc.position + cc.offset;
+        armPos = pysc.position + (Vector2)(fireArm.transform.localPosition);
         if (isDashing = dashPos.sqrMagnitude > 0.1f)
             gameObject.layer = dashLayer;
         else
             gameObject.layer = playerLayer;
-        foreach (RaycastHit2D rh in Physics2D.CircleCastAll(center, 0.5f, Vector2.down, 0f))
+        foreach (RaycastHit2D rh in Physics2D.CircleCastAll(feetPos, 0.5f, Vector2.down, 0f))
             if (rh.collider.isTrigger)
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
                 {
@@ -124,7 +125,7 @@ public class CharCtrl : MonoBehaviour
         if (controllable)
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            Vector2 rPos = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - center).normalized;
+            Vector2 rPosFromArm = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - armPos).normalized;
             if (!isDashing)
             {
                 if (input.sqrMagnitude != 0f)
@@ -149,16 +150,16 @@ public class CharCtrl : MonoBehaviour
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
                     if (rooted)
                     {
-                        if (Mathf.Abs(rPos.x) > Mathf.Abs(rPos.y))
+                        if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y))
                         {
-                            if (rPos.x > 0)
+                            if (rPosFromArm.x > 0)
                                 ani.Play("RightFireState", 0);
                             else
                                 ani.Play("LeftFireState", 0);
                             if (fireHand.transform.localPosition.z != 0.01f)
                                 fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
                         }
-                        else if (rPos.y > 0)
+                        else if (rPosFromArm.y > 0)
                         {
                             ani.Play("UpFireState", 0);
                             if (fireHand.transform.localPosition.z != 0.01f)
@@ -187,11 +188,11 @@ public class CharCtrl : MonoBehaviour
             if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
                 float closest = dashDist;
-                lastInput = rPos;
-                foreach (RaycastHit2D rh in Physics2D.RaycastAll(center, rPos, dashDist))
+                lastInput = rPosFromArm;
+                foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
                     if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
                         closest = rh.distance;
-                dashPos = rPos * closest;
+                dashPos = rPosFromArm * closest;
                 dashTime = dashCoolDown;
                 cost(dashCost);
                 SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
@@ -200,13 +201,13 @@ public class CharCtrl : MonoBehaviour
             {
                 BasicEnemy be = null;
                 foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
-                    if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPos) >= meleeField)
+                    if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
                         be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
                 meleeTime = meleeCoolDown;
                 cost(meleeCost);
             }
             if (Input.GetMouseButtonDown(1))
-                fire(rPos);
+                fire(rPosFromArm);
             if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
             {
                 usingLight = !usingLight;
@@ -233,7 +234,7 @@ public class CharCtrl : MonoBehaviour
         //fireArm.transform.localRotation = Quaternion.Euler(0f, 0f, dir.x == 0f ? dir.y > 0 ? 90f : -90f : Mathf.Atan(dir.y / dir.x) / Mathf.PI * 180f);
         fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -dir);
         GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireArm.transform.position, Quaternion.identity));
-        tmp.GetComponent<Projectile>().setVelocity(((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - pysc.position).normalized * arrowSpeed);
+        tmp.GetComponent<Projectile>().setVelocity(dir * arrowSpeed);
     }
     public void playIdleAnimation()
     {
