@@ -177,15 +177,19 @@ public class CharCtrl : MonoBehaviour
                         playIdleAnimation();
                 }
             }
-            else if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
-                if (dashPos.x > 0)
-                    ani.Play("RightDash", 0);
-                else
-                    ani.Play("LeftDash", 0);
-            else if (dashPos.y > 0)
-                ani.Play("UpDash", 0);
             else
-                ani.Play("DownDash", 0);
+            {
+                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
+                if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
+                    if (dashPos.x > 0)
+                        ani.Play("RightDash", 0);
+                    else
+                        ani.Play("LeftDash", 0);
+                else if (dashPos.y > 0)
+                    ani.Play("UpDash", 0);
+                else
+                    ani.Play("DownDash", 0);
+            }
             if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
                 float closest = dashDist;
