@@ -233,7 +233,7 @@ public class CharCtrl : MonoBehaviour
             handAni.Play("FireUpDown");
         //fireArm.transform.localRotation = Quaternion.Euler(0f, 0f, dir.x == 0f ? dir.y > 0 ? 90f : -90f : Mathf.Atan(dir.y / dir.x) / Mathf.PI * 180f);
         fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -dir);
-        GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireArm.transform.position, Quaternion.identity));
+        GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireHand.transform.position, Quaternion.identity));
         tmp.GetComponent<Projectile>().setVelocity(dir * arrowSpeed);
     }
     public void playIdleAnimation()
