@@ -9,16 +9,30 @@ public class SeekerAi : BasicEnemy
 	float accumulator;
 	float deathTimer=2;
 	bool die=false;
+	bool hit=false;
 	Vector2 dPos;
+	float hitAccumulator;
+	float hitTimer;
 	void Start()
 	{
 		pysc = GetComponent<Rigidbody2D> ();
 		accumulator = timer;
+		hitTimer = 1;
+		hitAccumulator = hitTimer;
 
 	}
     // Update is called once per frame
     protected void Update()
     {
+		if (hit) {
+			hitAccumulator -= Time.deltaTime;
+			if (hitAccumulator < 0.01f) {
+				hitAccumulator = hitTimer;
+				hit = false;
+
+			}
+		}
+
 		dPos = CharCtrl.script.pysc.position - pysc.position;
 		if (die) {
 			deathTimer -= Time.deltaTime;
@@ -34,7 +48,7 @@ public class SeekerAi : BasicEnemy
 			agroStay = true;
         
 			if (dPos.sqrMagnitude > parkRadius * parkRadius) {
-				if (!die) {
+				if (!die && ! hit) {
 				pysc.AddForce (Vector2.ClampMagnitude (((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity) * pysc.mass, maxImpulse), ForceMode2D.Impulse);
 
 					if (dPos.x <= 0)
@@ -94,12 +108,14 @@ public class SeekerAi : BasicEnemy
 	public override void damage(int amount,int damageType = 0)
 	{
 		base.damage (amount, damageType);
+		hit = true;
 		if (!die) {
 			if (dPos.x <= 0)
 				GetComponent<Animator> ().Play ("EnemyStagger");
 			else
 				GetComponent<Animator> ().Play ("EnemyStaggerFlipped");
 		}
+
 
 	}
 }
