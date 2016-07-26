@@ -17,7 +17,7 @@ public class SeekerAi : BasicEnemy
 	{
 		pysc = GetComponent<Rigidbody2D> ();
 		accumulator = timer;
-		hitTimer = 1;
+		hitTimer = 0.5f;
 		hitAccumulator = hitTimer;
 
 	}
