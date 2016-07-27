@@ -9,6 +9,6 @@ public class AutoOrder : MonoBehaviour
     {
         if (isStatic && !(Application.isEditor && !Application.isPlaying))
             Destroy(this);
-        transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + offset) / 100f);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, (transform.localPosition.y + offset) / 100f);
     }
 }
