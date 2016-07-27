@@ -28,7 +28,8 @@ public class BasicEnemy : MonoBehaviour
     {
         if (fading)
         {
-            GetComponent<SpriteRenderer>().color *= 0.1f;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color *= 0.9f;
             if (GetComponent<SpriteRenderer>().color.a <= 0.1f)
                 Destroy(gameObject);
         }
