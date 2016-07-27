@@ -45,7 +45,7 @@ public class SeekerAi : BasicEnemy
         else
         {
             pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-            if(stunTimer < 0f)
+            if(stunTimer < 0f && deathTimer > deathTime)
                 GetComponent<Animator>().Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
         }
     }
