@@ -8,6 +8,7 @@ public class BasicEnemy : MonoBehaviour
     public float walkSpeed = 3f;
     public bool agro = false;
     public Rigidbody2D pysc = null;
+    bool fading = false;
     void Start()
     {
         pysc = GetComponent<Rigidbody2D>();
@@ -16,11 +17,24 @@ public class BasicEnemy : MonoBehaviour
     {
         health -= d;
         if (health <= 0)
-			kill(damageType);
+            kill(damageType);
     }
-	public virtual void kill(int damageType = 0)
+    public virtual void kill(int damageType = 0)
     {
         Debug.Log("Thou hath killed");
-		Destroy (gameObject);
+        Destroy(gameObject);
+    }
+    void OnGUI()
+    {
+        if (fading)
+        {
+            GetComponent<SpriteRenderer>().color *= 0.1f;
+            if (GetComponent<SpriteRenderer>().color.a <= 0.1f)
+                Destroy(gameObject);
+        }
+    }
+    public void fadeAndDespawn()
+    {
+        fading = true;
     }
 }

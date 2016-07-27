@@ -18,7 +18,7 @@ public class SeekerAi : BasicEnemy
         deathTimer -= Time.deltaTime;
         stunTimer -= Time.deltaTime;
         if (deathTimer <= 0f)
-            Destroy(gameObject);
+            fadeAndDespawn();
         agro = agro ? true : (CharCtrl.script.pysc.position - pysc.position).sqrMagnitude <= agroRadius * agroRadius;
         if (agro && deathTimer > deathTime)
         {

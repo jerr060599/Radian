@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -262,6 +262,7 @@ public class CharCtrl : MonoBehaviour
             handAni.Play("FireUpDown");
         //fireArm.transform.localRotation = Quaternion.Euler(0f, 0f, dir.x == 0f ? dir.y > 0 ? 90f : -90f : Mathf.Atan(dir.y / dir.x) / Mathf.PI * 180f);
         fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -dir);
+        pysc.AddForce(-dir*arrowKB);
         GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireHand.transform.position, Quaternion.identity));
         tmp.GetComponent<Projectile>().setVelocity(dir * arrowSpeed);
     }
