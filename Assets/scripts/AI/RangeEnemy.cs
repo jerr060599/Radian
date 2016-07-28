@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RangeEnemy : BasicEnemy
 {
-    public float projectileAirTime = 1f, range = 10f, avoidDistance = 3f, maxImpulse = 1f, atkTime = 0.5f;
+    public float projectileAirTime = 1f, range = 10f, avoidDistance = 3f, maxImpulse = 1f, atkTime = 0.5f, seekDistance = 8f;
     float atkTimer = float.PositiveInfinity;
     public GameObject projectile;
     public void fire(Transform t)
@@ -30,7 +30,7 @@ public class RangeEnemy : BasicEnemy
                     pysc.AddForce(Vector2.ClampMagnitude(dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
                     ani.Play(dPos.x < 0f ? "walk" : "walkFlipped", 0);
                 }
-                else if (d > range * range)
+                else if (d > seekDistance * seekDistance)
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(-dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
                     ani.Play(dPos.x > 0f ? "walk" : "walkFlipped", 0);
@@ -40,12 +40,14 @@ public class RangeEnemy : BasicEnemy
             else
             {
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-
+                ani.Play(dPos.x > 0f ? "idle" : "idleFlipper", 0);
             }
             if (atkTimer <= 0f)
                 fire(CharCtrl.script.transform);
             if (atkTimer > atkTime)
                 atkTimer = d < range * range ? atkTime : float.PositiveInfinity;
+            if (d < avoidDistance * avoidDistance || d > seekDistance * seekDistance)
+                atkTimer = float.PositiveInfinity;
         }
     }
 }
