@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: 7caf1de597a371e4d95122e89c5e2bcf
-timeCreated: 1469718177
+guid: 99ca23f443701be4f917fb0ad2e269e1
+timeCreated: 1469738624
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Left Attack_0
-    21300002: Left Attack_1
-    21300004: Left Attack_2
-    21300006: Left Attack_3
-    21300008: Left Attack_4
-    21300010: Left Attack_5
-    21300012: Left Attack_6
-    21300014: Left Attack_7
-    21300016: Left Attack_8
-    21300018: Left Attack_9
-    21300020: Left Attack_10
+    21300000: Left Attack (1)_0
+    21300002: Left Attack (1)_1
+    21300004: Left Attack (1)_2
+    21300006: Left Attack (1)_3
+    21300008: Left Attack (1)_4
+    21300010: Left Attack (1)_5
+    21300012: Left Attack (1)_6
+    21300014: Left Attack (1)_7
+    21300016: Left Attack (1)_8
+    21300018: Left Attack (1)_9
+    21300020: Left Attack (1)_10
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -40,7 +40,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -61,7 +61,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Left Attack_0
+    - name: Left Attack (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -80,7 +80,7 @@ TextureImporter:
         - {x: 12, y: -17}
         - {x: 12, y: 31}
         - {x: 11, y: 32}
-    - name: Left Attack_1
+    - name: Left Attack (1)_1
       rect:
         serializedVersion: 2
         x: 60
@@ -101,7 +101,7 @@ TextureImporter:
         - {x: 12, y: -23}
         - {x: 12, y: 26}
         - {x: 11, y: 34}
-    - name: Left Attack_2
+    - name: Left Attack (1)_2
       rect:
         serializedVersion: 2
         x: 120
@@ -123,7 +123,7 @@ TextureImporter:
         - {x: 16, y: -12}
         - {x: 16, y: 18}
         - {x: 9, y: 33}
-    - name: Left Attack_3
+    - name: Left Attack (1)_3
       rect:
         serializedVersion: 2
         x: 180
@@ -147,7 +147,7 @@ TextureImporter:
         - {x: 13, y: -18}
         - {x: 20, y: 6}
         - {x: 20, y: 19}
-    - name: Left Attack_4
+    - name: Left Attack (1)_4
       rect:
         serializedVersion: 2
         x: 0
@@ -158,14 +158,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10, y: 34}
-        - {x: -16, y: 27}
+      - - {x: 5, y: 34}
+        - {x: -8, y: 34}
+        - {x: -16, y: 31}
         - {x: -16, y: -28}
         - {x: 13, y: -28}
-        - {x: 14, y: -26}
-        - {x: 14, y: 4}
-        - {x: 8, y: 34}
-    - name: Left Attack_5
+        - {x: 24, y: 1}
+        - {x: 24, y: 20}
+        - {x: 23, y: 20}
+    - name: Left Attack (1)_5
       rect:
         serializedVersion: 2
         x: 60
@@ -176,14 +177,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 0, y: 25}
-        - {x: -24, y: 25}
-        - {x: -24, y: -31}
-        - {x: 9, y: -31}
-        - {x: 21, y: -20}
-        - {x: 21, y: -5}
-        - {x: 13, y: 17}
-    - name: Left Attack_6
+      - - {x: -19, y: 27}
+        - {x: -24, y: 20}
+        - {x: -24, y: -8}
+        - {x: -20, y: -29}
+        - {x: -17, y: -30}
+        - {x: -15, y: -31}
+        - {x: 17, y: -31}
+        - {x: 28, y: -7}
+        - {x: 28, y: 27}
+    - name: Left Attack (1)_6
       rect:
         serializedVersion: 2
         x: 120
@@ -194,15 +197,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -26, y: 26}
-        - {x: -28, y: 18}
-        - {x: -28, y: -13}
-        - {x: -21, y: -31}
-        - {x: 12, y: -31}
-        - {x: 22, y: -25}
-        - {x: 22, y: 7}
-        - {x: 11, y: 26}
-    - name: Left Attack_7
+      - - {x: -29, y: 26}
+        - {x: -30, y: 23}
+        - {x: -30, y: -12}
+        - {x: -20, y: -31}
+        - {x: 14, y: -31}
+        - {x: 25, y: -25}
+        - {x: 25, y: 24}
+        - {x: 22, y: 26}
+    - name: Left Attack (1)_7
       rect:
         serializedVersion: 2
         x: 180
@@ -213,16 +216,18 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -22, y: 28}
-        - {x: -30, y: 11}
-        - {x: -30, y: -14}
-        - {x: -24, y: -31}
-        - {x: 14, y: -31}
-        - {x: 22, y: -28}
-        - {x: 27, y: -17}
-        - {x: 27, y: 5}
-        - {x: 0, y: 28}
-    - name: Left Attack_8
+      - - {x: 1, y: 27}
+        - {x: -2, y: 28}
+        - {x: -16, y: 28}
+        - {x: -21, y: 24}
+        - {x: -30, y: 3}
+        - {x: -30, y: -16}
+        - {x: -21, y: -31}
+        - {x: 16, y: -31}
+        - {x: 27, y: -13}
+        - {x: 27, y: -12}
+        - {x: 26, y: -9}
+    - name: Left Attack (1)_8
       rect:
         serializedVersion: 2
         x: 0
@@ -233,15 +238,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -28, y: 28}
-        - {x: -30, y: 26}
-        - {x: -30, y: -17}
-        - {x: -25, y: -31}
+      - - {x: -27, y: 28}
+        - {x: -30, y: 18}
+        - {x: -30, y: -18}
+        - {x: -20, y: -31}
         - {x: 13, y: -31}
         - {x: 18, y: -27}
         - {x: 18, y: -11}
         - {x: 4, y: 28}
-    - name: Left Attack_9
+    - name: Left Attack (1)_9
       rect:
         serializedVersion: 2
         x: 60
@@ -252,15 +257,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -19, y: 28}
-        - {x: -30, y: 14}
-        - {x: -30, y: -9}
-        - {x: -17, y: -31}
+      - - {x: -16, y: 28}
+        - {x: -30, y: 15}
+        - {x: -30, y: -11}
+        - {x: -16, y: -31}
         - {x: 11, y: -31}
         - {x: 13, y: -28}
         - {x: 13, y: -15}
         - {x: 2, y: 28}
-    - name: Left Attack_10
+    - name: Left Attack (1)_10
       rect:
         serializedVersion: 2
         x: 120

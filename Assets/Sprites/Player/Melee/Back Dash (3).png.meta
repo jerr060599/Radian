@@ -1,19 +1,18 @@
 fileFormatVersion: 2
-guid: 677da3d817233504389e78ab8beaf466
-timeCreated: 1469718191
+guid: a1721eb6ab2004541a63c035fd725394
+timeCreated: 1469738099
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Ranger Hit_0
-    21300002: Ranger Hit_1
-    21300004: Ranger Hit_2
-    21300006: Ranger Hit_3
-    21300008: Ranger Hit_4
-    21300010: Ranger Hit_5
-    21300012: Ranger Hit_6
-    21300014: Ranger Hit_7
-    21300016: Ranger Hit_8
-    21300018: Ranger Hit_9
+    21300000: Back Dash (3)_0
+    21300002: Back Dash (3)_1
+    21300004: Back Dash (3)_2
+    21300006: Back Dash (3)_3
+    21300008: Back Dash (3)_4
+    21300010: Back Dash (3)_5
+    21300012: Back Dash (3)_6
+    21300014: Back Dash (3)_7
+    21300016: Back Dash (3)_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,7 +59,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Ranger Hit_0
+    - name: Back Dash (3)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -80,7 +79,7 @@ TextureImporter:
         - {x: 15, y: -15}
         - {x: 19, y: 2}
         - {x: 19, y: 30}
-    - name: Ranger Hit_1
+    - name: Back Dash (3)_1
       rect:
         serializedVersion: 2
         x: 60
@@ -91,14 +90,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -13, y: 35}
-        - {x: -17, y: 30}
-        - {x: -17, y: -16}
-        - {x: -14, y: -30}
-        - {x: 8, y: -30}
-        - {x: 19, y: -23}
-        - {x: 19, y: 35}
-    - name: Ranger Hit_2
+      - - {x: -8, y: 31}
+        - {x: -17, y: 22}
+        - {x: -17, y: -19}
+        - {x: -12, y: -31}
+        - {x: 10, y: -31}
+        - {x: 20, y: 6}
+        - {x: 20, y: 30}
+        - {x: 19, y: 31}
+    - name: Back Dash (3)_2
       rect:
         serializedVersion: 2
         x: 120
@@ -109,35 +109,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -16, y: 35}
-        - {x: -17, y: 28}
-        - {x: -17, y: -30}
-        - {x: 12, y: -30}
-        - {x: 20, y: -27}
-        - {x: 20, y: 10}
-        - {x: 19, y: 14}
-        - {x: 5, y: 35}
-    - name: Ranger Hit_3
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 160
-        width: 60
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -8, y: 33}
-        - {x: -17, y: 25}
-        - {x: -17, y: -17}
-        - {x: -9, y: -30}
-        - {x: -7, y: -31}
-        - {x: 11, y: -31}
-        - {x: 24, y: -22}
-        - {x: 24, y: 17}
-        - {x: 11, y: 33}
-    - name: Ranger Hit_4
+      - - {x: -3, y: 31}
+        - {x: -9, y: 29}
+        - {x: -17, y: 16}
+        - {x: -17, y: -14}
+        - {x: -13, y: -31}
+        - {x: 9, y: -31}
+        - {x: 25, y: 16}
+        - {x: 25, y: 27}
+        - {x: 12, y: 31}
+    - name: Back Dash (3)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -148,18 +129,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 14, y: 12}
-        - {x: 5, y: 30}
-        - {x: -6, y: 30}
-        - {x: -18, y: 17}
-        - {x: -20, y: 3}
-        - {x: -20, y: -24}
-        - {x: -13, y: -30}
-        - {x: 9, y: -30}
-        - {x: 14, y: -27}
-        - {x: 20, y: -19}
-        - {x: 20, y: -7}
-    - name: Ranger Hit_5
+      - - {x: 13, y: 31}
+        - {x: -4, y: 31}
+        - {x: -17, y: 22}
+        - {x: -17, y: -20}
+        - {x: -12, y: -31}
+        - {x: 7, y: -31}
+        - {x: 13, y: -14}
+        - {x: 20, y: 16}
+        - {x: 20, y: 26}
+    - name: Back Dash (3)_4
       rect:
         serializedVersion: 2
         x: 60
@@ -170,19 +149,17 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 12, y: 20}
-        - {x: 10, y: 19}
-        - {x: 0, y: 29}
-        - {x: -8, y: 29}
-        - {x: -26, y: 8}
-        - {x: -30, y: -6}
-        - {x: -30, y: -24}
-        - {x: -6, y: -33}
-        - {x: 6, y: -33}
-        - {x: 7, y: -32}
-        - {x: 16, y: -20}
-        - {x: 16, y: 13}
-    - name: Ranger Hit_6
+      - - {x: 24, y: 22}
+        - {x: 6, y: 30}
+        - {x: -12, y: 30}
+        - {x: -12, y: 29}
+        - {x: -17, y: 14}
+        - {x: -17, y: -26}
+        - {x: -12, y: -31}
+        - {x: 8, y: -31}
+        - {x: 25, y: -8}
+        - {x: 25, y: 20}
+    - name: Back Dash (3)_5
       rect:
         serializedVersion: 2
         x: 120
@@ -193,36 +170,17 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -2, y: 30}
-        - {x: -19, y: 30}
-        - {x: -30, y: 22}
-        - {x: -30, y: -20}
-        - {x: -8, y: -33}
-        - {x: 10, y: -33}
-        - {x: 12, y: -18}
-        - {x: 12, y: 16}
-        - {x: 0, y: 29}
-    - name: Ranger Hit_7
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 80
-        width: 60
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -26, y: 30}
-        - {x: -30, y: 16}
-        - {x: -30, y: -12}
-        - {x: -21, y: -22}
-        - {x: -1, y: -33}
-        - {x: 8, y: -33}
-        - {x: 12, y: -26}
-        - {x: 12, y: 12}
-        - {x: 7, y: 30}
-    - name: Ranger Hit_8
+      - - {x: 28, y: 28}
+        - {x: 20, y: 30}
+        - {x: -12, y: 30}
+        - {x: -23, y: 10}
+        - {x: -23, y: -8}
+        - {x: -12, y: -31}
+        - {x: 1, y: -31}
+        - {x: 5, y: -29}
+        - {x: 27, y: -7}
+        - {x: 28, y: -1}
+    - name: Back Dash (3)_6
       rect:
         serializedVersion: 2
         x: 0
@@ -233,16 +191,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -17, y: 30}
-        - {x: -27, y: 15}
-        - {x: -27, y: -20}
-        - {x: -2, y: -32}
-        - {x: 0, y: -33}
-        - {x: 7, y: -33}
-        - {x: 16, y: -27}
-        - {x: 16, y: 5}
-        - {x: 7, y: 30}
-    - name: Ranger Hit_9
+      - - {x: -10, y: 30}
+        - {x: -30, y: 14}
+        - {x: -30, y: -11}
+        - {x: -14, y: -31}
+        - {x: 17, y: -31}
+        - {x: 26, y: -19}
+        - {x: 26, y: 15}
+        - {x: 6, y: 30}
+    - name: Back Dash (3)_7
       rect:
         serializedVersion: 2
         x: 60
@@ -253,15 +210,36 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -17, y: 30}
-        - {x: -27, y: 15}
-        - {x: -27, y: -20}
-        - {x: -2, y: -32}
-        - {x: 0, y: -33}
-        - {x: 7, y: -33}
-        - {x: 16, y: -27}
-        - {x: 16, y: 5}
-        - {x: 7, y: 30}
+      - - {x: -30, y: -13}
+        - {x: -16, y: -31}
+        - {x: 5, y: -31}
+        - {x: 15, y: -27}
+        - {x: 15, y: 24}
+        - {x: 13, y: 30}
+        - {x: -13, y: 30}
+        - {x: -26, y: 21}
+        - {x: -30, y: 13}
+    - name: Back Dash (3)_8
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 30}
+        - {x: -13, y: 26}
+        - {x: -26, y: 6}
+        - {x: -26, y: -16}
+        - {x: -17, y: -31}
+        - {x: 5, y: -31}
+        - {x: 7, y: -30}
+        - {x: 15, y: -22}
+        - {x: 15, y: -1}
+        - {x: 9, y: 30}
     outline: []
   spritePackingTag: 
   userData: 
