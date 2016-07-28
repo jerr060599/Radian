@@ -8,10 +8,14 @@ public class BasicEnemy : MonoBehaviour
     public float walkSpeed = 3f;
     public bool agro = false;
     public Rigidbody2D pysc = null;
+    public SpriteRenderer sr = null;
+    public Animator ani = null;
     bool fading = false;
     void Start()
     {
         pysc = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        ani = GetComponent<Animator>();
     }
     public virtual void damage(int d, int damageType = 0)
     {
@@ -29,7 +33,7 @@ public class BasicEnemy : MonoBehaviour
         {
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color *= 0.9f;
-            if (GetComponent<SpriteRenderer>().color.a <= 0.1f)
+            if (GetComponent<SpriteRenderer>().color.a <= 0.05f)
                 Destroy(gameObject);
         }
     }
