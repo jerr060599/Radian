@@ -9,7 +9,6 @@ public class RangeEnemy : BasicEnemy
     // Use this for initialization
     public void fire(Transform t)
     {
-        Debug.Log("Fak u");
         atkTimer = float.PositiveInfinity;
         Vector2 dPos = (Vector2)(t.position) - pysc.position;
         GameObject tmp = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
@@ -20,15 +19,21 @@ public class RangeEnemy : BasicEnemy
     void Update()
     {
         Vector2 dPos = pysc.position - CharCtrl.script.pysc.position;
-        atkTimer -= Time.deltaTime;
         float d = dPos.x * dPos.x + dPos.y * dPos.y;
-        if (d < avoidDistance * avoidDistance)
-            pysc.AddForce(Vector2.ClampMagnitude(dPos.normalized * walkSpeed * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-        else
-            pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-        if (atkTimer <= 0f)
-            fire(CharCtrl.script.transform);
-        if (d < range * range && atkTimer > atkTime)
-            atkTimer = atkTime;
+        atkTimer -= Time.deltaTime;
+        agro = agro ? true : d < range * range;
+        if (agro)
+        {
+            if (d < avoidDistance * avoidDistance)
+                pysc.AddForce(Vector2.ClampMagnitude(dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
+            else if (d > range * range)
+                pysc.AddForce(Vector2.ClampMagnitude(-dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
+            else
+                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+            if (atkTimer <= 0f)
+                fire(CharCtrl.script.transform);
+            if (atkTimer > atkTime)
+                atkTimer = d < range * range ? atkTime : float.PositiveInfinity;
+        }
     }
 }

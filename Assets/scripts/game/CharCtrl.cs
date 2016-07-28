@@ -122,14 +122,9 @@ public class CharCtrl : MonoBehaviour
                 {
                     fallTime = deathFallTime;
                     if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
-                        if (lastInput.x > 0)
-                            ani.Play("RightFall", 0);
-                        else
-                            ani.Play("LeftFall", 0);
-                    else if (lastInput.y > 0)
-                        ani.Play("UpFall", 0);
+                        ani.Play(lastInput.x > 0 ? "RightFall" : "LeftFall", 0);
                     else
-                        ani.Play("DownFall", 0);
+                        ani.Play(lastInput.y > 0 ? "UpFall" : "DownFall", 0);
                     return;
                 }
                 else if (rh.collider.gameObject.GetComponent<MovementRedirect>())
@@ -148,14 +143,9 @@ public class CharCtrl : MonoBehaviour
                     input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
                     pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
                     if (Mathf.Abs(input.x) >= Mathf.Abs(input.y))
-                        if (input.x > 0)
-                            ani.Play("RightWalk", 0);
-                        else
-                            ani.Play("LeftWalk", 0);
-                    else if (input.y > 0)
-                        ani.Play("UpWalk", 0);
+                        ani.Play(input.x > 0 ? "RightWalk" : "LeftWalk", 0);
                     else
-                        ani.Play("DownWalk", 0);
+                        ani.Play(input.y > 0 ? "UpWalk" : "DownWalk", 0);
                 }
                 else
                 {
@@ -192,14 +182,9 @@ public class CharCtrl : MonoBehaviour
             {
                 brake();
                 if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
-                    if (dashPos.x > 0)
-                        ani.Play("RightRoll", 0);
-                    else
-                        ani.Play("LeftRoll", 0);
-                else if (dashPos.y > 0)
-                    ani.Play("UpRoll", 0);
+                    ani.Play(dashPos.x > 0 ? "RightRoll" : "LeftRoll", 0);
                 else
-                    ani.Play("DownRoll", 0);
+                    ani.Play(dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
             }
             if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
             {
@@ -256,27 +241,18 @@ public class CharCtrl : MonoBehaviour
         cost(arrowCost);
         rooted = true;
         arrowTime = arrowCoolDown;
-        if (dir.x > 0)
-            handAni.Play("FireUpDownFliped");
-        else
-            handAni.Play("FireUpDown");
-        //fireArm.transform.localRotation = Quaternion.Euler(0f, 0f, dir.x == 0f ? dir.y > 0 ? 90f : -90f : Mathf.Atan(dir.y / dir.x) / Mathf.PI * 180f);
+        handAni.Play(dir.x > 0 ? "FireUpDownFliped" : "FireUpDown");
         fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -dir);
-        pysc.AddForce(-dir*arrowKB);
+        pysc.AddForce(-dir * arrowKB);
         GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireHand.transform.position, Quaternion.identity));
         tmp.GetComponent<Projectile>().setVelocity(dir * arrowSpeed);
     }
     public void playIdleAnimation()
     {
         if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
-            if (lastInput.x > 0)
-                ani.Play("idleRight", 0);
-            else
-                ani.Play("idleLeft", 0);
-        else if (lastInput.y > 0)
-            ani.Play("idleUp", 0);
+            ani.Play(lastInput.x > 0 ? "idleRight" : "idleLeft", 0);
         else
-            ani.Play("idleDown", 0);
+            ani.Play(lastInput.y > 0 ? "idleUp" : "idleDown", 0);
     }
     public void cost(float cost)
     {

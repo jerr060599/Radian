@@ -8,7 +8,6 @@ public class Projectile : MonoBehaviour
     public bool enemyProjectile = false;
     void OnTriggerEnter2D(Collider2D c)
     {
-        Debug.Log(c.gameObject.name);
         if (c.attachedRigidbody && c.attachedRigidbody.gameObject)
         {
             if (enemyProjectile)
