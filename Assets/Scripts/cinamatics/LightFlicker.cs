@@ -3,19 +3,19 @@ using System.Collections;
 
 public class LightFlicker : MonoBehaviour {
 
-	float timeOn = 0.1f;
-	float timeOff = 0.5f;
-	private float changeTime = 0;
+	float minIntensity = 1.5f;
+	float maxIntensity = 3f;
 
+	float random;
 
-	void Update() {
-		if (Time.time > changeTime) {
-			GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
-			if (	GetComponent<Light>().enabled) {
-				changeTime = Time.time + timeOn;
-			} else {
-				changeTime = Time.time + timeOff;
-			}
-		}
+	void Start()
+	{
+		random = Random.Range(0.0f, 65535.0f);
+	}
+
+	void Update()
+	{
+		float noise = Mathf.PerlinNoise(random, Time.time);
+		GetComponent<Light>().intensity = Mathf.Lerp(minIntensity, maxIntensity, noise);
 	}
 }
