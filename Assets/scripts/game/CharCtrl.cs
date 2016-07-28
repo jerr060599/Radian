@@ -5,8 +5,8 @@ public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
-    public bool controllable = true, usingLight = true, isDashing = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f;
+    public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -15,7 +15,7 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
-    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, animationOverride = 0f, fallTime = 100000000f;
+    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f;
     bool rooted = false, variate = false;
     Vector2 lastInput = Vector2.down, lastJuicePosition;
     Animator ani, handAni;
@@ -217,7 +217,18 @@ public class CharCtrl : MonoBehaviour
                     pysc.AddForce(rPosFromArm * meleeAdv);
                 }
                 if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
-                    fire(rPosFromArm);
+                    arrowLoaded = true;
+                if (arrowLoaded && Input.GetMouseButton(1))
+                {
+                    arrowTime += Time.deltaTime;
+                    if (arrowTime >= arrowWindUp)
+                        fire(rPosFromArm);
+                }
+                else
+                {
+                    arrowTime = 0f;
+                    arrowLoaded = false;
+                }
             }
             else
                 brake();
@@ -250,6 +261,7 @@ public class CharCtrl : MonoBehaviour
     {
         if (animationOverride > 0f)
             return;
+        arrowTime = 0f;
         cost(arrowCost);
         rooted = true;
         animationOverride = arrowCoolDown;
