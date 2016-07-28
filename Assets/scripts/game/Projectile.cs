@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour
 {
-    public float damage, fadeAfterHit = 0f, splatTolerance = 1f, lifeTime = 500f;
+    public float damage, fadeAfterHit = 0f, splatTolerance = 1f, lifeTime = 500f, cameraShake = 0f;
     public bool turnWithVel = false, enemyProjectile = false, splatAtLocation = false;
     public string splatAnimation = "";
     public Vector2 splatLocation = Vector2.zero;
@@ -35,7 +35,11 @@ public class Projectile : MonoBehaviour
     }
     void stop()
     {
+        if (hit)
+            return;
         hit = true;
+        if (cameraShake != 0f)
+            CameraMovement.script.shake(cameraShake);
         GetComponent<Rigidbody2D>().gravityScale = 0f;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         turnWithVel = false;
