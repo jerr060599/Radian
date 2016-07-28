@@ -145,7 +145,7 @@ public class CharCtrl : MonoBehaviour
                 rooted = false;
             if (!isDashing)
             {
-                if (input.sqrMagnitude != 0f && animationOverride <= 0f)
+                if (input.sqrMagnitude != 0f && animationOverride <= 0f && !arrowLoaded)
                 {
                     rooted = false;
                     lastInput = input;
@@ -160,20 +160,10 @@ public class CharCtrl : MonoBehaviour
                 else
                 {
                     brake();
-                    if (rooted)
-                    {
-                        if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y) || rPosFromArm.y > 0)
-                        {
-                            if (fireHand.transform.localPosition.z != 0.01f)
-                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
-                        }
-                        else if (fireHand.transform.localPosition.z != -0.01f)
-                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
-                    }
-                    else
+                    if (!(rooted || arrowLoaded))
                         playIdleAnimation();
                 }
-                if ((light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
+                if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
                 {
                     float closest = dashDist;
                     lastInput = rPosFromArm;
@@ -194,7 +184,7 @@ public class CharCtrl : MonoBehaviour
                     cost(dashCost);
                     SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                 }
-                if (meleeTime <= 0f && Input.GetMouseButtonDown(0))
+                if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
                 {
                     BasicEnemy be = null;
                     foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
@@ -208,8 +198,7 @@ public class CharCtrl : MonoBehaviour
                         if (variate)
                             ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
                         else
-                           // ani.Play(rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
-						ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                            ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
                     else
                         ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
                     variate = !variate;
@@ -217,15 +206,38 @@ public class CharCtrl : MonoBehaviour
                     pysc.AddForce(rPosFromArm * meleeAdv);
                 }
                 if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
+                {
                     arrowLoaded = true;
+                    handAni.Play("boxWindUp", 0);
+                }
                 if (arrowLoaded && Input.GetMouseButton(1))
                 {
+                    lastInput = rPosFromArm;
                     arrowTime += Time.deltaTime;
-                    if (arrowTime >= arrowWindUp)
-                        fire(rPosFromArm);
+                    fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -rPosFromArm);
+                    if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y))
+                    {
+                        ani.Play(rPosFromArm.x < 0 ? "LeftFireState" : "RightFireState", 0);
+                        if (fireHand.transform.localPosition.z != 0.01f)
+                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                    }
+                    else if (rPosFromArm.y > 0)
+                    {
+                        ani.Play("UpFireState", 0);
+                        if (fireHand.transform.localPosition.z != 0.01f)
+                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                    }
+                    else if (fireHand.transform.localPosition.z != -0.01f)
+                    {
+                        ani.Play("DownFireState", 0);
+                        fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
+                    }
                 }
                 else
                 {
+                    if (arrowTime >= arrowWindUp)
+                        fire(rPosFromArm);
+                    handAni.Play("NoAnimation", 0);
                     arrowTime = 0f;
                     arrowLoaded = false;
                 }
@@ -270,10 +282,6 @@ public class CharCtrl : MonoBehaviour
         pysc.AddForce(-dir * arrowKB);
         GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireHand.transform.position, Quaternion.identity));
         tmp.GetComponent<Projectile>().setVelocity(dir * arrowSpeed);
-        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
-            ani.Play(dir.x > 0 ? "RightFireState" : "LeftFireState", 0);
-        else
-            ani.Play(dir.y > 0 ? "UpFireState" : "DownFireState", 0);
         lastInput = dir;
     }
     public void playIdleAnimation()
