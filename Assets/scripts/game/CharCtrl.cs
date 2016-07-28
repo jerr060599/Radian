@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public bool controllable = true, usingLight = true, isDashing = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowCoolDown = 1f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -15,8 +15,8 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
-    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime = 0f, fallTime = 100000000f;
-    bool rooted = false;
+    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, animationOverride = 0f, fallTime = 100000000f;
+    bool rooted = false, variate = false;
     Vector2 lastInput = Vector2.down, lastJuicePosition;
     Animator ani, handAni;
     SpriteRenderer sr;
@@ -83,6 +83,14 @@ public class CharCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!shadow)
+            genShadow();
+        else
+        {
+            if (shadow.GetComponent<SpriteRenderer>().sprite != sr.sprite)
+                genShadow();
+            shadow.GetComponent<SpriteRenderer>().flipX = sr.flipX;
+        }
         timedUncontrollable -= Time.deltaTime;
         if (fallTime <= deathFallTime)
         {
@@ -93,14 +101,14 @@ public class CharCtrl : MonoBehaviour
                 kill();
             return;
         }
-        if (light.barPercent <= 0f)
+        if (light.barPercent <= 0f || dark.barPercent >= 1f)
         {
             kill();
             return;
         }
         dashTime -= Time.deltaTime;
         meleeTime -= Time.deltaTime;
-        arrowTime -= Time.deltaTime;
+        animationOverride -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
         feetPos = pysc.position + cc.offset;
         armPos = pysc.position + (Vector2)(fireArm.transform.localPosition);
@@ -133,9 +141,11 @@ public class CharCtrl : MonoBehaviour
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             Vector2 rPosFromArm = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - armPos).normalized;
+            if (animationOverride <= 0f)
+                rooted = false;
             if (!isDashing)
             {
-                if (input.sqrMagnitude != 0f && arrowTime <= 0f)
+                if (input.sqrMagnitude != 0f && animationOverride <= 0f)
                 {
                     rooted = false;
                     lastInput = input;
@@ -152,27 +162,13 @@ public class CharCtrl : MonoBehaviour
                     brake();
                     if (rooted)
                     {
-                        if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y))
+                        if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y) || rPosFromArm.y > 0)
                         {
-                            if (rPosFromArm.x > 0)
-                                ani.Play("RightFireState", 0);
-                            else
-                                ani.Play("LeftFireState", 0);
                             if (fireHand.transform.localPosition.z != 0.01f)
                                 fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
                         }
-                        else if (rPosFromArm.y > 0)
-                        {
-                            ani.Play("UpFireState", 0);
-                            if (fireHand.transform.localPosition.z != 0.01f)
-                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
-                        }
-                        else
-                        {
-                            ani.Play("DownFireState", 0);
-                            if (fireHand.transform.localPosition.z != -0.01f)
-                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
-                        }
+                        else if (fireHand.transform.localPosition.z != -0.01f)
+                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
                     }
                     else
                         playIdleAnimation();
@@ -206,8 +202,19 @@ public class CharCtrl : MonoBehaviour
                         be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
                 meleeTime = meleeCoolDown;
                 cost(meleeCost);
+                rooted = true;
+                animationOverride = meleeCoolDown;
+                if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
+                    if (variate)
+                        ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                    else
+                        ani.Play(rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
+                else
+                    ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
+                variate = !variate;
+                lastInput = dir;
             }
-            if (Input.GetMouseButtonDown(1))
+            if (light.barPercent > arrowCost && Input.GetMouseButtonDown(1))
                 fire(rPosFromArm);
             if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
             {
@@ -236,16 +243,21 @@ public class CharCtrl : MonoBehaviour
     }
     public void fire(Vector2 dir)
     {
-        if (arrowTime > 0f)
+        if (animationOverride > 0f)
             return;
         cost(arrowCost);
         rooted = true;
-        arrowTime = arrowCoolDown;
+        animationOverride = arrowCoolDown;
         handAni.Play(dir.x > 0 ? "FireUpDownFliped" : "FireUpDown");
         fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -dir);
         pysc.AddForce(-dir * arrowKB);
         GameObject tmp = (GameObject)(Instantiate(usingLight ? lightArrow : darkArrow, fireHand.transform.position, Quaternion.identity));
         tmp.GetComponent<Projectile>().setVelocity(dir * arrowSpeed);
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+            ani.Play(dir.x > 0 ? "RightFireState" : "LeftFireState", 0);
+        else
+            ani.Play(dir.y > 0 ? "UpFireState" : "DownFireState", 0);
+        lastInput = dir;
     }
     public void playIdleAnimation()
     {
@@ -260,5 +272,22 @@ public class CharCtrl : MonoBehaviour
             light.barPercent -= cost;
         else
             dark.barPercent += cost / darkMultiplyer;
+    }
+    void genShadow()
+    {
+        if (!shadow)
+        {
+            shadow = new GameObject();
+            shadow.name = "shadow";
+            shadow.transform.SetParent(gameObject.transform);
+            shadow.AddComponent<SpriteRenderer>();
+        }
+        SpriteRenderer shadowSr = shadow.GetComponent<SpriteRenderer>();
+        shadowSr.sprite = sr.sprite;
+        shadowSr.color = new Color(0f, 0f, 0f, shadowDarkness);
+        shadow.transform.localPosition = Vector3.zero;
+        shadow.transform.localScale = new Vector3(1f, shadowScale, 1f);
+        float dMin = sr.bounds.extents.y - shadowSr.bounds.extents.y;
+        shadow.transform.localPosition = new Vector3(0f, -dMin + shadowOffset, 0f);
     }
 }
