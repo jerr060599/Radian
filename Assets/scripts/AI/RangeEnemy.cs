@@ -24,18 +24,24 @@ public class RangeEnemy : BasicEnemy
         agro = agro ? true : d < range * range;
         if (agro)
         {
-            if (d < avoidDistance * avoidDistance)
-            {
-                pysc.AddForce(Vector2.ClampMagnitude(dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
-                ani.Play(dPos.x < 0f ? "walk" : "walkFlipped", 0);
-            }
-            else if (d > range * range)
-            {
-                pysc.AddForce(Vector2.ClampMagnitude(-dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
-                ani.Play(dPos.x > 0f ? "walk" : "walkFlipped", 0);
-            }
+            if (atkTimer > atkTime)
+                if (d < avoidDistance * avoidDistance)
+                {
+                    pysc.AddForce(Vector2.ClampMagnitude(dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
+                    ani.Play(dPos.x < 0f ? "walk" : "walkFlipped", 0);
+                }
+                else if (d > range * range)
+                {
+                    pysc.AddForce(Vector2.ClampMagnitude(-dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
+                    ani.Play(dPos.x > 0f ? "walk" : "walkFlipped", 0);
+                }
+                else
+                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
             else
+            {
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+
+            }
             if (atkTimer <= 0f)
                 fire(CharCtrl.script.transform);
             if (atkTimer > atkTime)
