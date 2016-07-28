@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 670ad91274072a34d84c3ce69aa9dd0f
-timeCreated: 1469650874
+guid: 5f21fd403e0950441852c94d87bae3ad
+timeCreated: 1469719880
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Roll Up (1)_0
-    21300002: Roll Up (1)_1
-    21300004: Roll Up (1)_2
-    21300006: Roll Up (1)_3
-    21300008: Roll Up (1)_4
+    21300000: Ranger Front Idle clone clone (1)_0
+    21300002: Ranger Front Idle clone clone (1)_1
+    21300004: Ranger Front Idle clone clone (1)_2
+    21300006: Ranger Front Idle clone clone (1)_3
+    21300008: Ranger Front Idle clone clone (1)_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,7 +55,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Roll Up (1)_0
+    - name: Ranger Front Idle clone clone (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -66,16 +66,19 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 6, y: 35}
-        - {x: -11, y: 35}
-        - {x: -17, y: 25}
-        - {x: -17, y: -15}
-        - {x: -11, y: -30}
-        - {x: 6, y: -30}
-        - {x: 15, y: -15}
-        - {x: 19, y: 2}
-        - {x: 19, y: 30}
-    - name: Roll Up (1)_1
+      - - {x: 19, y: 18}
+        - {x: 19, y: 26}
+        - {x: 3, y: 33}
+        - {x: -2, y: 34}
+        - {x: -8, y: 34}
+        - {x: -18, y: 26}
+        - {x: -18, y: -17}
+        - {x: -16, y: -30}
+        - {x: 4, y: -30}
+        - {x: 6, y: -28}
+        - {x: 14, y: -16}
+        - {x: 13, y: 8}
+    - name: Ranger Front Idle clone clone (1)_1
       rect:
         serializedVersion: 2
         x: 60
@@ -86,14 +89,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -9, y: 26}
-        - {x: -18, y: 19}
-        - {x: -18, y: -33}
-        - {x: 3, y: -33}
-        - {x: 10, y: -29}
-        - {x: 22, y: 3}
-        - {x: 22, y: 26}
-    - name: Roll Up (1)_2
+      - - {x: -14, y: 27}
+        - {x: -20, y: 9}
+        - {x: -20, y: -24}
+        - {x: -11, y: -30}
+        - {x: 7, y: -30}
+        - {x: 16, y: -19}
+        - {x: 16, y: 21}
+        - {x: 6, y: 27}
+    - name: Ranger Front Idle clone clone (1)_2
       rect:
         serializedVersion: 2
         x: 120
@@ -104,14 +108,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10, y: 17}
-        - {x: -19, y: 2}
-        - {x: -19, y: -30}
-        - {x: 13, y: -30}
-        - {x: 17, y: -18}
-        - {x: 17, y: 10}
-        - {x: 5, y: 17}
-    - name: Roll Up (1)_3
+      - - {x: -17, y: 3}
+        - {x: -21, y: -6}
+        - {x: -21, y: -27}
+        - {x: -18, y: -30}
+        - {x: 15, y: -30}
+        - {x: 16, y: -25}
+        - {x: 16, y: 2}
+        - {x: 13, y: 3}
+    - name: Ranger Front Idle clone clone (1)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -122,15 +127,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -12, y: -4}
-        - {x: -17, y: -12}
-        - {x: -17, y: -21}
-        - {x: -10, y: -29}
-        - {x: 3, y: -29}
-        - {x: 15, y: -27}
-        - {x: 15, y: -5}
-        - {x: 9, y: -4}
-    - name: Roll Up (1)_4
+      - - {x: -13, y: 6}
+        - {x: -19, y: 0}
+        - {x: -19, y: -18}
+        - {x: -18, y: -32}
+        - {x: -12, y: -34}
+        - {x: 6, y: -34}
+        - {x: 14, y: -23}
+        - {x: 14, y: -11}
+        - {x: 8, y: 6}
+    - name: Ranger Front Idle clone clone (1)_4
       rect:
         serializedVersion: 2
         x: 60
@@ -141,14 +147,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -15, y: 14}
-        - {x: -19, y: 4}
-        - {x: -19, y: -20}
-        - {x: -7, y: -29}
-        - {x: 10, y: -29}
-        - {x: 16, y: -24}
-        - {x: 16, y: 3}
-        - {x: 10, y: 14}
+      - - {x: -6, y: 9}
+        - {x: -17, y: -1}
+        - {x: -17, y: -23}
+        - {x: -14, y: -33}
+        - {x: 10, y: -33}
+        - {x: 15, y: -31}
+        - {x: 15, y: -6}
+        - {x: 12, y: 9}
     outline: []
   spritePackingTag: 
   userData: 
