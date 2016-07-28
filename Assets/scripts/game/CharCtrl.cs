@@ -212,7 +212,7 @@ public class CharCtrl : MonoBehaviour
                 else
                     ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
                 variate = !variate;
-                lastInput = dir;
+                lastInput = rPosFromArm;
             }
             if (light.barPercent > arrowCost && Input.GetMouseButtonDown(1))
                 fire(rPosFromArm);
