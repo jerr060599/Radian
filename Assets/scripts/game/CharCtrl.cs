@@ -173,7 +173,7 @@ public class CharCtrl : MonoBehaviour
                     else
                         playIdleAnimation();
                 }
-                if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
+                if ((light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
                 {
                     float closest = dashDist;
                     lastInput = rPosFromArm;
@@ -215,7 +215,7 @@ public class CharCtrl : MonoBehaviour
                     lastInput = rPosFromArm;
                     pysc.AddForce(rPosFromArm * meleeAdv);
                 }
-                if (light.barPercent > arrowCost && Input.GetMouseButtonDown(1))
+                if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
                     fire(rPosFromArm);
             }
             else
