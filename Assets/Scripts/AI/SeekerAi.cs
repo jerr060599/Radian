@@ -60,6 +60,7 @@ public class SeekerAi : BasicEnemy
     public override void damage(int amount, int damageType = 0)
     {
         atkTimer = 0f;
+        agro = true;
         if (deathTimer > deathTime)
         {
             GetComponent<Animator>().Play(dPos.x <= 0 ? "EnemyStagger" : "EnemyStaggerFlipped");
