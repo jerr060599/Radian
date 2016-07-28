@@ -21,7 +21,6 @@ public class BasicEnemy : MonoBehaviour
     }
     public virtual void kill(int damageType = 0)
     {
-        Debug.Log("Thou hath killed");
         Destroy(gameObject);
     }
     void OnGUI()
