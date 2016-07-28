@@ -173,49 +173,52 @@ public class CharCtrl : MonoBehaviour
                     else
                         playIdleAnimation();
                 }
+                if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
+                {
+                    float closest = dashDist;
+                    lastInput = rPosFromArm;
+                    bool overAir = false;
+                    foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
+                    {
+                        if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
+                            closest = rh.distance;
+                        if (!overAir && rh.collider.gameObject.GetComponent<Air>())
+                            overAir = true;
+                    }
+                    dashPos = rPosFromArm * closest;
+                    if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
+                        ani.Play(overAir ? dashPos.x > 0 ? "RightDash" : "LeftDash" : dashPos.x > 0 ? "RightRoll" : "LeftRoll", 0);
+                    else
+                        ani.Play(overAir ? dashPos.y > 0 ? "UpDash" : "DownDash" : dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
+                    dashTime = dashCoolDown;
+                    cost(dashCost);
+                    SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
+                }
+                if (meleeTime <= 0f && Input.GetMouseButtonDown(0))
+                {
+                    BasicEnemy be = null;
+                    foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
+                        if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
+                            be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
+                    meleeTime = meleeCoolDown;
+                    cost(meleeCost);
+                    rooted = true;
+                    animationOverride = meleeCoolDown;
+                    if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
+                        if (variate)
+                            ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                        else
+                            ani.Play(rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
+                    else
+                        ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
+                    variate = !variate;
+                    lastInput = rPosFromArm;
+                }
+                if (light.barPercent > arrowCost && Input.GetMouseButtonDown(1))
+                    fire(rPosFromArm);
             }
             else
-            {
                 brake();
-                if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
-                    ani.Play(dashPos.x > 0 ? "RightRoll" : "LeftRoll", 0);
-                else
-                    ani.Play(dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
-            }
-            if (light.barPercent > dashCost && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
-            {
-                float closest = dashDist;
-                lastInput = rPosFromArm;
-                foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
-                    if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
-                        closest = rh.distance;
-                dashPos = rPosFromArm * closest;
-                dashTime = dashCoolDown;
-                cost(dashCost);
-                SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
-            }
-            if (meleeTime <= 0f && Input.GetMouseButtonDown(0))
-            {
-                BasicEnemy be = null;
-                foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
-                    if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
-                        be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
-                meleeTime = meleeCoolDown;
-                cost(meleeCost);
-                rooted = true;
-                animationOverride = meleeCoolDown;
-                if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
-                    if (variate)
-                        ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
-                    else
-                        ani.Play(rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
-                else
-                    ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
-                variate = !variate;
-                lastInput = rPosFromArm;
-            }
-            if (light.barPercent > arrowCost && Input.GetMouseButtonDown(1))
-                fire(rPosFromArm);
             if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
             {
                 usingLight = !usingLight;
