@@ -7,7 +7,10 @@ public class Test : MonoBehaviour {
 	void Update () {
         if (activate)
         {
-            Debug.Log(GetComponent<SpriteRenderer>().bounds.min);
+            GameObject txt = new GameObject();
+            txt.AddComponent<CanvasRenderer>();
+            txt.AddComponent<RectTransform>();
+            txt.AddComponent<UnityEngine.UI.Text>();
             activate = false;
         }
 	}
