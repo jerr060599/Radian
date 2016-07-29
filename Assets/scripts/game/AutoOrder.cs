@@ -11,19 +11,19 @@ public class AutoOrder : MonoBehaviour
     {
         if (!sr)
             sr = GetComponent<SpriteRenderer>();
-        if (refresh)
-            genShadow();
         if (!Application.isEditor || Application.isPlaying)
         {
+            if (isStatic)
+                Destroy(this);
             if (updateShadowInRuntime && shadow)
             {
                 if (shadow.GetComponent<SpriteRenderer>().sprite != sr.sprite)
                     genShadow();
                 shadow.GetComponent<SpriteRenderer>().flipX = sr.flipX;
             }
-            if (isStatic)
-                Destroy(this);
         }
+        if (refresh)
+            genShadow();
         if (orderOnY)
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, (transform.localPosition.y + offset) / 100f);
         if (generateShadow && !shadow)
