@@ -3,7 +3,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class AutoOrder : MonoBehaviour
 {
-    public float offset = 0f, shadowScale = 1.5f, shadowOffset = 0f, shadowDarkness = 0.3f;
+    public float offset = 0f, shadowScale = 1.5f, shadowOffset = 0f, shadowDarkness = 0.3f, shadowZOffset = 0f;
     public bool isStatic = false, orderOnY = true, generateShadow = false, updateShadowInRuntime = false, refresh = false;
     public GameObject shadow = null;
     SpriteRenderer sr = null;
@@ -50,6 +50,6 @@ public class AutoOrder : MonoBehaviour
         shadow.transform.localPosition = Vector3.zero;
         shadow.transform.localScale = new Vector3(1f, shadowScale, 1f);
         float dMin = shadowScale > 0 ? sr.bounds.extents.y - shadowSr.bounds.extents.y : -sr.bounds.extents.y + shadowSr.bounds.extents.y;
-        shadow.transform.localPosition = new Vector3(0f, -dMin + shadowOffset, 0f);
+        shadow.transform.localPosition = new Vector3(0f, -dMin + shadowOffset, shadowZOffset);
     }
 }
