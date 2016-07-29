@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Teleporter : Activatable
 {
-    GameObject destination = null;
+    public GameObject destination = null;
     public override void init()
     {
     }

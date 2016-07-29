@@ -178,9 +178,8 @@ public class CharCtrl : MonoBehaviour
                         if (!(rooted || arrowLoaded))
                             playIdleAnimation();
                     }
-                    if (!aInRange)
-                    {
-                        if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
+                    if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
+                        if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && !aInRange)
                         {
                             float closest = dashDist;
                             lastInput = rPosFromArm;
@@ -201,9 +200,8 @@ public class CharCtrl : MonoBehaviour
                             cost(dashCost);
                             SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                         }
-                    }
-                    else
-                        aInRange.activate(this);
+                        else
+                            aInRange.activate(this);
                     if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
                     {
                         BasicEnemy be = null;
