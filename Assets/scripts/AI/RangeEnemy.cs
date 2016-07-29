@@ -8,14 +8,12 @@ public class RangeEnemy : BasicEnemy
     public GameObject projectile;
     public void fire(Transform t)
     {
-        animationOverride = atkAnimationLength;
         atkTimer = float.PositiveInfinity;
         Vector2 dPos = (Vector2)(t.position) - pysc.position;
         GameObject proj = (GameObject)Instantiate(projectile, transform.position, Quaternion.AngleAxis(-90f, Vector3.forward));
         proj.GetComponent<Rigidbody2D>().velocity = new Vector2(dPos.x / projectileAirTime,
             (dPos.y - Physics2D.gravity.y * (projectile.GetComponent<Rigidbody2D>().gravityScale) * projectileAirTime * projectileAirTime / 2) / projectileAirTime);
         proj.GetComponent<Projectile>().lifeTime = projectileAirTime + 0.1f;
-        ani.Play(dPos.x < 0f ? "atk" : "atkFlipped");
     }
 
     void Update()
@@ -41,13 +39,13 @@ public class RangeEnemy : BasicEnemy
                 else
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                    //if (animationOverride <= 0f)
                     ani.Play(dPos.x > 0f ? "idle" : "idleFlipper", 0);
                 }
             else
             {
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
-                if (animationOverride <= 0f)
-                    ani.Play(dPos.x > 0f ? "idle" : "idleFlipper", 0);
+                ani.Play(dPos.x > 0f ? "atk" : "atkFlipped", 0);
             }
             if (atkTimer <= 0f)
                 fire(CharCtrl.script.transform);
