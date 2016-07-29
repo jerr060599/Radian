@@ -5,6 +5,7 @@ public class Teleporter : Activatable
 {
     public GameObject destination = null;
     public string turnOnAnimation = "", turnOffAnimation = "";
+    public Vector2 offset = Vector2.zero;
     public override void init()
     {
     }
@@ -12,7 +13,7 @@ public class Teleporter : Activatable
     {
         if (nextActivatable != null)
             nextActivatable.activate(player);
-        player.transform.position = destination.transform.position;
+        player.transform.position = destination.transform.position + (Vector3)offset;
     }
     void OnTriggerEnter2D(Collider2D c)
     {
