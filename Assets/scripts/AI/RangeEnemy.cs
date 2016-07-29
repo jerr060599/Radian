@@ -11,7 +11,7 @@ public class RangeEnemy : BasicEnemy
         animationOverride = atkAnimationLength;
         atkTimer = float.PositiveInfinity;
         Vector2 dPos = (Vector2)(t.position) - pysc.position;
-        GameObject proj = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
+        GameObject proj = (GameObject)Instantiate(projectile, transform.position, Quaternion.AngleAxis(90f, Vector3.forward));
         proj.GetComponent<Rigidbody2D>().velocity = new Vector2(dPos.x / projectileAirTime,
             (dPos.y - Physics2D.gravity.y * (projectile.GetComponent<Rigidbody2D>().gravityScale) * projectileAirTime * projectileAirTime / 2) / projectileAirTime);
         proj.GetComponent<Projectile>().lifeTime = projectileAirTime + 0.1f;

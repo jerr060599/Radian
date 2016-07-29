@@ -50,7 +50,6 @@ public class CharCtrl : MonoBehaviour
         controllable = false;
         respawn();
     }
-
     public void respawn()
     {
         //gameObject.SetActive(true);
@@ -67,7 +66,6 @@ public class CharCtrl : MonoBehaviour
         transform.position = spawn.transform.position;
         feetPos = pysc.position + cc.offset;
     }
-
     public bool eat(Consumable c)
     {
         if (item == null)
