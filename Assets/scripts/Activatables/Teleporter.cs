@@ -17,11 +17,19 @@ public class Teleporter : Activatable
     void OnTriggerEnter2D(Collider2D c)
     {
         if (GetComponent<Animator>() && turnOnAnimation.Length != 0)
+        {
             GetComponent<Animator>().Play(turnOnAnimation, 0);
+            if (destination)
+                destination.GetComponent<Animator>().Play(turnOnAnimation, 0);
+        }
     }
     void OnTriggerExit2D(Collider2D c)
     {
         if (GetComponent<Animator>() && turnOffAnimation.Length != 0)
+        {
             GetComponent<Animator>().Play(turnOffAnimation, 0);
+            if (destination)
+                destination.GetComponent<Animator>().Play(turnOffAnimation, 0);
+        }
     }
 }
