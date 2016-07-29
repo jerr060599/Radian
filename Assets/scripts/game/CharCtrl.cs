@@ -200,7 +200,7 @@ public class CharCtrl : MonoBehaviour
                             cost(dashCost);
                             SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                         }
-                        else
+                        else if (aInRange)
                             aInRange.activate(this);
                     if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
                     {
