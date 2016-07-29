@@ -16,7 +16,7 @@ public class CharCtrl : MonoBehaviour
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f;
-    bool rooted = false, variate = false;
+    bool rooted = false, variate = false, overAir = false;
     Vector2 lastInput = Vector2.down, lastJuicePosition;
     Animator ani, handAni;
     SpriteRenderer sr;
@@ -60,7 +60,7 @@ public class CharCtrl : MonoBehaviour
         //gameObject.SetActive(true);
         //pysc.velocity = Vector2.zero;
         //transform.position = new Vector3(curSpawn.transform.position.x, curSpawn.transform.position.y - 4f, 0f);
-        shadow.SetActive(true);
+        //shadow.SetActive(true);
         light.barPercent = 1f;
         dark.barPercent = 0f;
         controllable = true;
@@ -118,13 +118,13 @@ public class CharCtrl : MonoBehaviour
         if (isDashing = dashPos.sqrMagnitude > 0.1f)
         {
             gameObject.layer = dashLayer;
-            if (shadow.activeSelf)
+            if (shadow.activeSelf && overAir)
                 shadow.SetActive(false);
         }
         else
         {
             gameObject.layer = playerLayer;
-            if (!shadow.activeSelf)
+            if (!shadow.activeSelf && overAir)
                 shadow.SetActive(true);
         }
         foreach (RaycastHit2D rh in Physics2D.CircleCastAll(feetPos, 0.5f, Vector2.down, 0f))
@@ -172,7 +172,7 @@ public class CharCtrl : MonoBehaviour
                     {
                         float closest = dashDist;
                         lastInput = rPosFromArm;
-                        bool overAir = false;
+                        overAir = false;
                         foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
                         {
                             if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
