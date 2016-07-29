@@ -49,7 +49,7 @@ public class AutoOrder : MonoBehaviour
         shadowSr.color = new Color(0f, 0f, 0f, shadowDarkness);
         shadow.transform.localPosition = Vector3.zero;
         shadow.transform.localScale = new Vector3(1f, shadowScale, 1f);
-        float dMin = sr.bounds.extents.y - shadowSr.bounds.extents.y;
+        float dMin = shadowScale > 0 ? sr.bounds.extents.y - shadowSr.bounds.extents.y : -sr.bounds.extents.y + shadowSr.bounds.extents.y;
         shadow.transform.localPosition = new Vector3(0f, -dMin + shadowOffset, 0f);
     }
 }
