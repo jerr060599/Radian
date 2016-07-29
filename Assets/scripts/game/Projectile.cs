@@ -35,6 +35,8 @@ public class Projectile : MonoBehaviour
     }
     void stop()
     {
+        foreach (Collider2D c in GetComponents<Collider2D>())
+            c.enabled = false;
         if (hit)
             return;
         hit = true;
