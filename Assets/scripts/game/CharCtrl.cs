@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, staggerTime = 0.1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -41,6 +41,11 @@ public class CharCtrl : MonoBehaviour
     public void damage(float amount)
     {
         light.barPercent -= amount;
+        timedUncontrollable = staggerTime;
+        if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
+            ani.Play(lastInput.x > 0 ? "RightStagger" : "LeftStagger", 0);
+        else
+            ani.Play(lastInput.y > 0 ? "UpStagger" : "DownStagger", 0);
     }
     public void kill()
     {
@@ -135,123 +140,126 @@ public class CharCtrl : MonoBehaviour
                 }
                 else if (rh.collider.gameObject.GetComponent<MovementRedirect>())
                     redirect = rh.collider.gameObject.GetComponent<MovementRedirect>().dir;
-        if (controllable && timedUncontrollable < 0f)
+        if (timedUncontrollable < 0f)
         {
-            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            Vector2 rPosFromArm = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - armPos).normalized;
-            if (animationOverride <= 0f)
-                rooted = false;
-            if (!isDashing)
+            if (controllable)
             {
-                if (input.sqrMagnitude != 0f && animationOverride <= 0f && !arrowLoaded)
-                {
+                Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                Vector2 rPosFromArm = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - armPos).normalized;
+                if (animationOverride <= 0f)
                     rooted = false;
-                    lastInput = input;
-                    input = input.normalized;
-                    input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
-                    pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
-                    if (Mathf.Abs(input.x) >= Mathf.Abs(input.y))
-                        ani.Play(input.x > 0 ? "RightWalk" : "LeftWalk", 0);
-                    else
-                        ani.Play(input.y > 0 ? "UpWalk" : "DownWalk", 0);
-                }
-                else
+                if (!isDashing)
                 {
-                    brake();
-                    if (!(rooted || arrowLoaded))
-                        playIdleAnimation();
-                }
-                if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
-                {
-                    float closest = dashDist;
-                    lastInput = rPosFromArm;
-                    bool overAir = false;
-                    foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
+                    if (input.sqrMagnitude != 0f && animationOverride <= 0f && !arrowLoaded)
                     {
-                        if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
-                            closest = rh.distance;
-                        if (!overAir && rh.collider.gameObject.GetComponent<Air>())
-                            overAir = true;
-                    }
-                    dashPos = rPosFromArm * closest;
-                    if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
-                        ani.Play(overAir ? dashPos.x > 0 ? "RightDash" : "LeftDash" : dashPos.x > 0 ? "RightRoll" : "LeftRoll", 0);
-                    else
-                        ani.Play(overAir ? dashPos.y > 0 ? "UpDash" : "DownDash" : dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
-                    dashTime = dashCoolDown;
-                    cost(dashCost);
-                    SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
-                }
-                if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
-                {
-                    BasicEnemy be = null;
-                    foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
-                        if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
-                            be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
-                    meleeTime = meleeCoolDown;
-                    cost(meleeCost);
-                    rooted = true;
-                    animationOverride = meleeCoolDown;
-                    if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
-                        if (variate)
-                            ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                        rooted = false;
+                        lastInput = input;
+                        input = input.normalized;
+                        input = redirect * input.x + new Vector2(-redirect.y, redirect.x) * input.y;
+                        pysc.AddForce((input * charSpeed - pysc.velocity) * pysc.mass, ForceMode2D.Impulse);
+                        if (Mathf.Abs(input.x) >= Mathf.Abs(input.y))
+                            ani.Play(input.x > 0 ? "RightWalk" : "LeftWalk", 0);
                         else
-                            ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                            ani.Play(input.y > 0 ? "UpWalk" : "DownWalk", 0);
+                    }
                     else
-                        ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
-                    variate = !variate;
-                    lastInput = rPosFromArm;
-                    pysc.AddForce(rPosFromArm * meleeAdv);
-                }
-                if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
-                {
-                    arrowLoaded = true;
-                    handAni.Play("boxWindUp", 0);
-                }
-                if (arrowLoaded && Input.GetMouseButton(1))
-                {
-                    lastInput = rPosFromArm;
-                    arrowTime += Time.deltaTime;
-                    fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -rPosFromArm);
-                    if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y))
                     {
-                        ani.Play(rPosFromArm.x < 0 ? "LeftFireState" : "RightFireState", 0);
-                        if (fireHand.transform.localPosition.z != 0.01f)
-                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                        brake();
+                        if (!(rooted || arrowLoaded))
+                            playIdleAnimation();
                     }
-                    else if (rPosFromArm.y > 0)
+                    if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
                     {
-                        ani.Play("UpFireState", 0);
-                        if (fireHand.transform.localPosition.z != 0.01f)
-                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                        float closest = dashDist;
+                        lastInput = rPosFromArm;
+                        bool overAir = false;
+                        foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
+                        {
+                            if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
+                                closest = rh.distance;
+                            if (!overAir && rh.collider.gameObject.GetComponent<Air>())
+                                overAir = true;
+                        }
+                        dashPos = rPosFromArm * closest;
+                        if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
+                            ani.Play(overAir ? dashPos.x > 0 ? "RightDash" : "LeftDash" : dashPos.x > 0 ? "RightRoll" : "LeftRoll", 0);
+                        else
+                            ani.Play(overAir ? dashPos.y > 0 ? "UpDash" : "DownDash" : dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
+                        dashTime = dashCoolDown;
+                        cost(dashCost);
+                        SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                     }
-                    else if (fireHand.transform.localPosition.z != -0.01f)
+                    if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
                     {
-                        ani.Play("DownFireState", 0);
-                        fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
+                        BasicEnemy be = null;
+                        foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
+                            if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
+                                be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
+                        meleeTime = meleeCoolDown;
+                        cost(meleeCost);
+                        rooted = true;
+                        animationOverride = meleeCoolDown;
+                        if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
+                            if (variate)
+                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                            else
+                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                        else
+                            ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
+                        variate = !variate;
+                        lastInput = rPosFromArm;
+                        pysc.AddForce(rPosFromArm * meleeAdv);
+                    }
+                    if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
+                    {
+                        arrowLoaded = true;
+                        handAni.Play("boxWindUp", 0);
+                    }
+                    if (arrowLoaded && Input.GetMouseButton(1))
+                    {
+                        lastInput = rPosFromArm;
+                        arrowTime += Time.deltaTime;
+                        fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -rPosFromArm);
+                        if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y))
+                        {
+                            ani.Play(rPosFromArm.x < 0 ? "LeftFireState" : "RightFireState", 0);
+                            if (fireHand.transform.localPosition.z != 0.01f)
+                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                        }
+                        else if (rPosFromArm.y > 0)
+                        {
+                            ani.Play("UpFireState", 0);
+                            if (fireHand.transform.localPosition.z != 0.01f)
+                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                        }
+                        else if (fireHand.transform.localPosition.z != -0.01f)
+                        {
+                            ani.Play("DownFireState", 0);
+                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
+                        }
+                    }
+                    else
+                    {
+                        if (arrowTime >= arrowWindUp)
+                            fire(rPosFromArm);
+                        handAni.Play("NoAnimation", 0);
+                        arrowTime = 0f;
+                        arrowLoaded = false;
                     }
                 }
                 else
+                    brake();
+                if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
                 {
-                    if (arrowTime >= arrowWindUp)
-                        fire(rPosFromArm);
-                    handAni.Play("NoAnimation", 0);
-                    arrowTime = 0f;
-                    arrowLoaded = false;
+                    usingLight = !usingLight;
+                    gem.isLight = usingLight;
                 }
             }
             else
-                brake();
-            if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
             {
-                usingLight = !usingLight;
-                gem.isLight = usingLight;
+                playIdleAnimation();
+                brake();
             }
-        }
-        else
-        {
-            playIdleAnimation();
-            brake();
         }
         if ((lastJuicePosition - pysc.position).sqrMagnitude >= sqrUnitPerSound)
         {
