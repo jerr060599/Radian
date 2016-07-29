@@ -203,7 +203,7 @@ public class CharCtrl : MonoBehaviour
                         }
                     }
                     else
-                        aInRange.activate();
+                        aInRange.activate(this);
                     if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
                     {
                         BasicEnemy be = null;
