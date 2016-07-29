@@ -42,6 +42,10 @@ public class BasicEnemy : MonoBehaviour
     {
         foreach (Collider2D c in GetComponents<Collider2D>())
             c.enabled = false;
+        foreach (CircleCollider2D c in GetComponents<CircleCollider2D>())
+            c.enabled = false;
+        foreach (BoxCollider2D c in GetComponents<BoxCollider2D>())
+            c.enabled = false;
         fading = true;
     }
 }
