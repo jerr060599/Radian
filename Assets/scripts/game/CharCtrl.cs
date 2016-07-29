@@ -237,18 +237,18 @@ public class CharCtrl : MonoBehaviour
                         {
                             ani.Play(rPosFromArm.x < 0 ? "LeftFireState" : "RightFireState", 0);
                             if (fireHand.transform.localPosition.z != 0.01f)
-                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.0001f);
                         }
                         else if (rPosFromArm.y > 0)
                         {
                             ani.Play("UpFireState", 0);
                             if (fireHand.transform.localPosition.z != 0.01f)
-                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.01f);
+                                fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, 0.0001f);
                         }
                         else if (fireHand.transform.localPosition.z != -0.01f)
                         {
                             ani.Play("DownFireState", 0);
-                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.01f);
+                            fireArm.transform.localPosition = new Vector3(fireArm.transform.localPosition.x, fireArm.transform.localPosition.y, -0.0001f);
                         }
                     }
                     else
