@@ -6,7 +6,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, staggerTime = 0.1f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -319,6 +319,6 @@ public class CharCtrl : MonoBehaviour
         shadow.transform.localPosition = Vector3.zero;
         shadow.transform.localScale = new Vector3(1f, shadowScale, 1f);
         float dMin = shadowScale > 0 ? sr.bounds.extents.y - shadowSr.bounds.extents.y : -sr.bounds.extents.y + shadowSr.bounds.extents.y;
-        shadow.transform.localPosition = new Vector3(0f, -dMin + shadowOffset, 0f);
+        shadow.transform.localPosition = new Vector3(0f, -dMin + shadowOffset, shadowZOffset);
     }
 }
