@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BasicEnemy : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class BasicEnemy : MonoBehaviour
     }
     public void fadeAndDespawn()
     {
+        foreach (Collider2D c in GetComponents<Collider2D>())
+            c.enabled = false;
         fading = true;
     }
 }
