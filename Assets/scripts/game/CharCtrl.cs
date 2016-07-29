@@ -127,8 +127,11 @@ public class CharCtrl : MonoBehaviour
             if (!shadow.activeSelf && overAir)
                 shadow.SetActive(true);
         }
+        float closestA = float.PositiveInfinity;
+        Activatable aInRange = null;
         foreach (RaycastHit2D rh in Physics2D.CircleCastAll(feetPos, 0.5f, Vector2.down, 0f))
             if (rh.collider.isTrigger)
+            {
                 if (!isDashing && rh.collider.gameObject.GetComponent<Air>())
                 {
                     fallTime = deathFallTime;
@@ -138,8 +141,15 @@ public class CharCtrl : MonoBehaviour
                         ani.Play(lastInput.y > 0 ? "UpFall" : "DownFall", 0);
                     return;
                 }
-                else if (rh.collider.gameObject.GetComponent<MovementRedirect>())
+                else if (rh.collider.gameObject.GetComponent<Activatable>() && rh.distance < closestA)
+                {
+                    closestA = rh.distance;
+                    aInRange = rh.collider.gameObject.GetComponent<Activatable>();
+                }
+                if (rh.collider.gameObject.GetComponent<MovementRedirect>())
                     redirect = rh.collider.gameObject.GetComponent<MovementRedirect>().dir;
+
+            }
         if (timedUncontrollable < 0f)
         {
             if (controllable)
@@ -168,27 +178,32 @@ public class CharCtrl : MonoBehaviour
                         if (!(rooted || arrowLoaded))
                             playIdleAnimation();
                     }
-                    if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
+                    if (!aInRange)
                     {
-                        float closest = dashDist;
-                        lastInput = rPosFromArm;
-                        overAir = false;
-                        foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
+                        if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
                         {
-                            if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
-                                closest = rh.distance;
-                            if (!overAir && rh.collider.gameObject.GetComponent<Air>())
-                                overAir = true;
+                            float closest = dashDist;
+                            lastInput = rPosFromArm;
+                            overAir = false;
+                            foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
+                            {
+                                if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
+                                    closest = rh.distance;
+                                if (!overAir && rh.collider.gameObject.GetComponent<Air>())
+                                    overAir = true;
+                            }
+                            dashPos = rPosFromArm * closest;
+                            if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
+                                ani.Play(overAir ? dashPos.x > 0 ? "RightDash" : "LeftDash" : dashPos.x > 0 ? "RightRoll" : "LeftRoll", 0);
+                            else
+                                ani.Play(overAir ? dashPos.y > 0 ? "UpDash" : "DownDash" : dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
+                            dashTime = dashCoolDown;
+                            cost(dashCost);
+                            SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                         }
-                        dashPos = rPosFromArm * closest;
-                        if (Mathf.Abs(dashPos.x) > Mathf.Abs(dashPos.y))
-                            ani.Play(overAir ? dashPos.x > 0 ? "RightDash" : "LeftDash" : dashPos.x > 0 ? "RightRoll" : "LeftRoll", 0);
-                        else
-                            ani.Play(overAir ? dashPos.y > 0 ? "UpDash" : "DownDash" : dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
-                        dashTime = dashCoolDown;
-                        cost(dashCost);
-                        SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                     }
+                    else
+                        aInRange.activate();
                     if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
                     {
                         BasicEnemy be = null;
