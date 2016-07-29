@@ -4,7 +4,7 @@ using System.Collections;
 public class AutoOrder : MonoBehaviour
 {
     public float offset = 0f, shadowScale = 1.5f, shadowOffset = 0f, shadowDarkness = 0.3f, shadowZOffset = 0f;
-    public bool isStatic = false, orderOnY = true, generateShadow = false, updateShadowInRuntime = false, refresh = false;
+    public bool global = true, isStatic = false, orderOnY = true, generateShadow = false, updateShadowInRuntime = false, refresh = false;
     public GameObject shadow = null;
     SpriteRenderer sr = null;
     void Update()
@@ -25,7 +25,10 @@ public class AutoOrder : MonoBehaviour
         if (refresh)
             genShadow();
         if (orderOnY)
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, (transform.localPosition.y + offset) / 100f);
+            if (global)
+                transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + offset) / 100f);
+            else
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, (transform.localPosition.y + offset) / 100f);
         if (generateShadow && !shadow)
             genShadow();
         if (!generateShadow && shadow)
