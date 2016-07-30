@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RangeEnemy : BasicEnemy
+public class Blobby : BasicEnemy
 {
     public float projectileAirTime = 1f, range = 10f, avoidDistance = 3f, maxImpulse = 1f, atkTime = 0.5f, seekDistance = 8f, atkAnimationLength = 1f;
     float atkTimer = float.PositiveInfinity, animationOverride = 0f;
@@ -33,14 +33,14 @@ public class RangeEnemy : BasicEnemy
                 }
                 else if (d > seekDistance * seekDistance)
                 {
-                    pysc.AddForce(Vector2.ClampMagnitude((-dPos.normalized * walkSpeed- pysc.velocity), maxImpulse) * pysc.mass, ForceMode2D.Impulse);
+                    pysc.AddForce(Vector2.ClampMagnitude((-dPos.normalized * walkSpeed - pysc.velocity), maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                     ani.Play(dPos.x > 0f ? "walk" : "walkFlipped", 0);
                 }
                 else
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                     //if (animationOverride <= 0f)
-                    ani.Play(dPos.x > 0f ? "idle" : "idleFlipper", 0);
+                    ani.Play(dPos.x > 0f ? "idle" : "idleFlipped", 0);
                 }
             else
             {
