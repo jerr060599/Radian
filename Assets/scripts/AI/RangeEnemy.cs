@@ -55,4 +55,9 @@ public class RangeEnemy : BasicEnemy
                 atkTimer = d < range * range ? atkTime : float.PositiveInfinity;
         }
     }
+    public override void damage(int d, int damageType = 0)
+    {
+        base.damage(d, damageType);
+        agro = true;
+    }
 }
