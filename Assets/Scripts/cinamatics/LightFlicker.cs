@@ -3,8 +3,8 @@ using System.Collections;
 
 public class LightFlicker : MonoBehaviour {
 
-	float minIntensity = 1.5f;
-	float maxIntensity = 3f;
+	public float minIntensity = 1.5f;
+	public float maxIntensity = 3f;
 
 	float random;
 
