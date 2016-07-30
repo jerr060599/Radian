@@ -15,7 +15,7 @@ public class TextOnEnter : MonoBehaviour
     {
         txt = Instantiate(defText);
         txt.transform.SetParent(canvas.transform);
-        txt.GetComponent<RectTransform>().localPosition = transform.position + offset;
+        txt.GetComponent<RectTransform>().localPosition = transform.position + (Vector3)offset;
         txtComp = txt.GetComponent<UnityEngine.UI.Text>();
         txtComp.text = content;
         txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, 0f);
