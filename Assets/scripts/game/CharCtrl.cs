@@ -23,7 +23,6 @@ public class CharCtrl : MonoBehaviour
     SpriteRenderer sr;
     Consumable item;
     CircleCollider2D cc;
-    // Use this for initialization
     void Start()
     {
         light = lightBar.GetComponent<BarCtrl>();
