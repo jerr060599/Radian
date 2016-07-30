@@ -21,14 +21,14 @@ public class SeekerAi : BasicEnemy
             if (dPos.sqrMagnitude > parkRadius * parkRadius)
                 if (stunTimer <= 0f)
                 {
-                    pysc.AddForce(Vector2.ClampMagnitude(((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity) * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                    pysc.AddForce(Vector2.ClampMagnitude(((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity), maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                     ani.Play(dPos.x <= 0 ? "EnemyWalk" : "EnemyWalkFlipped");
                 }
                 else
-                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
             else
             {
-                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 atkTimer += Time.deltaTime;
                 if (atkTimer >= atkWindUp)
                 {
@@ -40,7 +40,7 @@ public class SeekerAi : BasicEnemy
         }
         else
         {
-            pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+            pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
             if (stunTimer < 0f && deathTimer > deathTime)
                 ani.Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
         }

@@ -28,23 +28,23 @@ public class AdvRangedEnemy : BasicEnemy
             if (atkTimer > atkTime)
                 if (d < avoidDistance * avoidDistance)
                 {
-                    pysc.AddForce(Vector2.ClampMagnitude(dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
+                    pysc.AddForce(Vector2.ClampMagnitude(dPos.normalized * walkSpeed - pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                     ani.Play(dPos.x < 0f ? "walk" : "walkFlipped", 0);
                 }
                 else if (d > seekDistance * seekDistance)
                 {
-                    pysc.AddForce(Vector2.ClampMagnitude(-dPos.normalized * walkSpeed * pysc.mass - pysc.velocity, maxImpulse), ForceMode2D.Impulse);
+                    pysc.AddForce(Vector2.ClampMagnitude(-dPos.normalized * walkSpeed - pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                     ani.Play(dPos.x > 0f ? "walk" : "walkFlipped", 0);
                 }
                 else
                 {
-                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                     //if (animationOverride <= 0f)
                     ani.Play(dPos.x > 0f ? "idle" : "idleFlipper", 0);
                 }
             else
             {
-                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxImpulse), ForceMode2D.Impulse);
+                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 ani.Play(dPos.x > 0f ? "atk" : "atkFlipped", 0);
             }
             if (atkTimer <= 0f)
