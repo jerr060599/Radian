@@ -4,7 +4,7 @@ using System.Collections;
 public class Blobby : BasicEnemy
 {
     public float projectileAirTime = 1f, range = 10f, avoidDistance = 3f, maxImpulse = 1f, atkTime = 0.5f, seekDistance = 8f, atkAnimationLength = 1f;
-    float atkTimer = float.PositiveInfinity, animationOverride = 0f;
+    float atkTimer = float.PositiveInfinity, atkWinUpTimer = 0f;
     public GameObject projectile;
     public void fire(Transform t)
     {
@@ -21,11 +21,11 @@ public class Blobby : BasicEnemy
         Vector2 dPos = pysc.position - CharCtrl.script.pysc.position;
         float d = dPos.x * dPos.x + dPos.y * dPos.y;
         atkTimer -= Time.deltaTime;
-        animationOverride -= Time.deltaTime;
         agro = agro ? true : d < range * range;
         if (agro)
         {
             if (atkTimer > atkTime)
+            {
                 if (d < avoidDistance * avoidDistance)
                 {
                     pysc.AddForce(Vector2.ClampMagnitude((dPos.normalized * walkSpeed - pysc.velocity), maxImpulse) * pysc.mass, ForceMode2D.Impulse);
@@ -42,12 +42,15 @@ public class Blobby : BasicEnemy
                     //if (animationOverride <= 0f)
                     ani.Play(dPos.x > 0f ? "idle" : "idleFlipped", 0);
                 }
+                atkWinUpTimer = 0;
+            }
             else
             {
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 ani.Play(dPos.x > 0f ? "atk" : "atkFlipped", 0);
+                atkWinUpTimer += Time.deltaTime;
             }
-            if (atkTimer <= 0f)
+            if (atkTimer <= 0f && atkWinUpTimer > atkAnimationLength)
                 fire(CharCtrl.script.transform);
             if (d < avoidDistance * avoidDistance || d > seekDistance * seekDistance)
                 atkTimer = float.PositiveInfinity;
