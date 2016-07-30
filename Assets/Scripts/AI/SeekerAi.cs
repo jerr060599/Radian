@@ -3,11 +3,12 @@ using System.Collections;
 
 public class SeekerAi : BasicEnemy
 {
-    public float agroRadius = 2f, parkRadius = 1.1f, maxImpulse = 1f;
+    public float agroRadius = 2f, parkRadius = 1.1f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.3f;
     float timer = 1.5f;
-    public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f;
+    public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f;
     float deathTimer = float.PositiveInfinity, stunTimer = 0f, atkTimer = 0f;
-    Vector2 dPos;
+    bool atking = false;
+    Vector2 dPos, dashPos;
     protected void Update()
     {
         dPos = CharCtrl.script.pysc.position - pysc.position;
@@ -34,12 +35,14 @@ public class SeekerAi : BasicEnemy
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 if (atkTimer == 0f)
                     ani.Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
-                atkTimer += Time.deltaTime;
+                if (!atking)
+                    atkTimer += Time.deltaTime;
                 if (atkTimer >= atkWindUp)
                 {
-                    CharCtrl.script.damage(0.10f);
+                    atking = true;
                     atkTimer = 0.00001f;
                     ani.Play(dPos.x < 0f ? "EnemyMelee" : "EnemyMeleeFlipped");
+                    dashPos = dPos;
                 }
             }
         }
@@ -49,6 +52,15 @@ public class SeekerAi : BasicEnemy
             if (stunTimer < 0f && deathTimer > deathTime)
                 ani.Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
         }
+        if (atking && dashPos.x * dashPos.x + dashPos.y * dashPos.y < 0.1)
+        {
+            atking = false;
+            dashPos = Vector2.zero;
+            if (dPos.sqrMagnitude < atkDistance * atkDistance)
+                CharCtrl.script.damage(atkDamage);
+        }
+        pysc.position += dashPos * dashLerp;
+        dashPos *= 1 - dashLerp;
     }
     public override void kill(int damageType = 0)
     {
@@ -57,6 +69,8 @@ public class SeekerAi : BasicEnemy
         else
             ani.Play(dPos.x <= 0 ? "EnemyArrowDeath" : "EnemyArrowDeathFlipped");
         deathTimer = deathTime;
+        foreach (Collider2D c in GetComponents<Collider2D>())
+            c.enabled = false;
     }
     public override void damage(int amount, int damageType = 0)
     {
