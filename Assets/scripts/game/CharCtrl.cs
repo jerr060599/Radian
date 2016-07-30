@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
-    public GameObject death, itemIcon, spawn, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
+    public GameObject death, itemIcon, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false;
     public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
@@ -17,11 +18,10 @@ public class CharCtrl : MonoBehaviour
     public Vector2 feetPos, armPos;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f;
     bool rooted = false, variate = false, overAir = false;
-    Vector2 lastInput = Vector2.down, lastJuicePosition;
+    Vector2 lastInput = Vector2.down, lastJuicePosition, dashPos;
     Animator ani, handAni;
     SpriteRenderer sr;
     Consumable item;
-    Vector2 dashPos;
     CircleCollider2D cc;
     // Use this for initialization
     void Start()
@@ -37,6 +37,8 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
+        if (PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name) != 0f || PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name) != 0f)
+            transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }
     public void damage(float amount)
     {
@@ -61,15 +63,7 @@ public class CharCtrl : MonoBehaviour
         //pysc.velocity = Vector2.zero;
         //transform.position = new Vector3(curSpawn.transform.position.x, curSpawn.transform.position.y - 4f, 0f);
         //shadow.SetActive(true);
-        light.barPercent = 1f;
-        dark.barPercent = 0f;
-        controllable = true;
-        fallTime = float.PositiveInfinity;
-        gameObject.layer = playerLayer;
-        pysc.gravityScale = 0f;
-        pysc.velocity = Vector2.zero;
-        transform.position = spawn.transform.position;
-        feetPos = pysc.position + cc.offset;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public bool eat(Consumable c)
     {
