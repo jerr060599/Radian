@@ -5,25 +5,19 @@ public class CustomCursor : MonoBehaviour
 {
     public Texture2D mouse;
     public static CustomCursor script;
-    public GameObject small, smaller, cam;
-    public float smallSpacing = 0.5f, smallerSpacing = 0.7f;
-    RectTransform smallRt, smallerRt;
+    public GameObject smaller, cam;
+    public float smallerSpacing = 0.5f;
+    RectTransform smallerRt;
     void Start()
     {
         script = this;
-        smallRt = small.GetComponent<RectTransform>();
         smallerRt = smaller.GetComponent<RectTransform>();
-        Cursor.SetCursor(mouse, new Vector2(13f,13f), CursorMode.Auto);
+        Cursor.SetCursor(mouse, new Vector2(13f, 13f), CursorMode.Auto);
     }
     // Update is called once per frame
     void Update()
     {
-        if (PauseMenu.paused)
-            return;
-        Vector3 half = new Vector3(Screen.width / 2, Screen.height / 2);
-        Vector3 cPos = Camera.main.WorldToScreenPoint(CharCtrl.script.armPos) - half;
-        Vector3 dPos = (Vector3)cPos - Input.mousePosition + half;
-        smallRt.localPosition = cPos - dPos * smallSpacing;
-        smallerRt.localPosition = cPos - dPos * smallerSpacing;
+        Vector3 dPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - CharCtrl.script.transform.position;
+        smallerRt.localPosition = (Vector2)(CharCtrl.script.transform.position) + Vector2.ClampMagnitude(dPos * smallerSpacing, CharCtrl.script.dashDist);
     }
 }

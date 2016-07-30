@@ -180,7 +180,7 @@ public class CharCtrl : MonoBehaviour
                             overAir = false;
                             foreach (RaycastHit2D rh in Physics2D.RaycastAll(feetPos, rPosFromArm, dashDist))
                             {
-                                if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject))
+                                if (!rh.collider.isTrigger && rh.distance < closest && !(rh.collider.attachedRigidbody && rh.collider.attachedRigidbody.gameObject == gameObject) && rh.collider.gameObject != gameObject)
                                     closest = rh.distance;
                                 if (!overAir && rh.collider.gameObject.GetComponent<Air>())
                                     overAir = true;
@@ -274,7 +274,7 @@ public class CharCtrl : MonoBehaviour
             if (!isDashing && fallTime > deathFallTime)
                 SoundManager.script.playOnListener(SoundManager.script.grassFootStep, 0.8f);
         }
-        pysc.position += dashPos * dashLerp;
+        transform.localPosition += (Vector3)dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }
