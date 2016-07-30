@@ -9,12 +9,13 @@ public class TextOnEnter : MonoBehaviour
     RectTransform rt = null;
     GameObject txt = null;
     UnityEngine.UI.Text txtComp = null;
+    public Vector2 offset = Vector2.zero;
     bool show = false;
     void Start()
     {
         txt = Instantiate(defText);
         txt.transform.SetParent(canvas.transform);
-        txt.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        txt.GetComponent<RectTransform>().localPosition = transform.position + (Vector3)offset;
         txtComp = txt.GetComponent<UnityEngine.UI.Text>();
         txtComp.text = content;
         txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, 0f);
