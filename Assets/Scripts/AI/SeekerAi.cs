@@ -19,6 +19,7 @@ public class SeekerAi : BasicEnemy
         if (agro && deathTimer > deathTime)
         {
             if (dPos.sqrMagnitude > parkRadius * parkRadius)
+            {
                 if (stunTimer <= 0f)
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity), maxImpulse) * pysc.mass, ForceMode2D.Impulse);
@@ -26,14 +27,18 @@ public class SeekerAi : BasicEnemy
                 }
                 else
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
+                atkTimer = 0f;
+            }
             else
             {
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
+                if (atkTimer == 0f)
+                    ani.Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
                 atkTimer += Time.deltaTime;
                 if (atkTimer >= atkWindUp)
                 {
                     CharCtrl.script.damage(0.10f);
-                    atkTimer = 0f;
+                    atkTimer = 0.00001f;
                     ani.Play(dPos.x < 0f ? "EnemyMelee" : "EnemyMeleeFlipped");
                 }
             }
