@@ -9,7 +9,7 @@ public class TextOnEnter : MonoBehaviour
     RectTransform rt = null;
     GameObject txt = null;
     UnityEngine.UI.Text txtComp = null;
-    Vector2 offset = Vector2.zero;
+    public Vector2 offset = Vector2.zero;
     bool show = false;
     void Start()
     {
