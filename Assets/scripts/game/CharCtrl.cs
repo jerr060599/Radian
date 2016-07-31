@@ -78,6 +78,11 @@ public class CharCtrl : MonoBehaviour
         }
         return false;
     }
+    void FixedUpdate()
+    {
+        transform.localPosition += (Vector3)dashPos * dashLerp;
+        dashPos *= 1 - dashLerp;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -275,8 +280,6 @@ public class CharCtrl : MonoBehaviour
             if (!isDashing && fallTime > deathFallTime)
                 SoundManager.script.playOnListener(SoundManager.script.grassFootStep, 0.8f);
         }
-        transform.localPosition += (Vector3)dashPos * dashLerp;
-        dashPos *= 1 - dashLerp;
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }
     public void brake()
