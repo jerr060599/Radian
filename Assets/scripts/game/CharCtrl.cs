@@ -82,6 +82,7 @@ public class CharCtrl : MonoBehaviour
     }
     void Update()
     {
+        variate = !variate;
         deathTimer -= Time.deltaTime;
         timedUncontrollable -= Time.deltaTime;
         dashTime -= Time.deltaTime;
@@ -213,15 +214,12 @@ public class CharCtrl : MonoBehaviour
                         rooted = true;
                         animationOverride = meleeCoolDown;
                         if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
-                            if (variate)
-                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
-                            else
-                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                            ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
                         else
                             ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
-                        variate = !variate;
                         lastInput = rPosFromArm;
                         pysc.AddForce(rPosFromArm * meleeAdv);
+                        SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit1, 0.8f);
                     }
                     if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
                     {
@@ -278,7 +276,7 @@ public class CharCtrl : MonoBehaviour
         {
             lastJuicePosition = pysc.position;
             if (!isDashing && fallTime > deathFallTime)
-                SoundManager.script.playOnListener(Random.value > 0.5 ? SoundManager.script.step1 : SoundManager.script.step2, 0.8f);
+                SoundManager.script.playOnListener(variate ? SoundManager.script.step1 : SoundManager.script.step2, 0.8f);
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }
