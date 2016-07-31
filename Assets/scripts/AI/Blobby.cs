@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Blobby : BasicEnemy
 {
-    public float projectileAirTime = 1f, range = 10f, avoidDistance = 3f, maxImpulse = 1f, atkTime = 0.5f, seekDistance = 8f, atkAnimationLength = 1f, volleyLength = 4f, volleySpacing = 3f;
-    float atkTimer = float.PositiveInfinity, atkWinUpTimer = 0f, volleyTimer = 0f;
+    public float projectileAirTime = 1f, range = 10f, avoidDistance = 3f, maxImpulse = 1f, atkTime = 0.5f, seekDistance = 8f, atkAnimationLength = 1f, volleyLength = 4f, volleySpacing = 3f, deathTime = 1f;
+    float atkTimer = float.PositiveInfinity, atkWinUpTimer = 0f, volleyTimer = 0f, deathTimer = float.PositiveInfinity;
     public GameObject projectile;
+    Vector2 dPos;
     public void fire(Transform t)
     {
         atkTimer = float.PositiveInfinity;
@@ -18,11 +19,14 @@ public class Blobby : BasicEnemy
 
     void Update()
     {
-        Vector2 dPos = pysc.position - CharCtrl.script.pysc.position;
+        dPos = pysc.position - CharCtrl.script.pysc.position;
         float d = dPos.x * dPos.x + dPos.y * dPos.y;
         atkTimer -= Time.deltaTime;
+        deathTimer -= Time.deltaTime;
         agro = agro ? true : d < range * range;
-        if (agro)
+        if (deathTimer <= 0f)
+            fadeAndDespawn();
+        if (agro && deathTimer > deathTime)
         {
             if (atkTimer > atkTime)
             {
@@ -70,6 +74,13 @@ public class Blobby : BasicEnemy
             else if (atkTimer > atkTime)
                 atkTimer = d < range * range ? atkTime : float.PositiveInfinity;
         }
+        else
+            pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
+    }
+    public override void kill(int damageType = 0)
+    {
+        deathTimer = deathTime;
+        ani.Play(dPos.x > 0f ? "death" : "deathFlipped", 0);
     }
     public override void damage(int d, int damageType = 0)
     {

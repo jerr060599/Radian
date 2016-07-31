@@ -42,6 +42,8 @@ public class BasicEnemy : MonoBehaviour
     }
     public void fadeAndDespawn()
     {
+        if (fading)
+            return;
         foreach (Collider2D c in GetComponents<Collider2D>())
             c.enabled = false;
         fading = true;
