@@ -15,7 +15,7 @@ public class PlayerSpawn : Activatable
             nextActivatable.activate(player);
         PlayerPrefs.SetFloat("spawnX_" + SceneManager.GetActiveScene().name, transform.position.x + spawnOffset.x);
         PlayerPrefs.SetFloat("spawnY_" + SceneManager.GetActiveScene().name, transform.position.y + spawnOffset.y);
-        PlayerPrefs.SetFloat("curSpawn_" + SceneManager.GetActiveScene().name, GetInstanceID());
+        PlayerPrefs.SetInt("curSpawn_" + SceneManager.GetActiveScene().name, GetInstanceID());
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("playerSpawn"))
             if (obj != gameObject)
                 obj.GetComponent<PlayerSpawn>().turnOff();

@@ -33,6 +33,9 @@ public class Projectile : MonoBehaviour
         }
         stop();
     }
+    public virtual void hitEvent()
+    {
+    }
     void stop()
     {
         foreach (Collider2D c in GetComponents<Collider2D>())
@@ -47,6 +50,7 @@ public class Projectile : MonoBehaviour
         turnWithVel = false;
         if (GetComponent<Animator>() && splatAnimation.Length != 0)
             GetComponent<Animator>().Play(splatAnimation, 0);
+        hitEvent();
     }
     public void setVelocity(Vector2 velocity)
     {
