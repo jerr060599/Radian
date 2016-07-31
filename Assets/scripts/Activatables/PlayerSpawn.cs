@@ -21,12 +21,14 @@ public class PlayerSpawn : Activatable
                 obj.GetComponent<PlayerSpawn>().turnOff();
         ani.Play("burning", 0);
         effects.SetActive(true);
+		GetComponent<AudioSource> ().Play ();
     }
     public void turnOff()
     {
         if (!on)
             return;
         ani.Play("off", 0);
+		GetComponent<AudioSource> ().Stop ();
         on = false;
         effects.SetActive(false);
     }

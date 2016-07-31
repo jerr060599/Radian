@@ -20,6 +20,7 @@ public class BasicEnemy : MonoBehaviour
     }
     public virtual void damage(int d, int damageType = 0)
     {
+		
         health -= d;
         if (damageType == MELEE_DAMAGE)
             pysc.AddForce((pysc.position - CharCtrl.script.pysc.position).normalized * damageKB);

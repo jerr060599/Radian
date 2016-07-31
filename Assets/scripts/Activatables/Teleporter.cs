@@ -11,6 +11,8 @@ public class Teleporter : Activatable
     }
     public override void activate(CharCtrl player)
     {
+
+		SoundManager.script.playOnListener (SoundManager.script.teleport, 0.8f);
         if (nextActivatable != null)
             nextActivatable.activate(player);
         player.transform.position = destination.transform.position + (Vector3)offset;
