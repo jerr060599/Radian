@@ -4,7 +4,7 @@ using System.Collections;
 public class TimeRift : MonoBehaviour
 {
     public float timeScale = 1f, duration;
-    public bool fixedDuration = true;
+    public bool fixedDuration = true, seppukuObject = true;
     public int validUsage = 1;
     float prevTimeScale = 0f;
     float riftTimer = float.PositiveInfinity;
@@ -17,7 +17,10 @@ public class TimeRift : MonoBehaviour
             Time.timeScale = prevTimeScale;
             riftTimer = float.PositiveInfinity;
             if (validUsage <= 0)
-                Destroy(gameObject);
+                if (seppuku)
+                    Destroy(gameObject);
+                else
+                    Destroy(this);
         }
     }
     void OnTriggerEnter2D(Collider2D c)
