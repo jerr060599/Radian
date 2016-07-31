@@ -211,7 +211,7 @@ public class CharCtrl : MonoBehaviour
                             if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
                             {
                                 be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
-                                SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit1, 0.8f);
+                                SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit2, 0.8f);
                             }
                         meleeTime = meleeCoolDown;
                         cost(meleeCost);
@@ -223,7 +223,6 @@ public class CharCtrl : MonoBehaviour
                             ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
                         lastInput = rPosFromArm;
                         pysc.AddForce(rPosFromArm * meleeAdv);
-
                     }
                     if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
                     {
