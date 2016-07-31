@@ -23,7 +23,7 @@ public class CharCtrl : MonoBehaviour
     SpriteRenderer sr;
     Consumable item;
     CircleCollider2D cc;
-    void Start()
+    void Awake()
     {
         light = lightBar.GetComponent<BarCtrl>();
         dark = darkBar.GetComponent<BarCtrl>();

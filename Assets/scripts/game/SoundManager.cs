@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource lastBGM = null, curBGM = null;
     public float smooth = 0.1f;
     public float bgmVolume = 0f;
-    void Start()
+    void Awake()
     {
         script = this;
 	

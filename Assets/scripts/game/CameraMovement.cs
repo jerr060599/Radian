@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     Vector3 shakePos = Vector3.zero, mousePos = Vector3.zero, curPos;
     Camera cam;
 
-    void Start()
+    void Awake()
     {
         script = this;
         curPos = transform.position;

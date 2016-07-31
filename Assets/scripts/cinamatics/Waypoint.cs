@@ -22,6 +22,7 @@ public class Waypoint : MonoBehaviour
     public virtual void activate()
     {
         gameObject.SetActive(true);
+        CustomCursor.script.curWaypoint = this;
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_waypoint_" + GetInstanceID(), ACTIVE);
     }
 
@@ -29,6 +30,8 @@ public class Waypoint : MonoBehaviour
     {
         if (nextWaypoint)
             nextWaypoint.GetComponent<Waypoint>().activate();
+        else
+            CustomCursor.script.curWaypoint = null;
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_waypoint_" + GetInstanceID(), USED);
         Destroy(gameObject);
     }
