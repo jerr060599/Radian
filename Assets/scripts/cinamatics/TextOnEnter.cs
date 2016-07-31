@@ -11,6 +11,8 @@ public class TextOnEnter : MonoBehaviour
     UnityEngine.UI.Text txtComp = null;
     public Vector2 offset = Vector2.zero;
     bool show = false;
+	public bool once;
+	bool onceT;
     void Start()
     {
         txt = Instantiate(defText);
@@ -20,6 +22,7 @@ public class TextOnEnter : MonoBehaviour
         txtComp.text = content;
         txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, 0f);
         txt.SetActive(false);
+		onceT = false;
     }
     void OnTriggerEnter2D(Collider2D c)
     {
@@ -37,12 +40,15 @@ public class TextOnEnter : MonoBehaviour
             txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, txtComp.color.a + (1 - txtComp.color.a) * (1 - smooth));
         else
             txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, txtComp.color.a * smooth);
-        if (txtComp.color.a > 0.05)
-        {
-            if (!txt.activeSelf)
-                txt.SetActive(true);
-        }
-        else if (txt.activeSelf)
-            txt.SetActive(false);
+		if (txtComp.color.a > 0.05) {
+			if (!txt.activeSelf) {
+				if (!onceT)
+					txt.SetActive (true);
+			}
+		} else if (txt.activeSelf) {
+			txt.SetActive (false);
+			if (once)
+				onceT = true;
+		}
     }
 }
