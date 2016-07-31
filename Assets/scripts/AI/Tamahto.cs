@@ -5,7 +5,6 @@ public class Tamahto : BasicEnemy
 {
     public readonly int SLAM = 0, CRUSH = 1, WINDUP = 2;
     public float agroRadius = 2f, parkRadius = 4f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.2f;
-    float timer = 1.5f;
     public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f;
     float deathTimer = float.PositiveInfinity, stunTimer = 0f, atkTimer = 0f;
     int atking = -1;

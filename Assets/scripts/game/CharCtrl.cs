@@ -13,7 +13,8 @@ public class CharCtrl : MonoBehaviour
     public int meleeDamage = 1;
     public int dashLayer = 8, playerLayer = 10;
     public Rigidbody2D pysc = null;
-    public BarCtrl light, dark;
+    public new BarCtrl light;
+    public BarCtrl dark;
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f, deathTimer = float.PositiveInfinity;
@@ -37,7 +38,7 @@ public class CharCtrl : MonoBehaviour
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
         ani.Play("Awake", 0);
-        timedUncontrollable = 1.5f;
+        timedUncontrollable = 1.3f;
         if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }

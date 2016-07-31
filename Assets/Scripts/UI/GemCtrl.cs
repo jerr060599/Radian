@@ -5,7 +5,8 @@ public class GemCtrl : MonoBehaviour
 {
     public bool isLight = true;
     public UnityEngine.UI.Image sr = null;
-    public Color light, dark;
+    public new Color light;
+    public Color dark;
     public float smooth = 0.1f;
     // Use this for initialization
     void Start()
