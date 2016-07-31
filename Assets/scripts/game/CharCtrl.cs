@@ -38,16 +38,16 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
-        if (!PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
+        if (PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
+        {
+            ani.Play("Awake", 0);
+            timedUncontrollable = 1.2f;
+        }
+        else
         {
             if (introAnimation.Length != 0)
                 ani.Play(introAnimation, 0);
             timedUncontrollable = spawnLength;
-        }
-        else
-        {
-            ani.Play("Awake", 0);
-            timedUncontrollable = 1.2f;
         }
         if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
@@ -223,6 +223,7 @@ public class CharCtrl : MonoBehaviour
                                 be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
                                 SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit2, 0.8f);
                             }
+                        SoundManager.script.playOnListener(variate ? SoundManager.script.sword1 : SoundManager.script.sword2, 0.8f);
                         meleeTime = meleeCoolDown;
                         cost(meleeCost);
                         rooted = true;
