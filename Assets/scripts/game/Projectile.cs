@@ -15,7 +15,9 @@ public class Projectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D c)
     {
-        if (hit || c.isTrigger)
+        if (hit)
+            return;
+        if (c.isTrigger && !c.gameObject.GetComponent<BasicEnemy>())
             return;
         if (c.attachedRigidbody && c.attachedRigidbody.gameObject)
         {
