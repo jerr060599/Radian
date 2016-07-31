@@ -6,8 +6,9 @@ public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
     public GameObject death, itemIcon, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
+    public string introAnimation = "";
     public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false, invulnerable = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f, deathAnimationTime = 1f;
+    public float spawnLength = 1.2f, arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f, deathAnimationTime = 1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -37,8 +38,17 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
-        ani.Play("Awake", 0);
-        timedUncontrollable = 1.3f;
+        if (PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
+        {
+            if (introAnimation.Length != 0)
+                ani.Play(introAnimation, 0);
+            timedUncontrollable = spawnLength;
+        }
+        else
+        {
+            ani.Play("Awake", 0);
+            timedUncontrollable = 1.2f;
+        }
         if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }

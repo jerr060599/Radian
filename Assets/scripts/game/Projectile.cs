@@ -3,10 +3,11 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour
 {
-    public float damage, fadeAfterHit = 0f, splatTolerance = 1f, lifeTime = 500f, cameraShake = 0f;
+    public float damage, fadeAfterHit = 0f, splatTolerance = 1f, lifeTime = 500f, cameraShake = 0f, hitVolume = 1f;
     public bool turnWithVel = false, enemyProjectile = false, splatAtLocation = false;
     public string splatAnimation = "";
     public Vector2 splatLocation = Vector2.zero;
+    public AudioClip soundOnHit = null;
     bool hit = false;
     SpriteRenderer sr = null;
     void Start()
@@ -19,6 +20,7 @@ public class Projectile : MonoBehaviour
             return;
         if (c.isTrigger && !c.gameObject.GetComponent<BasicEnemy>())
             return;
+        SoundManager.script.playOn(transform, soundOnHit, hitVolume);
         if (c.attachedRigidbody && c.attachedRigidbody.gameObject)
         {
             if (enemyProjectile)
