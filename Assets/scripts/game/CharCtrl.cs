@@ -36,7 +36,7 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
-        if (PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name) != 0f || PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name) != 0f)
+        if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }
     public void damage(float amount)
