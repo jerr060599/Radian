@@ -13,7 +13,8 @@ public class CharCtrl : MonoBehaviour
     public int meleeDamage = 1;
     public int dashLayer = 8, playerLayer = 10;
     public Rigidbody2D pysc = null;
-    public BarCtrl light, dark;
+    public new BarCtrl light;
+    public BarCtrl dark;
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
     float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f, deathTimer = float.PositiveInfinity;
@@ -37,7 +38,7 @@ public class CharCtrl : MonoBehaviour
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
         ani.Play("Awake", 0);
-        timedUncontrollable = 1.5f;
+        timedUncontrollable = 1.3f;
         if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }
@@ -82,6 +83,7 @@ public class CharCtrl : MonoBehaviour
     }
     void Update()
     {
+        variate = !variate;
         deathTimer -= Time.deltaTime;
         timedUncontrollable -= Time.deltaTime;
         dashTime -= Time.deltaTime;
@@ -213,15 +215,12 @@ public class CharCtrl : MonoBehaviour
                         rooted = true;
                         animationOverride = meleeCoolDown;
                         if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
-                            if (variate)
-                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
-                            else
-                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                            ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
                         else
                             ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
-                        variate = !variate;
                         lastInput = rPosFromArm;
                         pysc.AddForce(rPosFromArm * meleeAdv);
+                        SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit1, 0.8f);
                     }
                     if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
                     {
@@ -278,7 +277,7 @@ public class CharCtrl : MonoBehaviour
         {
             lastJuicePosition = pysc.position;
             if (!isDashing && fallTime > deathFallTime)
-                SoundManager.script.playOnListener(Random.value > 0.5 ? SoundManager.script.step1 : SoundManager.script.step2, 0.8f);
+                SoundManager.script.playOnListener(variate ? SoundManager.script.step1 : SoundManager.script.step2, 0.8f);
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }

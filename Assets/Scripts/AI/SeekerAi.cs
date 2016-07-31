@@ -4,7 +4,6 @@ using System.Collections;
 public class SeekerAi : BasicEnemy
 {
     public float agroRadius = 2f, parkRadius = 1.1f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.3f;
-    float timer = 1.5f;
     public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f;
     float deathTimer = float.PositiveInfinity, stunTimer = 0f, atkTimer = 0f;
     bool atking = false;

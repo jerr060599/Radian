@@ -6,7 +6,6 @@ public class TextOnEnter : MonoBehaviour
     public GameObject canvas = null, defText;
     public float smooth = 0.6f;
     public string content = "";
-    RectTransform rt = null;
     GameObject txt = null;
     UnityEngine.UI.Text txtComp = null;
     public Vector2 offset = Vector2.zero;
