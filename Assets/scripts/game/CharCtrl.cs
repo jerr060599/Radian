@@ -7,7 +7,7 @@ public class CharCtrl : MonoBehaviour
     public static CharCtrl script = null;
     public GameObject death, itemIcon, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false, invulnerable = false;
-    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f;
+    public float arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f, deathAnimationTime = 1f;
     public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
     public float darkMultiplyer = 2f;
     public int meleeDamage = 1;
@@ -16,8 +16,8 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl light, dark;
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
-    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f;
-    bool rooted = false, variate = false, overAir = false;
+    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f, deathTimer = float.PositiveInfinity;
+    bool rooted = false, variate = false, overAir = false, noUpdate = false;
     Vector2 lastInput = Vector2.down, lastJuicePosition, dashPos;
     Animator ani, handAni;
     SpriteRenderer sr;
@@ -36,6 +36,8 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
+        ani.Play("Awake", 0);
+        timedUncontrollable = 1.5f;
         if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }
@@ -52,18 +54,14 @@ public class CharCtrl : MonoBehaviour
     }
     public void kill()
     {
-        //((GameObject)Instantiate(death, transform.position + (new Vector3(0f, 12f, 0f)), transform.rotation)).GetComponent<RespawnAni>().player = this;
-        //gameObject.SetActive(false);
-        //SoundManager.script.playOnListener (SoundManager.script.death0, 0.4f);
         controllable = false;
-        respawn();
+        noUpdate = true;
+        invulnerable = true;
+        deathTimer = deathAnimationTime;
+        ani.Play("Death", 0);
     }
     public void respawn()
     {
-        //gameObject.SetActive(true);
-        //pysc.velocity = Vector2.zero;
-        //transform.position = new Vector3(curSpawn.transform.position.x, curSpawn.transform.position.y - 4f, 0f);
-        //shadow.SetActive(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public bool eat(Consumable c)
@@ -72,7 +70,6 @@ public class CharCtrl : MonoBehaviour
         {
             item = c;
             itemIcon.GetComponent<UnityEngine.UI.Image>().sprite = c.icon;
-            //SoundManager.script.playOnListener(SoundManager.script.pickup0, 0.8f);
             itemIcon.SetActive(true);
             return true;
         }
@@ -83,9 +80,17 @@ public class CharCtrl : MonoBehaviour
         transform.localPosition += (Vector3)dashPos * dashLerp;
         dashPos *= 1 - dashLerp;
     }
-    // Update is called once per frame
     void Update()
     {
+        deathTimer -= Time.deltaTime;
+        timedUncontrollable -= Time.deltaTime;
+        dashTime -= Time.deltaTime;
+        meleeTime -= Time.deltaTime;
+        animationOverride -= Time.deltaTime;
+        if (deathTimer <= 0f)
+            respawn();
+        if (noUpdate)
+            return;
         if (!shadow)
             genShadow();
         else
@@ -94,7 +99,6 @@ public class CharCtrl : MonoBehaviour
                 genShadow();
             shadow.GetComponent<SpriteRenderer>().flipX = sr.flipX;
         }
-        timedUncontrollable -= Time.deltaTime;
         if (fallTime <= deathFallTime)
         {
             fallTime -= Time.deltaTime;
@@ -109,9 +113,6 @@ public class CharCtrl : MonoBehaviour
             kill();
             return;
         }
-        dashTime -= Time.deltaTime;
-        meleeTime -= Time.deltaTime;
-        animationOverride -= Time.deltaTime;
         Vector2 redirect = Vector2.right;
         feetPos = pysc.position + cc.offset;
         armPos = pysc.position + (Vector2)(fireArm.transform.localPosition);
@@ -148,7 +149,6 @@ public class CharCtrl : MonoBehaviour
                 }
                 if (rh.collider.gameObject.GetComponent<MovementRedirect>())
                     redirect = rh.collider.gameObject.GetComponent<MovementRedirect>().dir;
-
             }
         if (timedUncontrollable < 0f)
         {
@@ -277,14 +277,8 @@ public class CharCtrl : MonoBehaviour
         if ((lastJuicePosition - pysc.position).sqrMagnitude >= sqrUnitPerSound)
         {
             lastJuicePosition = pysc.position;
-			if (!isDashing && fallTime > deathFallTime) {
-				int ran = Random.Range (0, 2);
-				if(ran==1)
-				SoundManager.script.playOnListener (SoundManager.script.step1, 0.8f);
-				else
-
-					SoundManager.script.playOnListener (SoundManager.script.step2, 0.8f);
-			}
+            if (!isDashing && fallTime > deathFallTime)
+                SoundManager.script.playOnListener(Random.value > 0.5 ? SoundManager.script.step1 : SoundManager.script.step2, 0.8f);
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }
