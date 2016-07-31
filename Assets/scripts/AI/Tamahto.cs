@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SeekerAi : BasicEnemy
+public class Tamahto : BasicEnemy
 {
-    public float agroRadius = 2f, parkRadius = 1.1f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.3f;
+    public readonly int SLAM = 0, CRUSH = 1, WINDUP = 2;
+    public float agroRadius = 2f, parkRadius = 4f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.2f;
     float timer = 1.5f;
     public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f;
     float deathTimer = float.PositiveInfinity, stunTimer = 0f, atkTimer = 0f;
-    bool atking = false;
+    int atking = -1;
     Vector2 dPos, dashPos;
     protected void Update()
     {
@@ -19,55 +20,60 @@ public class SeekerAi : BasicEnemy
         agro = agro ? true : (CharCtrl.script.pysc.position - pysc.position).sqrMagnitude <= agroRadius * agroRadius;
         if (agro && deathTimer > deathTime)
         {
-            if (dPos.sqrMagnitude > parkRadius * parkRadius)
+            if (dPos.sqrMagnitude > parkRadius * parkRadius && atkTimer == 0f)
             {
                 if (stunTimer <= 0f)
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(((CharCtrl.script.pysc.position - pysc.position).normalized * walkSpeed - pysc.velocity), maxImpulse) * pysc.mass, ForceMode2D.Impulse);
-                    ani.Play(dPos.x <= 0 ? "EnemyWalk" : "EnemyWalkFlipped");
+                    ani.Play(dPos.x <= 0 ? "walk" : "walkFlipped");
                 }
                 else
+                {
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
+                    ani.Play(dPos.x < 0f ? "idle" : "idleFlipped");
+                }
                 atkTimer = 0f;
             }
             else
             {
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
-                if (atkTimer == 0f)
-                    ani.Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
-                if (!atking)
-                    atkTimer += Time.deltaTime;
+                if (atking == -1)
+                {
+                    dashPos = dPos + CharCtrl.script.pysc.velocity * atkWindUp;
+                    atking = WINDUP;
+                }
+                atkTimer += Time.deltaTime;
                 if (atkTimer >= atkWindUp)
                 {
-                    atking = true;
-                    atkTimer = 0.00001f;
-                    ani.Play(dPos.x < 0f ? "EnemyMelee" : "EnemyMeleeFlipped");
-                    dashPos = dPos;
+                    atking = Random.value > 0.0f ? SLAM : CRUSH;
+                    atkTimer = 0f;
                 }
+                else
+                    ani.Play(dPos.x < 0f ? "atk" : "atkFlipped");
             }
         }
         else
         {
             pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
             if (stunTimer < 0f && deathTimer > deathTime)
-                ani.Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
+                ani.Play(dPos.x < 0f ? "idle" : "idleFlipped");
         }
-        if (atking && dashPos.x * dashPos.x + dashPos.y * dashPos.y < 0.1)
+        if (atking != -1 && atking != WINDUP)
         {
-            atking = false;
-            dashPos = Vector2.zero;
-            if (dPos.sqrMagnitude < atkDistance * atkDistance)
-                CharCtrl.script.damage(atkDamage);
+            transform.position += (Vector3)dashPos * dashLerp;
+            dashPos *= 1 - dashLerp;
+            if (dashPos.x * dashPos.x + dashPos.y * dashPos.y < 1.0f)
+            {
+                atking = -1;
+                dashPos = Vector2.zero;
+                if (dPos.sqrMagnitude < atkDistance * atkDistance)
+                    CharCtrl.script.damage(atkDamage);
+            }
         }
-        transform.position += (Vector3)dashPos * dashLerp;
-        dashPos *= 1 - dashLerp;
     }
     public override void kill(int damageType = 0)
     {
-        if (damageType == MELEE_DAMAGE || damageType == 0)
-            ani.Play(dPos.x <= 0 ? "EnemyMeleeDeath" : "EnemyMeleeDeathFlipped");
-        else
-            ani.Play(dPos.x <= 0 ? "EnemyArrowDeath" : "EnemyArrowDeathFlipped");
+        ani.Play(dPos.x <= 0 ? "death" : "deathFlipped");
         deathTimer = deathTime;
         foreach (Collider2D c in GetComponents<Collider2D>())
             c.enabled = false;
@@ -78,7 +84,7 @@ public class SeekerAi : BasicEnemy
         agro = true;
         if (deathTimer > deathTime)
         {
-            ani.Play(dPos.x <= 0 ? "EnemyStagger" : "EnemyStaggerFlipped");
+            ani.Play(dPos.x <= 0 ? "stagger" : "staggerFlipped");
             stunTimer = stunTime;
         }
         base.damage(amount, damageType);

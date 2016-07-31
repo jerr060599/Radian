@@ -148,7 +148,6 @@ public class CharCtrl : MonoBehaviour
                 }
                 if (rh.collider.gameObject.GetComponent<MovementRedirect>())
                     redirect = rh.collider.gameObject.GetComponent<MovementRedirect>().dir;
-
             }
         if (timedUncontrollable < 0f)
         {
@@ -277,14 +276,8 @@ public class CharCtrl : MonoBehaviour
         if ((lastJuicePosition - pysc.position).sqrMagnitude >= sqrUnitPerSound)
         {
             lastJuicePosition = pysc.position;
-			if (!isDashing && fallTime > deathFallTime) {
-				int ran = Random.Range (0, 2);
-				if(ran==1)
-				SoundManager.script.playOnListener (SoundManager.script.step1, 0.8f);
-				else
-
-					SoundManager.script.playOnListener (SoundManager.script.step2, 0.8f);
-			}
+            if (!isDashing && fallTime > deathFallTime)
+                SoundManager.script.playOnListener(Random.value > 0.5 ? SoundManager.script.step1 : SoundManager.script.step2, 0.8f);
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }
