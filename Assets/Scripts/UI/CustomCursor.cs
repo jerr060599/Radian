@@ -14,7 +14,7 @@ public class CustomCursor : MonoBehaviour
         script = this;
         smallerRt = smaller.GetComponent<RectTransform>();
         wpRT = wpIndicator.GetComponent<RectTransform>();
-        Cursor.SetCursor(mouse, new Vector2(13f, 13f), CursorMode.Auto);
+        Cursor.SetCursor(mouse, new Vector2(16f, 16f), CursorMode.Auto);
     }
     // Update is called once per frame
     void Update()
