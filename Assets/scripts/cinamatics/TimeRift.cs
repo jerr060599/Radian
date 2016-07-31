@@ -17,7 +17,7 @@ public class TimeRift : MonoBehaviour
             Time.timeScale = prevTimeScale;
             riftTimer = float.PositiveInfinity;
             if (validUsage <= 0)
-                if (seppuku)
+                if (seppukuObject)
                     Destroy(gameObject);
                 else
                     Destroy(this);
