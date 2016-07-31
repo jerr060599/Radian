@@ -8,22 +8,23 @@ public class ArrowTrap : MonoBehaviour {
 	float a,t;
 	void Start()
 	{
-		t = 0.5f;
+		t = 1f;
 		a = t;
 
 	}
-	void OnTriggerStay()
+	void OnTriggerStay2D(Collider2D col)
 	{
 		a -= Time.deltaTime;
 		if (a < 0.01f) {
-			Instantiate (arrow, arrowSpawn.transform.position, arrowSpawn.transform.rotation);
-			Debug.Log ("Shot");
+			GameObject arrowInstance=Instantiate (arrow, arrowSpawn.transform.position, arrowSpawn.transform.rotation) as GameObject;
+			arrowInstance.GetComponent<Projectile> ().setVelocity (Vector2.down*2.5f);
+		
 			a = t;
 		}
 		GetComponent<Animator>().Play("fire");
 	}
 
-	void OnTriggerExit()
+	void OnTriggerExit2D(Collider2D col)
 	{
 
 		GetComponent<Animator>().Play("neutral");
