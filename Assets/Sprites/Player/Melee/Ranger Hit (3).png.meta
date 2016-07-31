@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 2fe7aba26b7e4244bad796926634fff6
-timeCreated: 1469898850
+guid: e4973cf34d6094f438914f055275508e
+timeCreated: 1469918310
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Ranger Hit (2)_0
-    21300002: Ranger Hit (2)_1
-    21300004: Ranger Hit (2)_2
-    21300006: Ranger Hit (2)_3
-    21300008: Ranger Hit (2)_4
-    21300010: Ranger Hit (2)_5
-    21300012: Ranger Hit (2)_6
-    21300014: Ranger Hit (2)_7
-    21300016: Ranger Hit (2)_8
-    21300018: Ranger Hit (2)_9
+    21300000: Ranger Hit (3)_0
+    21300002: Ranger Hit (3)_1
+    21300004: Ranger Hit (3)_2
+    21300006: Ranger Hit (3)_3
+    21300008: Ranger Hit (3)_4
+    21300010: Ranger Hit (3)_5
+    21300012: Ranger Hit (3)_6
+    21300014: Ranger Hit (3)_7
+    21300016: Ranger Hit (3)_8
+    21300018: Ranger Hit (3)_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,92 +60,94 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Ranger Hit (2)_0
+    - name: Ranger Hit (3)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
+        y: 300
         width: 100
-        height: 80
+        height: 100
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 17, y: 35}
         - {x: -14, y: 35}
-        - {x: -16, y: 29}
-        - {x: -16, y: -26}
-        - {x: -10, y: -30}
-        - {x: 7, y: -30}
-        - {x: 17, y: -15}
-        - {x: 20, y: -7}
+        - {x: -16, y: 28}
+        - {x: -16, y: -25}
+        - {x: -9, y: -30}
+        - {x: 6, y: -30}
+        - {x: 8, y: -28}
+        - {x: 20, y: -1}
         - {x: 20, y: 32}
-    - name: Ranger Hit (2)_1
+    - name: Ranger Hit (3)_1
       rect:
         serializedVersion: 2
         x: 100
-        y: 240
+        y: 300
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 4, y: 35}
+      - - {x: 20, y: 1}
+        - {x: 20, y: 31}
+        - {x: 4, y: 35}
         - {x: -7, y: 35}
         - {x: -16, y: 22}
-        - {x: -16, y: -24}
-        - {x: -9, y: -30}
-        - {x: 10, y: -30}
-        - {x: 10, y: -29}
-        - {x: 20, y: -5}
-        - {x: 20, y: 31}
-    - name: Ranger Hit (2)_2
+        - {x: -16, y: -16}
+        - {x: -9, y: -28}
+        - {x: -7, y: -30}
+        - {x: 6, y: -30}
+        - {x: 7, y: -28}
+        - {x: 16, y: -15}
+    - name: Ranger Hit (3)_2
       rect:
         serializedVersion: 2
         x: 200
-        y: 240
+        y: 300
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 6, y: 32}
-        - {x: -3, y: 32}
-        - {x: -9, y: 30}
-        - {x: -15, y: 19}
-        - {x: -15, y: -22}
-        - {x: -7, y: -33}
-        - {x: 11, y: -33}
+      - - {x: -13, y: 32}
+        - {x: -15, y: 22}
+        - {x: -15, y: -27}
+        - {x: -8, y: -33}
+        - {x: 9, y: -33}
         - {x: 22, y: -27}
         - {x: 22, y: 14}
-    - name: Ranger Hit (2)_3
+        - {x: 6, y: 32}
+    - name: Ranger Hit (3)_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 200
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -7, y: 31}
-        - {x: -17, y: 25}
-        - {x: -17, y: -18}
-        - {x: -13, y: -33}
-        - {x: 20, y: -33}
-        - {x: 24, y: -23}
-        - {x: 24, y: 27}
-        - {x: 16, y: 31}
-    - name: Ranger Hit (2)_4
+      - - {x: -13, y: 31}
+        - {x: -17, y: 22}
+        - {x: -17, y: -17}
+        - {x: -13, y: -32}
+        - {x: -9, y: -33}
+        - {x: 14, y: -33}
+        - {x: 24, y: -21}
+        - {x: 24, y: 9}
+        - {x: 8, y: 31}
+    - name: Ranger Hit (3)_4
       rect:
         serializedVersion: 2
         x: 100
-        y: 160
+        y: 200
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,106 +160,105 @@ TextureImporter:
         - {x: 23, y: -27}
         - {x: 23, y: 11}
         - {x: 13, y: 30}
-    - name: Ranger Hit (2)_5
+    - name: Ranger Hit (3)_5
       rect:
         serializedVersion: 2
         x: 200
-        y: 160
+        y: 200
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 12, y: 27}
-        - {x: -5, y: 27}
-        - {x: -21, y: 6}
-        - {x: -28, y: -5}
-        - {x: -28, y: -21}
-        - {x: -6, y: -35}
-        - {x: 18, y: -35}
-        - {x: 31, y: -28}
-        - {x: 31, y: 7}
-        - {x: 27, y: 24}
-    - name: Ranger Hit (2)_6
+      - - {x: 6, y: 47}
+        - {x: -12, y: 40}
+        - {x: -28, y: -3}
+        - {x: -28, y: -26}
+        - {x: -7, y: -37}
+        - {x: 45, y: -37}
+        - {x: 49, y: -22}
+        - {x: 49, y: 47}
+    - name: Ranger Hit (3)_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
+        y: 100
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -44, y: -22}
-        - {x: -43, y: -24}
-        - {x: -21, y: -35}
-        - {x: -16, y: -37}
-        - {x: 11, y: -37}
-        - {x: 20, y: -34}
-        - {x: 20, y: -4}
-        - {x: 13, y: 25}
-        - {x: 8, y: 30}
-        - {x: -21, y: 30}
-        - {x: -44, y: 11}
-    - name: Ranger Hit (2)_7
+      - - {x: -50, y: -36}
+        - {x: -43, y: -45}
+        - {x: 29, y: -45}
+        - {x: 48, y: -36}
+        - {x: 48, y: -11}
+        - {x: 9, y: 30}
+        - {x: -27, y: 30}
+        - {x: -50, y: 8}
+    - name: Ranger Hit (3)_7
       rect:
         serializedVersion: 2
         x: 100
-        y: 80
+        y: 100
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -25, y: 30}
-        - {x: -35, y: 17}
-        - {x: -35, y: -9}
-        - {x: 0, y: -33}
-        - {x: 13, y: -33}
-        - {x: 16, y: -23}
-        - {x: 16, y: 21}
-        - {x: 5, y: 30}
-    - name: Ranger Hit (2)_8
+      - - {x: -29, y: 32}
+        - {x: -49, y: 20}
+        - {x: -50, y: 14}
+        - {x: -50, y: -16}
+        - {x: -37, y: -32}
+        - {x: -20, y: -33}
+        - {x: 15, y: -33}
+        - {x: 16, y: -31}
+        - {x: 16, y: 26}
+        - {x: 5, y: 32}
+    - name: Ranger Hit (3)_8
       rect:
         serializedVersion: 2
         x: 200
-        y: 80
+        y: 100
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -15, y: 29}
-        - {x: -22, y: 25}
-        - {x: -22, y: -22}
-        - {x: -17, y: -34}
-        - {x: 18, y: -34}
-        - {x: 21, y: -31}
+      - - {x: 7, y: 29}
+        - {x: -13, y: 29}
+        - {x: -22, y: 14}
+        - {x: -22, y: -21}
+        - {x: 2, y: -34}
+        - {x: 10, y: -34}
+        - {x: 13, y: -33}
+        - {x: 21, y: -25}
         - {x: 21, y: 4}
-        - {x: 11, y: 29}
-    - name: Ranger Hit (2)_9
+        - {x: 20, y: 10}
+    - name: Ranger Hit (3)_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 100
-        height: 80
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -11, y: 29}
+      - - {x: -21, y: -21}
+        - {x: 1, y: -34}
+        - {x: 12, y: -34}
+        - {x: 22, y: -29}
+        - {x: 22, y: 9}
+        - {x: 14, y: 29}
+        - {x: -12, y: 29}
         - {x: -21, y: 14}
-        - {x: -21, y: -21}
-        - {x: -6, y: -34}
-        - {x: 19, y: -34}
-        - {x: 22, y: -31}
-        - {x: 22, y: 7}
-        - {x: 15, y: 29}
     outline: []
   spritePackingTag: 
   userData: 

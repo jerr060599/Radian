@@ -1,0 +1,307 @@
+fileFormatVersion: 2
+guid: e01c2eae2caa48242be9f96d2bb3a477
+timeCreated: 1469919051
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Left Attack (5)_0
+    21300002: Left Attack (5)_1
+    21300004: Left Attack (5)_2
+    21300006: Left Attack (5)_3
+    21300008: Left Attack (5)_4
+    21300010: Left Attack (5)_5
+    21300012: Left Attack (5)_6
+    21300014: Left Attack (5)_7
+    21300016: Left Attack (5)_8
+    21300018: Left Attack (5)_9
+    21300020: Left Attack (5)_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Left Attack (5)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7014479, y: 0.5314762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.8552094, y: 32.481903}
+        - {x: -4.1447906, y: 32.481903}
+        - {x: -8.144791, y: 28.481903}
+        - {x: -8.144791, y: -25.518097}
+        - {x: -4.1447906, y: -31.518097}
+        - {x: 10.855209, y: -31.518097}
+        - {x: 15.855209, y: -24.518097}
+        - {x: 15.855209, y: 22.481903}
+        - {x: 14.855209, y: 29.481903}
+    - name: Left Attack (5)_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 240
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7215927, y: 0.5251808}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.159271, y: -24.014465}
+        - {x: -3.1592712, y: -31.014465}
+        - {x: 11.840729, y: -31.014465}
+        - {x: 15.840729, y: -27.014465}
+        - {x: 15.840729, y: 25.985535}
+        - {x: 14.840729, y: 31.985535}
+        - {x: -7.1592712, y: 31.985535}
+        - {x: -9.159271, y: 30.985535}
+    - name: Left Attack (5)_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 240
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7618823, y: 0.506295}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.811768, y: 29.496399}
+        - {x: 7.8117676, y: 30.496399}
+        - {x: -9.188232, y: 30.496399}
+        - {x: -12.188232, y: 25.496399}
+        - {x: -12.188232, y: -14.503601}
+        - {x: -10.188232, y: -32.5036}
+        - {x: 6.8117676, y: -32.5036}
+        - {x: 19.811768, y: -8.503601}
+        - {x: 19.811768, y: 2.496399}
+    - name: Left Attack (5)_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7266289, y: 0.5188856}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.337112, y: 30.489151}
+        - {x: -9.662888, y: 30.489151}
+        - {x: -12.662888, y: 26.489151}
+        - {x: -12.662888, y: -8.510849}
+        - {x: -8.662888, y: -31.510849}
+        - {x: -6.6628876, y: -32.51085}
+        - {x: 3.3371124, y: -32.51085}
+        - {x: 6.3371124, y: -31.510849}
+        - {x: 12.337112, y: -21.510849}
+        - {x: 20.337112, y: -6.510849}
+        - {x: 20.337112, y: 25.489151}
+    - name: Left Attack (5)_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 160
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7014479, y: 0.506295}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.855209, y: 32.4964}
+        - {x: -11.144791, y: 32.4964}
+        - {x: -11.144791, y: -25.503601}
+        - {x: -10.144791, y: -29.503601}
+        - {x: 17.85521, y: -29.503601}
+        - {x: 29.85521, y: 2.496399}
+        - {x: 29.85521, y: 19.496399}
+        - {x: 24.85521, y: 24.496399}
+    - name: Left Attack (5)_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 160
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.68633944, y: 0.49370462}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.633942, y: 28.503632}
+        - {x: -17.633942, y: 27.503632}
+        - {x: -17.633942, y: -22.496368}
+        - {x: -8.633942, y: -29.496368}
+        - {x: 21.366058, y: -29.496368}
+        - {x: 31.366058, y: -24.496368}
+        - {x: 31.366058, y: 28.503632}
+    - name: Left Attack (5)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.69641167, y: 0.49370462}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.358833, y: 19.503632}
+        - {x: 5.3588333, y: 26.503632}
+        - {x: -18.641167, y: 26.503632}
+        - {x: -49.641167, y: -9.496368}
+        - {x: -49.641167, y: -21.496368}
+        - {x: -46.641167, y: -30.496368}
+        - {x: 28.358833, y: -30.496368}
+        - {x: 30.358833, y: -20.496368}
+        - {x: 30.358833, y: 20.503632}
+        - {x: 28.358833, y: 21.503632}
+    - name: Left Attack (5)_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 80
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7266289, y: 0.52518094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.662888, y: 26.985527}
+        - {x: -56.662888, y: 14.985527}
+        - {x: -56.662888, y: -3.014473}
+        - {x: -49.662888, y: -21.014473}
+        - {x: -35.662888, y: -32.014473}
+        - {x: 24.337112, y: -32.014473}
+        - {x: 24.337112, y: 17.985527}
+        - {x: 5.3371124, y: 26.985527}
+    - name: Left Attack (5)_8
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 80
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7215927, y: 0.5125904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.15927, y: 32.992767}
+        - {x: -53.15927, y: -9.007233}
+        - {x: -19.159271, y: -33.007233}
+        - {x: 21.840729, y: -33.007233}
+        - {x: 21.840729, y: -15.007233}
+        - {x: 17.840729, y: 12.992767}
+        - {x: 5.8407288, y: 30.992767}
+        - {x: -14.159271, y: 32.992767}
+      - - {x: -33.15927, y: 31.992767}
+        - {x: -30.159271, y: 32.992767}
+        - {x: -30.159271, y: 35.992767}
+        - {x: -33.15927, y: 36.992767}
+        - {x: -35.15927, y: 34.992767}
+    - name: Left Attack (5)_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.73670125, y: 0.49999982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48.670128, y: 33.000015}
+        - {x: -54.670128, y: 25.000015}
+        - {x: -54.670128, y: 22.000015}
+        - {x: -52.670128, y: 21.000015}
+        - {x: -49.670128, y: 22.000015}
+        - {x: -50.670128, y: 12.000015}
+        - {x: -48.670128, y: -2.9999847}
+        - {x: -22.670128, y: -25.999985}
+        - {x: -19.670128, y: -21.999985}
+        - {x: -17.670128, y: -18.999985}
+        - {x: -21.670128, y: -13.999985}
+        - {x: -22.670128, y: -13.999985}
+        - {x: -23.670128, y: -10.999985}
+        - {x: -25.670128, y: -8.999985}
+        - {x: -29.670128, y: -8.999985}
+        - {x: -25.670128, y: -8.999985}
+        - {x: -23.670128, y: -7.9999847}
+        - {x: -23.670128, y: -10.999985}
+        - {x: -22.670128, y: -13.999985}
+        - {x: -19.670128, y: -13.999985}
+        - {x: -18.670128, y: -10.999985}
+        - {x: -15.670128, y: -29.999985}
+        - {x: 20.329872, y: -29.999985}
+        - {x: 20.329872, y: -6.9999847}
+        - {x: 7.329872, y: 33.000015}
+    - name: Left Attack (5)_10
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7669185, y: 0.52518076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.691849, y: 27.985538}
+        - {x: -32.69185, y: 24.985538}
+        - {x: -32.69185, y: 17.985538}
+        - {x: -20.691849, y: 5.9855385}
+        - {x: -12.691849, y: -21.014462}
+        - {x: -10.691849, y: -31.014462}
+        - {x: 20.308151, y: -31.014462}
+        - {x: 20.308151, y: -12.0144615}
+        - {x: 18.308151, y: 13.9855385}
+        - {x: 6.3081512, y: 27.985538}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

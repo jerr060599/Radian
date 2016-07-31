@@ -19,7 +19,7 @@ public class Teleporter : Activatable
     {
         if (GetComponent<Animator>() && turnOnAnimation.Length != 0)
         {
-            GetComponent<Animator>().Play(turnOnAnimation, 0);
+           GetComponent<Animator>().Play(turnOnAnimation, 0);
             if (destination)
                 destination.GetComponent<Animator>().Play(turnOnAnimation, 0);
         }
@@ -29,7 +29,7 @@ public class Teleporter : Activatable
         if (GetComponent<Animator>() && turnOffAnimation.Length != 0)
         {
             GetComponent<Animator>().Play(turnOffAnimation, 0);
-            if (destination)
+           if (destination)
                 destination.GetComponent<Animator>().Play(turnOffAnimation, 0);
         }
     }
