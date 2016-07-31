@@ -38,7 +38,7 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
-        if (PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
+        if (!PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
         {
             if (introAnimation.Length != 0)
                 ani.Play(introAnimation, 0);
