@@ -16,7 +16,6 @@ public class Waypoint : MonoBehaviour
             Destroy(gameObject);
         if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_waypoint_" + GetInstanceID(), INACTIVE) == INACTIVE)
             gameObject.SetActive(false);
-
     }
 
     public virtual void activate()
