@@ -6,6 +6,7 @@ public class ArrowTrap : MonoBehaviour {
 	public GameObject arrowSpawn;
 	public GameObject arrow;
 	float a,t;
+	public float velocity;
 	void Start()
 	{
 		t = 1f;
@@ -17,7 +18,7 @@ public class ArrowTrap : MonoBehaviour {
 		a -= Time.deltaTime;
 		if (a < 0.01f) {
 			GameObject arrowInstance=Instantiate (arrow, arrowSpawn.transform.position, arrowSpawn.transform.rotation) as GameObject;
-			arrowInstance.GetComponent<Projectile> ().setVelocity (Vector2.down*2.5f);
+			arrowInstance.GetComponent<Projectile> ().setVelocity (Vector2.down*velocity);
 		
 			a = t;
 		}

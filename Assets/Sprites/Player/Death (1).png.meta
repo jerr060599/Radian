@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 5c47c3a017895ca418777a2214dc537c
-timeCreated: 1469220502
+guid: b15316d3eb6f63d469f09fb209adcdc3
+timeCreated: 1469979855
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Death_0
-    21300002: Death_1
-    21300004: Death_2
-    21300006: Death_3
-    21300008: Death_4
-    21300010: Death_5
+    21300000: Death (1)_0
+    21300002: Death (1)_1
+    21300004: Death (1)_2
+    21300006: Death (1)_3
+    21300008: Death (1)_4
+    21300010: Death (1)_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,7 +56,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Death_0
+    - name: Death (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -67,36 +67,38 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 6, y: 35}
-        - {x: -11, y: 35}
-        - {x: -17, y: 25}
-        - {x: -17, y: -15}
+      - - {x: 19, y: 18}
+        - {x: 19, y: 26}
+        - {x: 3, y: 33}
+        - {x: -2, y: 34}
+        - {x: -8, y: 34}
+        - {x: -18, y: 26}
+        - {x: -18, y: -17}
+        - {x: -16, y: -30}
+        - {x: 4, y: -30}
+        - {x: 6, y: -28}
+        - {x: 14, y: -16}
+        - {x: 13, y: 8}
+    - name: Death (1)_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 80
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 27}
+        - {x: -20, y: 9}
+        - {x: -20, y: -24}
         - {x: -11, y: -30}
-        - {x: 6, y: -30}
-        - {x: 15, y: -15}
-        - {x: 19, y: 2}
-        - {x: 19, y: 30}
-    - name: Death_1
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 80
-        width: 60
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -11, y: 31}
-        - {x: -21, y: 14}
-        - {x: -22, y: 2}
-        - {x: -22, y: -26}
-        - {x: -18, y: -33}
-        - {x: 9, y: -33}
-        - {x: 19, y: -12}
-        - {x: 19, y: 27}
-        - {x: 3, y: 31}
-    - name: Death_2
+        - {x: 7, y: -30}
+        - {x: 16, y: -19}
+        - {x: 16, y: 21}
+        - {x: 6, y: 27}
+    - name: Death (1)_2
       rect:
         serializedVersion: 2
         x: 120
@@ -107,16 +109,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -8, y: 28}
-        - {x: -25, y: -4}
-        - {x: -25, y: -16}
-        - {x: -14, y: -35}
-        - {x: -1, y: -35}
-        - {x: 16, y: -24}
-        - {x: 19, y: 1}
-        - {x: 19, y: 22}
-        - {x: 7, y: 28}
-    - name: Death_3
+      - - {x: -17, y: 3}
+        - {x: -21, y: -6}
+        - {x: -21, y: -27}
+        - {x: -18, y: -30}
+        - {x: 15, y: -30}
+        - {x: 16, y: -25}
+        - {x: 16, y: 2}
+        - {x: 13, y: 3}
+    - name: Death (1)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -127,15 +128,17 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -8, y: 6}
-        - {x: -26, y: 1}
-        - {x: -26, y: -9}
-        - {x: -24, y: -13}
-        - {x: -8, y: -35}
-        - {x: 27, y: -35}
-        - {x: 30, y: -31}
-        - {x: 30, y: 6}
-    - name: Death_4
+      - - {x: 7, y: 5}
+        - {x: 3, y: 6}
+        - {x: -14, y: 6}
+        - {x: -23, y: -8}
+        - {x: -23, y: -23}
+        - {x: -11, y: -34}
+        - {x: -1, y: -34}
+        - {x: 14, y: -27}
+        - {x: 14, y: -14}
+        - {x: 13, y: -8}
+    - name: Death (1)_4
       rect:
         serializedVersion: 2
         x: 60
@@ -146,14 +149,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -26, y: 6}
-        - {x: -26, y: -15}
-        - {x: -9, y: -35}
-        - {x: 23, y: -35}
-        - {x: 30, y: -25}
-        - {x: 30, y: -1}
-        - {x: 7, y: 6}
-    - name: Death_5
+      - - {x: 10, y: 6}
+        - {x: -16, y: 6}
+        - {x: -27, y: -6}
+        - {x: -27, y: -32}
+        - {x: -15, y: -37}
+        - {x: 10, y: -37}
+        - {x: 15, y: -31}
+        - {x: 16, y: -26}
+        - {x: 16, y: -16}
+    - name: Death (1)_5
       rect:
         serializedVersion: 2
         x: 120
@@ -164,13 +169,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -26, y: 6}
-        - {x: -26, y: -23}
-        - {x: -25, y: -26}
-        - {x: 5, y: -38}
-        - {x: 19, y: -38}
-        - {x: 30, y: -30}
-        - {x: 30, y: 6}
+      - - {x: -15, y: 6}
+        - {x: -30, y: -4}
+        - {x: -30, y: -36}
+        - {x: -21, y: -40}
+        - {x: 13, y: -40}
+        - {x: 20, y: -33}
+        - {x: 20, y: -6}
+        - {x: 8, y: 6}
     outline: []
   spritePackingTag: 
   userData: 
