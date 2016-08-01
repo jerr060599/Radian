@@ -8,9 +8,9 @@ public class CharCtrl : MonoBehaviour
     public GameObject death, itemIcon, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow;
     public string introAnimation = "";
     public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false, invulnerable = false;
-    public float spawnLength = 1.2f, arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f, deathAnimationTime = 1f;
-    public float meleeCost = 0.05f, dashCost = 0.01f, arrowCost = 0.05f;
-    public float darkMultiplyer = 2f;
+    public float spawnLength = 1.2f, arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, timedInvulnerable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f, deathAnimationTime = 1f;
+    public float arrowCost = 0.05f;
+    public float lifeMultiplyer = 2f, darkAcumulation = 0.01f;
     public int meleeDamage = 1;
     public int dashLayer = 8, playerLayer = 10;
     public Rigidbody2D pysc = null;
@@ -38,26 +38,26 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
-        if (!PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
+        if (PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
+        {
+            ani.Play("Awake", 0);
+            timedUncontrollable = 1.2f;
+        }
+        else
         {
             if (introAnimation.Length != 0)
                 ani.Play(introAnimation, 0);
             timedUncontrollable = spawnLength;
-        }
-        else
-        {
-            ani.Play("Awake", 0);
-            timedUncontrollable = 1.2f;
         }
         if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }
     public void damage(float amount)
     {
-        if (invulnerable)
+        if (invulnerable || timedInvulnerable > 0f)
             return;
         light.barPercent -= amount;
-        timedUncontrollable = staggerTime;
+        timedUncontrollable = timedInvulnerable = staggerTime;
         if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
             ani.Play(lastInput.x > 0 ? "RightStagger" : "LeftStagger", 0);
         else
@@ -99,6 +99,7 @@ public class CharCtrl : MonoBehaviour
         dashTime -= Time.deltaTime;
         meleeTime -= Time.deltaTime;
         animationOverride -= Time.deltaTime;
+        timedInvulnerable -= Time.deltaTime;
         if (deathTimer <= 0f)
             respawn();
         if (noUpdate)
@@ -120,7 +121,7 @@ public class CharCtrl : MonoBehaviour
                 kill();
             return;
         }
-        if (light.barPercent <= 0f || dark.barPercent >= 1f)
+        if (light.barPercent <= 0f)
         {
             kill();
             return;
@@ -191,7 +192,7 @@ public class CharCtrl : MonoBehaviour
                             playIdleAnimation();
                     }
                     if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]))
-                        if (!arrowLoaded && (light.barPercent > dashCost || !usingLight) && dashTime <= 0f && !aInRange)
+                        if (!arrowLoaded && dashTime <= 0f && !aInRange)
                         {
                             float closest = dashDist;
                             lastInput = rPosFromArm;
@@ -209,7 +210,6 @@ public class CharCtrl : MonoBehaviour
                             else
                                 ani.Play(overAir ? dashPos.y > 0 ? "UpDash" : "DownDash" : dashPos.y > 0 ? "UpRoll" : "DownRoll", 0);
                             dashTime = dashCoolDown;
-                            cost(dashCost);
                             SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                         }
                         else if (aInRange)
@@ -221,10 +221,11 @@ public class CharCtrl : MonoBehaviour
                             if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
                             {
                                 be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
+                                corrupt(meleeDamage);
                                 SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit2, 0.8f);
                             }
+                        SoundManager.script.playOnListener(variate ? SoundManager.script.sword1 : SoundManager.script.sword2, 0.8f);
                         meleeTime = meleeCoolDown;
-                        cost(meleeCost);
                         rooted = true;
                         animationOverride = meleeCoolDown;
                         if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
@@ -234,7 +235,7 @@ public class CharCtrl : MonoBehaviour
                         lastInput = rPosFromArm;
                         pysc.AddForce(rPosFromArm * meleeAdv);
                     }
-                    if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1))
+                    if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1) && canAfford(arrowCost))
                     {
                         arrowLoaded = true;
                         handAni.Play("boxWindUp", 0);
@@ -293,9 +294,17 @@ public class CharCtrl : MonoBehaviour
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
     }
+    public void corrupt(float damage)
+    {
+        dark.barPercent = Mathf.Min(1f, dark.barPercent + damage * darkAcumulation);
+    }
     public void brake()
     {
         pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity * pysc.mass, maxBrakeF), ForceMode2D.Impulse);
+    }
+    public bool canAfford(float cost)
+    {
+        return (usingLight ? light.barPercent - cost / lifeMultiplyer : dark.barPercent - cost) > 0f;
     }
     public void fire(Vector2 dir)
     {
@@ -322,9 +331,9 @@ public class CharCtrl : MonoBehaviour
     public void cost(float cost)
     {
         if (usingLight)
-            light.barPercent -= cost;
+            light.barPercent -= cost / lifeMultiplyer;
         else
-            dark.barPercent += cost / darkMultiplyer;
+            dark.barPercent -= cost;
     }
     void genShadow()
     {

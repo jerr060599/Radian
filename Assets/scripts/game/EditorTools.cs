@@ -8,6 +8,7 @@ public class EditorTools : MonoBehaviour
     {
         if (!Application.isEditor || Application.isPlaying)
             Destroy(this);
+        transform.position = Vector3.zero;
         if (resetPlayerPref)
             PlayerPrefs.DeleteAll();
         resetPlayerPref = false;

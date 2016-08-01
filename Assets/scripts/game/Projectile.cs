@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public bool turnWithVel = false, enemyProjectile = false, splatAtLocation = false;
     public string splatAnimation = "";
     public Vector2 splatLocation = Vector2.zero;
-    public AudioClip soundOnHit = null;
+    public AudioClip soundOnHit = null, soundOnNullify = null;
     bool hit = false;
     SpriteRenderer sr = null;
     void Start()
@@ -20,21 +20,32 @@ public class Projectile : MonoBehaviour
             return;
         if (c.isTrigger && !c.gameObject.GetComponent<BasicEnemy>())
             return;
-        SoundManager.script.playOn(transform, soundOnHit, hitVolume);
         if (c.attachedRigidbody && c.attachedRigidbody.gameObject)
         {
             if (enemyProjectile)
             {
                 if (c.attachedRigidbody == CharCtrl.script.pysc)
+                {
                     CharCtrl.script.damage(damage);
+                    SoundManager.script.playOn(transform, soundOnHit, hitVolume);
+                }
+                else
+                    SoundManager.script.playOn(transform, soundOnNullify, hitVolume);
             }
             else
             {
                 BasicEnemy be = c.attachedRigidbody.gameObject.GetComponent<BasicEnemy>();
                 if (be)
+                {
                     be.damage((int)damage, BasicEnemy.RANGED_DAMAGE);
+                    SoundManager.script.playOn(transform, soundOnHit, hitVolume);
+                }
+                else
+                    SoundManager.script.playOn(transform, soundOnNullify, hitVolume);
             }
         }
+        else
+            SoundManager.script.playOn(transform, soundOnNullify, hitVolume);
         stop();
     }
     public virtual void hitEvent()
