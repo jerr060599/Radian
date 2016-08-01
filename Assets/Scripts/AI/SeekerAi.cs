@@ -44,19 +44,19 @@ public class SeekerAi : BasicEnemy
                     dashPos = dPos;
                 }
             }
+            if (atking && dashPos.x * dashPos.x + dashPos.y * dashPos.y < 0.1)
+            {
+                atking = false;
+                dashPos = Vector2.zero;
+                if (dPos.sqrMagnitude < atkDistance * atkDistance)
+                    CharCtrl.script.damage(atkDamage);
+            }
         }
         else
         {
             pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
             if (stunTimer < 0f && deathTimer > deathTime)
                 ani.Play(dPos.x < 0f ? "EnemyIdle" : "EnemyIdleFlipped");
-        }
-        if (atking && dashPos.x * dashPos.x + dashPos.y * dashPos.y < 0.1)
-        {
-            atking = false;
-            dashPos = Vector2.zero;
-            if (dPos.sqrMagnitude < atkDistance * atkDistance)
-                CharCtrl.script.damage(atkDamage);
         }
         transform.position += (Vector3)dashPos * dashLerp;
         dashPos *= 1 - dashLerp;

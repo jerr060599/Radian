@@ -52,10 +52,9 @@ public class Tamahto : BasicEnemy
                             (dashPos.y - Physics2D.gravity.y * (pysc.GetComponent<Rigidbody2D>().gravityScale) * crushAirTime * crushAirTime / 2) / crushAirTime);
                         dashPos = Vector2.zero;
                     }
+                    ani.Play(dPos.x < 0f ? "atk" : "atkFlipped");
                     atkTimer = 0f;
                 }
-                else
-                    ani.Play(dPos.x < 0f ? "atk" : "atkFlipped");
             }
         }
         else

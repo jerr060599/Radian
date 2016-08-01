@@ -71,6 +71,7 @@ public class CharCtrl : MonoBehaviour
         invulnerable = true;
         deathTimer = deathAnimationTime;
         ani.Play("Death", 0);
+        fireArm.SetActive(false);
     }
     public void respawn()
     {
