@@ -49,6 +49,7 @@ public class CharCtrl : MonoBehaviour
                 ani.Play(introAnimation, 0);
             timedUncontrollable = spawnLength;
         }
+        gem.isLight = usingLight;
         if (PlayerPrefs.HasKey("spawnX_" + SceneManager.GetActiveScene().name))
             transform.position = new Vector2(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name), PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name));
     }
