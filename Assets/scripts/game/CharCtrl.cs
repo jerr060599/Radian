@@ -240,6 +240,7 @@ public class CharCtrl : MonoBehaviour
                     {
                         arrowLoaded = true;
                         handAni.Play("boxWindUp", 0);
+                        SoundManager.script.playOnListener(SoundManager.script.bowDraw);
                     }
                     if (arrowLoaded && Input.GetMouseButton(1))
                     {
@@ -316,6 +317,7 @@ public class CharCtrl : MonoBehaviour
     {
         if (animationOverride > 0f)
             return;
+        SoundManager.script.playOnListener(SoundManager.script.bowRelease);
         arrowTime = 0f;
         cost(arrowCost);
         rooted = true;
