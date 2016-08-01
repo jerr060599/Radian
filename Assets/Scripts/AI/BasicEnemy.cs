@@ -7,6 +7,7 @@ public class BasicEnemy : MonoBehaviour
     public static readonly int DEFAULT_DAMAGE = 0, MELEE_DAMAGE = 1, RANGED_DAMAGE = 2;
     public int health = 100;
     public float walkSpeed = 3f, damageKB = 300f;
+    public GameObject deathRegistry = null;
     public bool agro = false, hitThisUpdate = false;
     public Rigidbody2D pysc = null;
     public SpriteRenderer sr = null;
@@ -54,5 +55,7 @@ public class BasicEnemy : MonoBehaviour
         foreach (Collider2D c in GetComponents<Collider2D>())
             c.enabled = false;
         fading = true;
+        if (deathRegistry)
+            deathRegistry.GetComponent<DeathRegistry>().registerDeath();
     }
 }
