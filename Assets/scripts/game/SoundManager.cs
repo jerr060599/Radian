@@ -5,17 +5,19 @@ public class SoundManager : MonoBehaviour
 {
     public GameObject defSrc, bgmSrc;
     public static SoundManager script;
-	public AudioClip step1,step2, radianceSource,dash,sword1, sword2,enemyHit1,enemyHit2,teleport;
+    public AudioClip step1, step2, radianceSource, dash, sword1, sword2, enemyHit1, enemyHit2, teleport;
     public AudioSource lastBGM = null, curBGM = null;
     public float smooth = 0.1f;
     public float bgmVolume = 0f;
     void Awake()
     {
         script = this;
-	
+
     }
     public AudioSource playOnListener(AudioClip clip, float volume = 1f)
     {
+        if (!clip)
+            return null;
         GameObject src = (GameObject)Instantiate(defSrc, CharCtrl.script.gameObject.transform.position, transform.rotation);
         src.transform.SetParent(CharCtrl.script.gameObject.transform);
         src.GetComponent<AudioSource>().clip = clip;
@@ -26,6 +28,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource playOn(Transform pos, AudioClip clip, float volume = 1f)
     {
+        if (!clip)
+            return null;
         GameObject src = (GameObject)Instantiate(defSrc, pos.position, Quaternion.identity);
         src.GetComponent<AudioSource>().clip = clip;
         src.GetComponent<AudioSource>().volume = volume;
@@ -35,6 +39,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource playAndFollow(Transform pos, AudioClip clip, float volume = 1f)
     {
+        if (!clip)
+            return null;
         GameObject src = (GameObject)Instantiate(defSrc, pos.position, Quaternion.identity);
         src.transform.SetParent(pos);
         src.GetComponent<AudioSource>().clip = clip;
@@ -45,6 +51,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource playBGM(AudioClip clip, float volume)
     {
+        if (!clip)
+            return null;
         GameObject src = (GameObject)Instantiate(bgmSrc, transform.position, transform.rotation);
         src.transform.SetParent(gameObject.transform);
         src.GetComponent<AudioSource>().clip = clip;

@@ -4,7 +4,7 @@ using System.Collections;
 public class Tamahto : BasicEnemy
 {
     public readonly int SLAM = 0, CRUSH = 1, WINDUP = 2;
-    public float agroRadius = 2f, parkRadius = 4f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.2f;
+    public float agroRadius = 2f, parkRadius = 4f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.2f, crushAirTime = 1f;
     public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f;
     float deathTimer = float.PositiveInfinity, stunTimer = 0f, atkTimer = 0f;
     int atking = -1;
@@ -35,7 +35,8 @@ public class Tamahto : BasicEnemy
             }
             else
             {
-                pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
+                if (atking != CRUSH)
+                    pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 if (atking == -1)
                 {
                     dashPos = dPos + CharCtrl.script.pysc.velocity * atkWindUp;
@@ -45,6 +46,12 @@ public class Tamahto : BasicEnemy
                 if (atkTimer >= atkWindUp)
                 {
                     atking = Random.value > 0.0f ? SLAM : CRUSH;
+                    if (atking == CRUSH)
+                    {
+                        pysc.GetComponent<Rigidbody2D>().velocity = new Vector2(dashPos.x / crushAirTime,
+                            (dashPos.y - Physics2D.gravity.y * (pysc.GetComponent<Rigidbody2D>().gravityScale) * crushAirTime * crushAirTime / 2) / crushAirTime);
+                        dashPos = Vector2.zero;
+                    }
                     atkTimer = 0f;
                 }
                 else
