@@ -123,6 +123,7 @@ public class CharCtrl : MonoBehaviour
             gameObject.layer = dashLayer;
             if (fallTime <= 0f)
                 kill();
+            transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + autoOrderOffset) / 100f);
             return;
         }
         if (light.barPercent <= 0f)
