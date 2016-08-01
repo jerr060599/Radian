@@ -19,6 +19,7 @@ public class PlayerSpawn : Activatable
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("playerSpawn"))
             if (obj != gameObject)
                 obj.GetComponent<PlayerSpawn>().turnOff();
+        CharCtrl.script.light.barPercent = 1f;
         ani.Play("burning", 0);
         effects.SetActive(true);
 		if(on)
