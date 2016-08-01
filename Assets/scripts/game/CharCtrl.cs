@@ -319,7 +319,7 @@ public class CharCtrl : MonoBehaviour
     }
     public bool canAfford(float cost)
     {
-        return (usingLight ? light.barPercent - cost / lifeMultiplyer : dark.barPercent - cost) > 0f;
+        return (usingLight ? light.barPercent - cost / lifeMultiplyer : dark.barPercent - cost) >= 0f;
     }
     public void fire(Vector2 dir)
     {
