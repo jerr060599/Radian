@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 public class TriggerScene : MonoBehaviour {
 
 	public string scene;
-	void OnTriggerEnter2D(Collider2D col)
+	void OnTriggerStay2D(Collider2D col)
 	{
-		if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E)) {
 			SceneManager.LoadScene (scene);
 		}
 	}

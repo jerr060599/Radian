@@ -21,6 +21,7 @@ public class PlayerSpawn : Activatable
                 obj.GetComponent<PlayerSpawn>().turnOff();
         ani.Play("burning", 0);
         effects.SetActive(true);
+		if(on)
 		GetComponent<AudioSource> ().Play ();
     }
     public void turnOff()
@@ -28,6 +29,7 @@ public class PlayerSpawn : Activatable
         if (!on)
             return;
         ani.Play("off", 0);
+		if(!on)
 		GetComponent<AudioSource> ().Stop ();
         on = false;
         effects.SetActive(false);
