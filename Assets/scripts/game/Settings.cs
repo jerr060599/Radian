@@ -5,8 +5,8 @@ public static class Settings
 {
     public static Vector2 defCursorCenter = new Vector2(9f, 9f);
     public static readonly int player = 0;
-    public static readonly int dash = 0, toggleEnergy = 1;
+    public static readonly int dash = 0, use = 1, cancel = 2;
     public static KeyCode[,] keys = {
-        { KeyCode.Space, KeyCode.E}
+        { KeyCode.Space, KeyCode.E, KeyCode.R}
     };
 }

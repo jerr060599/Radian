@@ -246,8 +246,14 @@ public class CharCtrl : MonoBehaviour
                     }
                     if (arrowLoaded && Input.GetMouseButton(1))
                     {
-                        lastInput = rPosFromArm;
                         arrowTime += Time.deltaTime;
+                        if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.cancel]))
+                        {
+                            arrowLoaded = false;
+                            handAni.Play("NoAnimation", 0);
+                            arrowTime = 0f;
+                            arrowLoaded = false;
+                        }
                         fireArm.transform.localRotation = Quaternion.LookRotation(Vector3.forward, -rPosFromArm);
                         if (Mathf.Abs(rPosFromArm.x) > Mathf.Abs(rPosFromArm.y))
                         {
@@ -278,7 +284,7 @@ public class CharCtrl : MonoBehaviour
                 }
                 else
                     brake();
-                if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.toggleEnergy]))
+                if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.use]))
                 {
                     if (aInRange)
                         aInRange.activate(this);
