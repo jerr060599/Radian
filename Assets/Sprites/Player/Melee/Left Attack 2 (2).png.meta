@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: 7f875716600223047b8a14f167faeee5
+timeCreated: 1470110736
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Left Attack 2 (2)_0
+    21300002: Left Attack 2 (2)_1
+    21300004: Left Attack 2 (2)_2
+    21300006: Left Attack 2 (2)_3
+    21300008: Left Attack 2 (2)_4
+    21300010: Left Attack 2 (2)_5
+    21300012: Left Attack 2 (2)_6
+    21300014: Left Attack 2 (2)_7
+    21300016: Left Attack 2 (2)_8
+    21300018: Left Attack 2 (2)_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Left Attack 2 (2)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7175039, y: 0.5355118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6.249611, y: 32.159058}
+        - {x: -5.750389, y: 32.159058}
+        - {x: -9.750389, y: 28.159058}
+        - {x: -9.750389, y: -25.840942}
+        - {x: -5.750389, y: -31.840942}
+        - {x: 9.249611, y: -31.840942}
+        - {x: 14.249611, y: -24.840942}
+        - {x: 14.249611, y: 22.159058}
+        - {x: 13.249611, y: 29.159058}
+    - name: Left Attack 2 (2)_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 240
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7479474, y: 0.5344368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.794739, y: -24.754944}
+        - {x: -5.794739, y: -31.754944}
+        - {x: 9.205261, y: -31.754944}
+        - {x: 13.205261, y: -27.754944}
+        - {x: 13.205261, y: 25.245056}
+        - {x: 12.205261, y: 31.245056}
+        - {x: -9.794739, y: 31.245056}
+        - {x: -11.794739, y: 30.245056}
+    - name: Left Attack 2 (2)_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 240
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.77274233, y: 0.4999996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.274231, y: -21.99997}
+        - {x: -7.274231, y: -31.99997}
+        - {x: 6.725769, y: -31.99997}
+        - {x: 18.725769, y: -14.9999695}
+        - {x: 18.725769, y: 9.0000305}
+        - {x: 8.725769, y: 31.00003}
+        - {x: -10.274231, y: 31.00003}
+        - {x: -13.274231, y: 26.00003}
+    - name: Left Attack 2 (2)_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.71488786, y: 0.54476815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.488785, y: 28.418549}
+        - {x: -11.488785, y: -6.5814514}
+        - {x: -10.488785, y: -24.581451}
+        - {x: -6.488785, y: -32.58145}
+        - {x: -3.4887848, y: -34.58145}
+        - {x: 5.511215, y: -34.58145}
+        - {x: 7.511215, y: -33.58145}
+        - {x: 21.511215, y: -9.581451}
+        - {x: 21.511215, y: 28.418549}
+    - name: Left Attack 2 (2)_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 160
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.72039765, y: 0.54132444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14.960236, y: 29.694046}
+        - {x: -13.039764, y: 29.694046}
+        - {x: -13.039764, y: -28.305954}
+        - {x: -8.039764, y: -32.305954}
+        - {x: 15.960236, y: -32.305954}
+        - {x: 27.960236, y: -6.305954}
+        - {x: 27.960236, y: 10.694046}
+    - name: Left Attack 2 (2)_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 160
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7038678, y: 0.50688726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.38678, y: 27.44902}
+        - {x: -26.38678, y: 19.44902}
+        - {x: -26.38678, y: -5.5509796}
+        - {x: -14.38678, y: -30.55098}
+        - {x: 16.61322, y: -30.55098}
+        - {x: 28.61322, y: -16.55098}
+        - {x: 28.61322, y: 24.44902}
+        - {x: 24.61322, y: 27.44902}
+    - name: Left Attack 2 (2)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.71488786, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -57.488785, y: -24}
+        - {x: -48.488785, y: -30}
+        - {x: 27.511215, y: -30}
+        - {x: 27.511215, y: 18}
+        - {x: 20.511215, y: 36}
+        - {x: 9.511215, y: 40}
+        - {x: -45.488785, y: 40}
+        - {x: -57.488785, y: 31}
+    - name: Left Attack 2 (2)_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 80
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7562123, y: 0.5413245}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0.37876892, y: 26.694038}
+        - {x: -13.621231, y: 23.694038}
+        - {x: -16.621231, y: 20.694038}
+        - {x: -16.621231, y: 21.694038}
+        - {x: -11.621231, y: 25.694038}
+        - {x: -4.621231, y: 26.694038}
+        - {x: -1.6212311, y: 27.694038}
+        - {x: -0.6212311, y: 30.694038}
+        - {x: -5.621231, y: 36.69404}
+        - {x: -35.62123, y: 36.69404}
+        - {x: -54.62123, y: 29.694038}
+        - {x: -56.62123, y: 22.694038}
+        - {x: -56.62123, y: -1.3059616}
+        - {x: -53.62123, y: -14.305962}
+        - {x: -39.62123, y: -21.305962}
+        - {x: -23.621231, y: -18.305962}
+        - {x: -17.621231, y: -10.305962}
+        - {x: -14.621231, y: -33.30596}
+        - {x: 16.378769, y: -33.30596}
+        - {x: 21.378769, y: -26.305962}
+        - {x: 21.378769, y: -13.305962}
+        - {x: 10.378769, y: 10.694038}
+    - name: Left Attack 2 (2)_8
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 80
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.73417264, y: 0.5378808}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4.582733, y: 22.969536}
+        - {x: 2.5827332, y: 25.969536}
+        - {x: -2.4172668, y: 25.969536}
+        - {x: -11.417267, y: 23.969536}
+        - {x: -14.417267, y: 20.969536}
+        - {x: -15.417267, y: 11.969536}
+        - {x: -19.417267, y: 25.969536}
+        - {x: -21.417267, y: 25.969536}
+        - {x: -37.417267, y: 19.969536}
+        - {x: -39.417267, y: 16.969536}
+        - {x: -39.417267, y: -26.030464}
+        - {x: -37.417267, y: -36.030464}
+        - {x: 19.582733, y: -36.030464}
+        - {x: 22.582733, y: -29.030464}
+        - {x: 22.582733, y: -15.030464}
+        - {x: 21.582733, y: -10.030464}
+    - name: Left Attack 2 (2)_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 80
+      alignment: 9
+      pivot: {x: 0.7203977, y: 0.5241059}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.039772, y: -31.928474}
+        - {x: -13.039772, y: -30.928474}
+        - {x: -13.039772, y: -27.928474}
+        - {x: -16.039772, y: -26.928474}
+        - {x: -18.039772, y: -28.928474}
+      - - {x: -13.039772, y: 27.071526}
+        - {x: -17.039772, y: 7.0715256}
+        - {x: -17.039772, y: -19.928474}
+        - {x: -14.039772, y: -17.928474}
+        - {x: -12.039772, y: -15.928474}
+        - {x: -12.039772, y: -18.928474}
+        - {x: -11.039772, y: -26.928474}
+        - {x: -8.039772, y: -31.928474}
+        - {x: 19.960228, y: -31.928474}
+        - {x: 19.960228, y: -2.9284744}
+        - {x: 9.960228, y: 27.071526}
+      - - {x: -23.039772, y: -19.928474}
+        - {x: -20.039772, y: -22.928474}
+        - {x: -17.039772, y: -21.928474}
+        - {x: -17.039772, y: -19.928474}
+        - {x: -20.039772, y: -16.928474}
+        - {x: -22.039772, y: -16.928474}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

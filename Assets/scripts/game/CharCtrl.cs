@@ -231,10 +231,20 @@ public class CharCtrl : MonoBehaviour
                         meleeTime = meleeCoolDown;
                         rooted = true;
                         animationOverride = meleeCoolDown;
-                        if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
-                            ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
-                        else
-                            ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
+						if (Mathf.Abs (rPosFromArm.x) >= Mathf.Abs (rPosFromArm.y)) {
+							int ran = Random.Range (0, 2);
+							if (ran == 1)
+								ani.Play (rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+							else
+								ani.Play (rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
+						} else {
+							
+								int ran = Random.Range (0, 2);
+								if(ran==1)
+							ani.Play (rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
+							else
+								ani.Play (rPosFromArm.y > 0 ? "UpAttack2" : "DownAttack2", 0);
+						}
                         lastInput = rPosFromArm;
                         pysc.AddForce(rPosFromArm * meleeAdv);
                     }

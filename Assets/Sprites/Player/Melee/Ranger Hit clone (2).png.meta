@@ -1,0 +1,267 @@
+fileFormatVersion: 2
+guid: 6a207223daa1e2c49974badb5afe7e27
+timeCreated: 1470110514
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ranger Hit clone (2)_0
+    21300002: Ranger Hit clone (2)_1
+    21300004: Ranger Hit clone (2)_2
+    21300006: Ranger Hit clone (2)_3
+    21300008: Ranger Hit clone (2)_4
+    21300010: Ranger Hit clone (2)_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ranger Hit clone (2)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 31}
+        - {x: -19, y: -30}
+        - {x: 11, y: -30}
+        - {x: 16, y: -27}
+        - {x: 16, y: 27}
+        - {x: 13, y: 31}
+    - name: Ranger Hit clone (2)_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 200
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 50}
+        - {x: -39, y: 35}
+        - {x: -39, y: 21}
+        - {x: -38, y: 18}
+        - {x: -27, y: 10}
+        - {x: -19, y: -18}
+        - {x: -9, y: -31}
+        - {x: 4, y: -31}
+        - {x: 19, y: -28}
+        - {x: 19, y: 44}
+        - {x: 10, y: 50}
+    - name: Ranger Hit clone (2)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 50}
+        - {x: -50, y: 31}
+        - {x: -50, y: -15}
+        - {x: -43, y: -28}
+        - {x: -15, y: -33}
+        - {x: 19, y: -33}
+        - {x: 19, y: 32}
+        - {x: 14, y: 50}
+      - - {x: -48, y: 25}
+        - {x: -46, y: 23}
+        - {x: -43, y: 24}
+        - {x: -42, y: 28}
+        - {x: -44, y: 30}
+        - {x: -47, y: 29}
+      - - {x: -41, y: 39}
+        - {x: -38, y: 36}
+        - {x: -35, y: 37}
+        - {x: -35, y: 39}
+        - {x: -38, y: 42}
+        - {x: -40, y: 42}
+      - - {x: -35, y: 46}
+        - {x: -32, y: 47}
+        - {x: -32, y: 50}
+        - {x: -36, y: 50}
+        - {x: -37, y: 49}
+    - name: Ranger Hit clone (2)_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 31}
+        - {x: -7, y: 31}
+        - {x: -41, y: 6}
+        - {x: -41, y: -26}
+        - {x: -21, y: -40}
+        - {x: 23, y: -40}
+        - {x: 42, y: -24}
+        - {x: 42, y: -9}
+        - {x: 39, y: 5}
+      - - {x: 45, y: -13}
+        - {x: 48, y: -12}
+        - {x: 48, y: -9}
+        - {x: 45, y: -8}
+        - {x: 43, y: -10}
+      - - {x: -29, y: 11}
+        - {x: -30, y: 8}
+        - {x: -30, y: 1}
+        - {x: -17, y: 1}
+        - {x: -17, y: 8}
+        - {x: -18, y: 11}
+      - - {x: 41, y: 5}
+        - {x: 44, y: 6}
+        - {x: 44, y: 9}
+        - {x: 41, y: 10}
+        - {x: 39, y: 8}
+      - - {x: -37, y: 11}
+        - {x: -34, y: 12}
+        - {x: -34, y: 15}
+        - {x: -37, y: 16}
+        - {x: -39, y: 14}
+      - - {x: 10, y: 16}
+        - {x: 13, y: 17}
+        - {x: 13, y: 20}
+        - {x: 10, y: 21}
+        - {x: 8, y: 19}
+    - name: Ranger Hit clone (2)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 31}
+        - {x: -18, y: -28}
+        - {x: -6, y: -33}
+        - {x: 17, y: -33}
+        - {x: 44, y: -23}
+        - {x: 44, y: 15}
+        - {x: 22, y: 31}
+      - - {x: 43, y: 2}
+        - {x: 46, y: 3}
+        - {x: 46, y: 6}
+        - {x: 43, y: 7}
+        - {x: 41, y: 5}
+      - - {x: 36, y: 5}
+        - {x: 39, y: 6}
+        - {x: 39, y: 9}
+        - {x: 36, y: 10}
+        - {x: 34, y: 8}
+      - - {x: 47, y: 6}
+        - {x: 50, y: 7}
+        - {x: 50, y: 10}
+        - {x: 47, y: 11}
+        - {x: 45, y: 9}
+      - - {x: 37, y: 11}
+        - {x: 40, y: 10}
+        - {x: 43, y: 10}
+        - {x: 43, y: 15}
+        - {x: 41, y: 20}
+        - {x: 36, y: 20}
+        - {x: 35, y: 17}
+    - name: Ranger Hit clone (2)_5
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 31}
+        - {x: -12, y: 31}
+        - {x: -18, y: 28}
+        - {x: -18, y: -27}
+        - {x: -16, y: -33}
+        - {x: 29, y: -33}
+        - {x: 41, y: -28}
+        - {x: 41, y: 4}
+        - {x: 29, y: 20}
+      - - {x: 20, y: -8}
+        - {x: 24, y: -11}
+        - {x: 27, y: -11}
+        - {x: 27, y: -7}
+        - {x: 25, y: -3}
+        - {x: 21, y: -3}
+        - {x: 19, y: -5}
+      - - {x: 36, y: 5}
+        - {x: 39, y: 6}
+        - {x: 39, y: 9}
+        - {x: 36, y: 10}
+        - {x: 34, y: 8}
+      - - {x: 47, y: 6}
+        - {x: 50, y: 7}
+        - {x: 50, y: 10}
+        - {x: 47, y: 11}
+        - {x: 45, y: 9}
+      - - {x: 9, y: 20}
+        - {x: 10, y: 17}
+        - {x: 13, y: 17}
+        - {x: 15, y: 19}
+        - {x: 14, y: 22}
+        - {x: 11, y: 22}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
