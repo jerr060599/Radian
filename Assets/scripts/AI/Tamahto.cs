@@ -92,6 +92,7 @@ public class Tamahto : BasicEnemy
                 if (dPos.sqrMagnitude < atkDistance * atkDistance)
                     CharCtrl.script.damage(atkDamage);
             }
+            pysc.gravityScale = 0f;
             atkTimer = 0f;
         }
     }
