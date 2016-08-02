@@ -3,15 +3,26 @@ using System.Collections;
 
 public class Tamahto : BasicEnemy
 {
-    public readonly int SLAM = 0, CRUSH = 1, WINDUP = 2;
+    public readonly int SLAMING = 0, CRUSHING = 1, WINDING = 2, DYING = 3, SEEKING = 4, IDLE = 5;
     public float agroRadius = 2f, parkRadius = 4f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.2f, crushAirTime = 1f;
     public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f;
     float deathTimer = float.PositiveInfinity, stunTimer = 0f, atkTimer = 0f, airTimer = 0f;
     int atking = -1;
+    int curState = 5;
     Vector2 dPos, dashPos;
     protected void Update()
     {
         uiUpdate();
+        switch (curState)
+        {
+            case 5:
+
+                break;
+
+        }
+
+
+        /*
         dPos = CharCtrl.script.pysc.position - pysc.position;
         deathTimer -= Time.deltaTime;
         stunTimer -= Time.deltaTime;
@@ -94,7 +105,7 @@ public class Tamahto : BasicEnemy
             }
             pysc.gravityScale = 0f;
             atkTimer = 0f;
-        }
+        }*/
     }
     public override void kill(int damageType = 0)
     {

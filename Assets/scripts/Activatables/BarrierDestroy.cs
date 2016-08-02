@@ -4,6 +4,10 @@ public class BarrierDestroy : Activatable
 {
     public float destroyAfter = 2f;
     float killTimer = float.PositiveInfinity;
+    void Start()
+    {
+
+    }
     public override void activate(CharCtrl player)
     {
         killTimer = destroyAfter;
