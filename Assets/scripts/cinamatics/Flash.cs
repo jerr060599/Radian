@@ -13,9 +13,14 @@ public class Flash : MonoBehaviour
     }
     void Update()
     {
+        AudioListener.volume += (1 - AudioListener.volume) * fade;
         c.a *= fade;
         img.color = c;
-        if (c.a < 0.05f)
+        if (c.a < 0.05f && AudioListener.volume > 0.95f)
+        {
+            AudioListener.volume = 1f;
+            c.a = 0f;
             Destroy(gameObject);
+        }
     }
 }
