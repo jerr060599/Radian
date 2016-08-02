@@ -7,7 +7,7 @@ public class BasicEnemy : MonoBehaviour
     public static readonly int DEFAULT_DAMAGE = 0, MELEE_DAMAGE = 1, RANGED_DAMAGE = 2;
     public int maxHealth = 100, health = 100, healthPerHc = 5;
     public float walkSpeed = 3f, damageKB = 300f, hcSpacing = 1f, hcYOffset = 1f, healthFadeLerp = 0.1f;
-    public GameObject deathRegistry = null, healthDisplay = null, healthCrystal = null;
+    public GameObject deathRegistry = null, healthCrystal = null;
     public bool agro = false, hitThisUpdate = false;
     public Rigidbody2D pysc = null;
     public SpriteRenderer sr = null;
