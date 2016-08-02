@@ -79,6 +79,7 @@ public class Tamahto : BasicEnemy
                 c.enabled = true;
             if (dPos.sqrMagnitude < atkDistance * atkDistance)
                 CharCtrl.script.damage(atkDamage);
+            atkTimer = 0f;
         }
         if (atking != -1 && atking != WINDUP && atking != CRUSH)
         {
@@ -91,6 +92,7 @@ public class Tamahto : BasicEnemy
                 if (dPos.sqrMagnitude < atkDistance * atkDistance)
                     CharCtrl.script.damage(atkDamage);
             }
+            atkTimer = 0f;
         }
     }
     public override void kill(int damageType = 0)
