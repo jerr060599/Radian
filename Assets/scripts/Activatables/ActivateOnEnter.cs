@@ -3,6 +3,10 @@
 public class ActivateOnEnter : Activatable
 {
     public int validUsage = 1;
+    void Start()
+    {
+
+    }
     void OnTriggerEnter2D(Collider2D c)
     {
         if (c.gameObject == CharCtrl.script.gameObject)
