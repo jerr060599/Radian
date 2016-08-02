@@ -77,6 +77,7 @@ public class Tamahto : BasicEnemy
                         c.enabled = true;
                     if (dPos.sqrMagnitude < atkDistance * atkDistance)
                         CharCtrl.script.damage(atkDamage);
+                    CameraMovement.script.shake(0.5f);
                     curState = SEEKING;
                 }
                 break;

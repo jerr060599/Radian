@@ -8,7 +8,6 @@ public class Ipads : Activatable
     UnityEngine.UI.Text txt;
     float a = 0f;
     bool showing = false;
-    Color c = new Color(1, 1, 1, 0);
     CanvasRenderer cr;
     void Start()
     {
@@ -51,7 +50,6 @@ public class Ipads : Activatable
         }
         else if (!canvas.activeSelf)
             canvas.SetActive(true);
-
     }
     void OnTriggerExit2D(Collider2D c)
     {
