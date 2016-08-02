@@ -35,7 +35,10 @@ public class BasicEnemy : MonoBehaviour
             hcSrs[i].color = curHcC;
             hcs[i].SetActive(false);
         }
+        init();
     }
+    public virtual void init()
+    { }
     public virtual void damage(int d, int damageType = 0)
     {
         if (hitThisUpdate)
