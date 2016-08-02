@@ -299,7 +299,7 @@ public class CharCtrl : MonoBehaviour
                     brake();
                 if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.use]))
                 {
-                    if (aInRange)
+                    if (aInRange && aInRange.playerActivatable)
                         aInRange.activate(this);
                     else
                     {

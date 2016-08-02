@@ -5,7 +5,8 @@ public class ActivateOnEnter : Activatable
     public int validUsage = 1;
     void Start()
     {
-
+        if (chainedActivatable != null)
+            nextActivatable = chainedActivatable.GetComponent<Activatable>();
     }
     void OnTriggerEnter2D(Collider2D c)
     {
