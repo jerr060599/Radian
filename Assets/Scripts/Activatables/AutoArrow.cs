@@ -8,7 +8,6 @@ public class AutoArrow : MonoBehaviour {
 	public float velocity;
 	void Start()
 	{
-		t = 1f;
 		a = t;
 
 	}
