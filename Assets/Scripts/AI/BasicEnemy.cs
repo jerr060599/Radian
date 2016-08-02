@@ -42,8 +42,9 @@ public class BasicEnemy : MonoBehaviour
             return;
         hitThisUpdate = true;
         health -= d;
-        hcCount = maxHealth / healthPerHc;
-        for (int i = hcCount - 1; i < hcs.Length; i++)
+        hcCount = Mathf.Max(health, 0) / healthPerHc;
+        heathShowTimer = 2f;
+        for (int i = hcCount; i < hcs.Length; i++)
             if (hcs[i].activeSelf)
                 hcs[i].SetActive(false);
         if (damageType == MELEE_DAMAGE)
