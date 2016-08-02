@@ -44,13 +44,14 @@ public class Tamahto : BasicEnemy
                     atking = WINDUP;
                 }
                 atkTimer += Time.deltaTime;
-                airTimer += Time.deltaTime;
-                if (atkTimer >= atkWindUp)
+                if (atkTimer >= atkWindUp && atking != CRUSH)
                 {
-                    atking = Random.value > 1.0f ? SLAM : CRUSH;
+                    atking = Random.value > 0.6f ? SLAM : CRUSH;
                     if (atking == CRUSH)
                     {
                         pysc.gravityScale = 2f;
+                        foreach (Collider2D c in GetComponents<Collider2D>())
+                            c.enabled = false;
                         pysc.GetComponent<Rigidbody2D>().velocity = new Vector2(dashPos.x / crushAirTime,
                             (dashPos.y - Physics2D.gravity.y * (pysc.GetComponent<Rigidbody2D>().gravityScale) * crushAirTime * crushAirTime / 2) / crushAirTime);
                         dashPos = Vector2.zero;
@@ -67,6 +68,17 @@ public class Tamahto : BasicEnemy
             pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
             if (stunTimer < 0f && deathTimer > deathTime)
                 ani.Play(dPos.x < 0f ? "idle" : "idleFlipped");
+        }
+        airTimer += Time.deltaTime;
+        if (atking == CRUSH && airTimer > crushAirTime)
+        {
+            pysc.gravityScale = 0f;
+            airTimer = 0;
+            atking = -1;
+            foreach (Collider2D c in GetComponents<Collider2D>())
+                c.enabled = true;
+            if (dPos.sqrMagnitude < atkDistance * atkDistance)
+                CharCtrl.script.damage(atkDamage);
         }
         if (atking != -1 && atking != WINDUP && atking != CRUSH)
         {
