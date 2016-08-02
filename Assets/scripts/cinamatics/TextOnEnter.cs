@@ -12,6 +12,7 @@ public class TextOnEnter : MonoBehaviour
     bool show = false;
     public bool once;
     bool onceT;
+    Color curC = new Color(1, 1, 1, 0);
     void Start()
     {
         txt = Instantiate(defText);
@@ -19,7 +20,7 @@ public class TextOnEnter : MonoBehaviour
         txt.GetComponent<RectTransform>().position = transform.position + (Vector3)offset;
         txtComp = txt.GetComponent<UnityEngine.UI.Text>();
         txtComp.text = content;
-        txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, 0f);
+        txtComp.color = curC;
         txt.SetActive(false);
         onceT = false;
     }
@@ -38,9 +39,15 @@ public class TextOnEnter : MonoBehaviour
     void FixedUpdate()
     {
         if (show)
-            txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, txtComp.color.a + (1 - txtComp.color.a) * (1 - smooth));
+        {
+            curC.a += (1 - curC.a) * smooth;
+            txtComp.color = curC;
+        }
         else
-            txtComp.color = new Color(txtComp.color.r, txtComp.color.g, txtComp.color.b, txtComp.color.a * smooth);
+        {
+            curC.a -= curC.a * smooth;
+            txtComp.color = curC;
+        }
         if (txtComp.color.a > 0.05)
         {
             if (!txt.activeSelf)

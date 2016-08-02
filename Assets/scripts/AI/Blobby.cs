@@ -19,6 +19,7 @@ public class Blobby : BasicEnemy
 
     void Update()
     {
+        uiUpdate();
         dPos = pysc.position - CharCtrl.script.pysc.position;
         float d = dPos.x * dPos.x + dPos.y * dPos.y;
         atkTimer -= Time.deltaTime;

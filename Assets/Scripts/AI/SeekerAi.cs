@@ -10,6 +10,7 @@ public class SeekerAi : BasicEnemy
     Vector2 dPos, dashPos;
     protected void Update()
     {
+        uiUpdate();
         dPos = CharCtrl.script.pysc.position - pysc.position;
         deathTimer -= Time.deltaTime;
         stunTimer -= Time.deltaTime;
