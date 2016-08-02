@@ -12,7 +12,7 @@ public class CharCtrl : MonoBehaviour
     public float arrowCost = 0.05f;
     public float lifeMultiplyer = 2f, darkAcumulation = 0.01f;
     public int meleeDamage = 1;
-    public int dashLayer = 8, playerLayer = 10;
+    public int dashLayer = 8, playerLayer = 10, noclipLayer = 16;
     public Rigidbody2D pysc = null;
     public new BarCtrl light;
     public BarCtrl dark;
@@ -120,6 +120,7 @@ public class CharCtrl : MonoBehaviour
         if (fallTime <= deathFallTime)
         {
             fallTime -= Time.deltaTime;
+            gameObject.layer = noclipLayer;
             pysc.gravityScale = 7f;
             gameObject.layer = dashLayer;
             if (fallTime <= 0f)
