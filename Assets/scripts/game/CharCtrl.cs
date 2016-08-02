@@ -38,7 +38,7 @@ public class CharCtrl : MonoBehaviour
         autoOrderOffset = GetComponent<AutoOrder>().offset;
         handAni = fireHand.GetComponent<Animator>();
         lastJuicePosition = pysc.position;
-        if (PlayerPrefs.HasKey("curSpawn_" + SceneManager.GetActiveScene().name))
+        if (PlayerPrefs.HasKey("spawnY_" + SceneManager.GetActiveScene().name))
         {
             ani.Play("Awake", 0);
             timedUncontrollable = 1.2f;
@@ -231,20 +231,23 @@ public class CharCtrl : MonoBehaviour
                         meleeTime = meleeCoolDown;
                         rooted = true;
                         animationOverride = meleeCoolDown;
-						if (Mathf.Abs (rPosFromArm.x) >= Mathf.Abs (rPosFromArm.y)) {
-							int ran = Random.Range (0, 2);
-							if (ran == 1)
-								ani.Play (rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
-							else
-								ani.Play (rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
-						} else {
-							
-								int ran = Random.Range (0, 2);
-								if(ran==1)
-							ani.Play (rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
-							else
-								ani.Play (rPosFromArm.y > 0 ? "UpAttack2" : "DownAttack2", 0);
-						}
+                        if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
+                        {
+                            int ran = Random.Range(0, 2);
+                            if (ran == 1)
+                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                            else
+                                ani.Play(rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
+                        }
+                        else
+                        {
+
+                            int ran = Random.Range(0, 2);
+                            if (ran == 1)
+                                ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
+                            else
+                                ani.Play(rPosFromArm.y > 0 ? "UpAttack2" : "DownAttack2", 0);
+                        }
                         lastInput = rPosFromArm;
                         pysc.AddForce(rPosFromArm * meleeAdv);
                     }

@@ -15,30 +15,29 @@ public class PlayerSpawn : Activatable
             nextActivatable.activate(player);
         PlayerPrefs.SetFloat("spawnX_" + SceneManager.GetActiveScene().name, transform.position.x + spawnOffset.x);
         PlayerPrefs.SetFloat("spawnY_" + SceneManager.GetActiveScene().name, transform.position.y + spawnOffset.y);
-        PlayerPrefs.SetInt("curSpawn_" + SceneManager.GetActiveScene().name, GetInstanceID());
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("playerSpawn"))
             if (obj != gameObject)
                 obj.GetComponent<PlayerSpawn>().turnOff();
         CharCtrl.script.light.barPercent = 1f;
         ani.Play("burning", 0);
         effects.SetActive(true);
-		if(on)
-		GetComponent<AudioSource> ().Play ();
+        if (on)
+            GetComponent<AudioSource>().Play();
     }
     public void turnOff()
     {
         if (!on)
             return;
         ani.Play("off", 0);
-		if(!on)
-		GetComponent<AudioSource> ().Stop ();
+        if (!on)
+            GetComponent<AudioSource>().Stop();
         on = false;
         effects.SetActive(false);
     }
     public override void init()
     {
         ani = GetComponent<Animator>();
-        if (PlayerPrefs.GetInt("curSpawn_" + SceneManager.GetActiveScene().name) == GetInstanceID())
+        if (PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name) == transform.position.y + spawnOffset.y && PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name) == transform.position.x + spawnOffset.x)
             activate(CharCtrl.script);
     }
 }
