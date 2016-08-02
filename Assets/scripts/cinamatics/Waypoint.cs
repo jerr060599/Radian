@@ -7,10 +7,10 @@ public class Waypoint : MonoBehaviour
     public readonly int USED = 0, INACTIVE = 1, ACTIVE = 2;
     public bool activeOnFirstLoad = false;
     public GameObject nextWaypoint = null;
-    public long posHash = 0;
+    public string posHash;
     void Start()
     {
-        posHash = ((long)(transform.position.x) << 32) + (long)(transform.position.y);
+        posHash = transform.position.x + "-" + transform.position.y;
         if (!PlayerPrefs.HasKey(SceneManager.GetActiveScene().name + "_waypoint_" + posHash) && activeOnFirstLoad)
             activate();
         if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_waypoint_" + posHash, INACTIVE) == USED)
