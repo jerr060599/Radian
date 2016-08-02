@@ -10,6 +10,8 @@ public class PlayerSpawn : Activatable
     bool on = false;
     public override void activate(CharCtrl player)
     {
+        if (on)
+            return;
         on = true;
         if (nextActivatable != null)
             nextActivatable.activate(player);
