@@ -7,12 +7,7 @@ public class CameraOverride : MonoBehaviour
     public float size, duration = 1f;
     void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.gameObject == CharCtrl.script.gameObject)
+        if (c.gameObject == CharCtrl.script.gameObject && duration > 0f)
             CameraMovement.script.camOverride = this;
-    }
-    void OnTriggerExit2D(Collider2D c)
-    {
-        if (c.gameObject == CharCtrl.script.gameObject && CameraMovement.script.camOverride == this)
-            CameraMovement.script.camOverride = null;
     }
 }

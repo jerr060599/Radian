@@ -20,8 +20,9 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         camOverride.duration -= Time.deltaTime;
-        if (camOverride.duration <= 0f)
-            camOverride = null;
+        if (camOverride)
+            if (camOverride.duration <= 0f)
+                camOverride = null;
         mousePos += (Vector3.ClampMagnitude(new Vector3(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2, 0f) * mouseSensitivity, maxMouseOffset) - mousePos) * smooth;
         if (camOverride)
             cam.transform.position = (curPos += ((Vector3)(camOverride.pos) - curPos) * smooth) + shakePos + mousePos;
