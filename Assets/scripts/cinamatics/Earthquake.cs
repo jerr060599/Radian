@@ -6,6 +6,7 @@ public class Earthquake : Activatable
     public float period = 0.1f, duration = 2f, amplitude = 1f;
     float pTimer = 0f;
     public GameObject prefab;
+    public AudioClip sound;
     public override void init()
     {
 
@@ -33,6 +34,7 @@ public class Earthquake : Activatable
             chainedActivatable.activate(player);
         if (prefab)
             Instantiate(prefab, transform.position, Quaternion.identity);
+        SoundManager.script.playOnListener(sound);
         activated = true;
     }
     void OnTriggerEnter2D(Collider2D c)
