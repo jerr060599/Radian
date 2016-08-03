@@ -13,8 +13,8 @@ public class PlayerSpawn : Activatable
         if (on)
             return;
         on = true;
-        if (nextActivatable != null)
-            nextActivatable.activate(player);
+        if (chainedActivatable != null)
+            chainedActivatable.activate(player);
         PlayerPrefs.SetFloat("spawnX_" + SceneManager.GetActiveScene().name, transform.position.x + spawnOffset.x);
         PlayerPrefs.SetFloat("spawnY_" + SceneManager.GetActiveScene().name, transform.position.y + spawnOffset.y);
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("playerSpawn"))

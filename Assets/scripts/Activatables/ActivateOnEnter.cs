@@ -3,10 +3,8 @@
 public class ActivateOnEnter : Activatable
 {
     public int validUsage = 1;
-    void Start()
+    public override void init()
     {
-        if (chainedActivatable != null)
-            nextActivatable = chainedActivatable.GetComponent<Activatable>();
     }
     void OnTriggerEnter2D(Collider2D c)
     {
@@ -16,8 +14,8 @@ public class ActivateOnEnter : Activatable
     public override void activate(CharCtrl player)
     {
         validUsage--;
-        if (nextActivatable != null)
-            nextActivatable.activate(player);
+        if (chainedActivatable != null)
+            chainedActivatable.activate(player);
         if (validUsage <= 0)
             Destroy(gameObject);
     }

@@ -26,8 +26,8 @@ public class PushSpawner : Activatable
 			if (--numOfUse <= 0)
 				sr.sprite = deactivatedTex;
 		}
-		if (nextActivatable != null)
-			nextActivatable.activate (pl);
+		if (chainedActivatable != null)
+			chainedActivatable.activate (pl);
 	}
 	
 	// Update is called once per frame

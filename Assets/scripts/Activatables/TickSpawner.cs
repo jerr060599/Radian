@@ -16,8 +16,8 @@ public class TickSpawner : Activatable
     {
         activated = !activated;
         time = activated ? spawnTime : float.PositiveInfinity;
-        if (nextActivatable != null)
-            nextActivatable.activate(pl);
+        if (chainedActivatable != null)
+            chainedActivatable.activate(pl);
     }
 
     void Update()

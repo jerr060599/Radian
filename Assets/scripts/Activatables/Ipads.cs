@@ -10,18 +10,16 @@ public class Ipads : Activatable
     bool showing = false;
     CanvasRenderer cr;
     CanvasRenderer[] crs;
-    void Start()
+    public override void init()
     {
         txt = canvas.GetComponentInChildren<UnityEngine.UI.Text>();
         cr = canvas.GetComponent<CanvasRenderer>();
         crs = canvas.GetComponentsInChildren<CanvasRenderer>();
-        if (chainedActivatable != null)
-            nextActivatable = chainedActivatable.GetComponent<Activatable>();
     }
     public override void activate(CharCtrl player)
     {
-        if (nextActivatable != null)
-            nextActivatable.activate(player);
+        if (chainedActivatable != null)
+            chainedActivatable.activate(player);
         if (showing)
             CharCtrl.script.invulnerable = false;
         else

@@ -4,18 +4,14 @@ public class BarrierDestroy : Activatable
 {
     public float destroyAfter = 2f;
     float killTimer = float.PositiveInfinity;
-    void Start()
-    {
-        if (chainedActivatable != null)
-            nextActivatable = chainedActivatable.GetComponent<Activatable>();
-    }
+    public override void init() { }
     public override void activate(CharCtrl player)
     {
         killTimer = destroyAfter;
         var e = GetComponent<ParticleSystem>().emission;
         e.enabled = false;
-        if (nextActivatable != null)
-            nextActivatable.activate(player);
+        if (chainedActivatable != null)
+            chainedActivatable.activate(player);
     }
     void Update()
     {

@@ -21,8 +21,8 @@ public class Lever : Activatable
 			if (rg != null)
 				rg.checkout (this, player);
 		}
-		if (nextActivatable != null)
-			nextActivatable.activate (player);
+		if (chainedActivatable != null)
+			chainedActivatable.activate (player);
 		time = coolDown;
 	}
 

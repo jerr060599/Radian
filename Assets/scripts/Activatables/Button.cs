@@ -17,8 +17,8 @@ public class Button : Activatable
 			sr.sprite = deactivatedTex;
 			SoundManager.script.playOnListener (sound, 0.7f);
 			time = coolDown;
-			if (nextActivatable != null)
-				nextActivatable.activate (player);
+			if (chainedActivatable != null)
+				chainedActivatable.activate (player);
 		}
 	}
 

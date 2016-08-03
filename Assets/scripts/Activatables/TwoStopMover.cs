@@ -23,8 +23,8 @@ public class TwoStopMover : Activatable
 	public override void activate (CharCtrl c)
 	{
 		stopTime = 0f;
-		if (nextActivatable != null)
-			nextActivatable.activate (c);
+		if (chainedActivatable != null)
+			chainedActivatable.activate (c);
 	}
 	// Update is called once per frame
 	void Update ()

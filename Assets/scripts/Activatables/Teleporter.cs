@@ -13,8 +13,8 @@ public class Teleporter : Activatable
     {
 
 		SoundManager.script.playOnListener (SoundManager.script.teleport, 0.8f);
-        if (nextActivatable != null)
-            nextActivatable.activate(player);
+        if (chainedActivatable != null)
+            chainedActivatable.activate(player);
         player.transform.position = destination.transform.position + (Vector3)offset;
     }
     void OnTriggerEnter2D(Collider2D c)
