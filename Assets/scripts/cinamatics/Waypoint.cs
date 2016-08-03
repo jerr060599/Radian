@@ -13,6 +13,8 @@ public class Waypoint : MonoBehaviour
         posHash = transform.position.x + "-" + transform.position.y;
         if (!PlayerPrefs.HasKey(SceneManager.GetActiveScene().name + "_waypoint_" + posHash) && activeOnFirstLoad)
             activate();
+        if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_waypoint_" + posHash, INACTIVE) == ACTIVE)
+            activate();
         if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_waypoint_" + posHash, INACTIVE) == USED)
             Destroy(gameObject);
         if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_waypoint_" + posHash, INACTIVE) == INACTIVE)

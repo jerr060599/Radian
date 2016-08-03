@@ -12,6 +12,7 @@ public class PlayerSpawn : Activatable
     {
         if (on)
             return;
+        Debug.Log(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name));
         on = true;
         if (chainedActivatable != null)
             chainedActivatable.activate(player);
@@ -25,6 +26,7 @@ public class PlayerSpawn : Activatable
         effects.SetActive(true);
         if (on)
             GetComponent<AudioSource>().Play();
+        Debug.Log(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name));
     }
     public void turnOff()
     {
@@ -39,6 +41,7 @@ public class PlayerSpawn : Activatable
     public override void init()
     {
         ani = GetComponent<Animator>();
+        //Debug.Log(gameObject.name + (PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name) + ":" +transform.position.y + spawnOffset.y));
         if (PlayerPrefs.GetFloat("spawnY_" + SceneManager.GetActiveScene().name) == transform.position.y + spawnOffset.y && PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name) == transform.position.x + spawnOffset.x)
             activate(CharCtrl.script);
     }

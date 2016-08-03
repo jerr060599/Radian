@@ -10,9 +10,12 @@ public class EditorTools : MonoBehaviour
         {
             Destroy(this);
         }
-        transform.position = Vector3.zero;
-        if (resetPlayerPref)
-            PlayerPrefs.DeleteAll();
-        resetPlayerPref = false;
+        else
+        {
+            transform.position = Vector3.zero;
+            if (resetPlayerPref)
+                PlayerPrefs.DeleteAll();
+            resetPlayerPref = false;
+        }
     }
 }
