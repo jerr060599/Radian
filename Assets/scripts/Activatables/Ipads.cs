@@ -7,7 +7,7 @@ public class Ipads : Activatable
     public string content;
     UnityEngine.UI.Text txt;
     float a = 0f;
-    bool showing = false;
+    bool showing = false, falsified = false;
     CanvasRenderer cr;
     CanvasRenderer[] crs;
     public override void init()
@@ -29,6 +29,7 @@ public class Ipads : Activatable
             CharCtrl.script.invulnerable = true;
             txt.text = content;
         }
+        falsified = false;
         showing = !showing;
     }
     void Update()
@@ -46,7 +47,7 @@ public class Ipads : Activatable
         else
         {
             a -= a * 0.1f;
-            if (canvas.activeSelf)
+            if (canvas.activeSelf && !falsified)
             {
                 cr.SetAlpha(a);
                 for (int i = 0; i < crs.Length; i++)
@@ -55,8 +56,11 @@ public class Ipads : Activatable
         }
         if (a < 0.05f)
         {
-            if (canvas.activeSelf)
+            if (canvas.activeSelf && !falsified)
+            {
                 canvas.SetActive(false);
+                falsified = true;
+            }
         }
         else if (!canvas.activeSelf)
             canvas.SetActive(true);
