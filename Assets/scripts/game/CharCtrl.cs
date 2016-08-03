@@ -28,6 +28,7 @@ public class CharCtrl : MonoBehaviour
     CircleCollider2D cc;
     void Awake()
     {
+        PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
         light = lightBar.GetComponent<BarCtrl>();
         dark = darkBar.GetComponent<BarCtrl>();
         script = this;

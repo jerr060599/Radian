@@ -24,12 +24,7 @@ public class Blobby : BasicEnemy
         float d = dPos.x * dPos.x + dPos.y * dPos.y;
         atkTimer -= Time.deltaTime;
         deathTimer -= Time.deltaTime;
-        if (!agro)
-        {
-            agro = d < range * range;
-            if (agro)
-                SoundManager.script.playOn(transform, SoundManager.script.blobAgro, 1f);
-        }
+        agro = agro ? true : d < range * range;
         if (deathTimer <= 0f)
             fadeAndDespawn();
         if (agro && deathTimer > deathTime)

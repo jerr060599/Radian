@@ -76,12 +76,18 @@ public class Projectile : MonoBehaviour
     {
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0f)
+        {
+            SoundManager.script.playOn(transform, soundOnNullify, hitVolume);
             stop();
+        }
         if (splatAtLocation)
         {
             Vector2 dPos = new Vector2(transform.position.x - splatLocation.x, transform.position.y - splatLocation.y);
             if (dPos.x * dPos.x + dPos.y + dPos.y <= splatTolerance)
+            {
+                SoundManager.script.playOn(transform, soundOnNullify, hitVolume);
                 stop();
+            }
         }
         if (turnWithVel)
             transform.localRotation = Quaternion.LookRotation(Vector3.forward, -new Vector3(GetComponent<Rigidbody2D>().velocity.y, -GetComponent<Rigidbody2D>().velocity.x));
