@@ -8,6 +8,9 @@ public class CameraOverride : MonoBehaviour
     void OnTriggerEnter2D(Collider2D c)
     {
         if (c.gameObject == CharCtrl.script.gameObject && duration > 0f)
+        {
             CameraMovement.script.camOverride = this;
+            CharCtrl.script.controllable = false;
+        }
     }
 }
