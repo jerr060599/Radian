@@ -3,12 +3,11 @@ using System.Collections;
 
 public class Ipads : Activatable
 {
-    public Canvas canvas;
+    public GameObject canvas;
     public string content;
     UnityEngine.UI.Text txt;
     float a = 0f;
     bool showing = false;
-    Color c = new Color(1, 1, 1, 0);
     CanvasRenderer cr;
     void Start()
     {
@@ -32,24 +31,25 @@ public class Ipads : Activatable
     }
     void Update()
     {
-        if (canvas.enabled)
+        if (showing)
         {
-            if (showing)
-            {
-                a += (1 - a) * 0.1f;
+            a += (1 - a) * 0.1f;
+            if (canvas.activeSelf)
                 cr.SetAlpha(a);
-            }
-            else
-            {
-                a -= a * 0.1f;
+        }
+        else
+        {
+            a -= a * 0.1f;
+            if (canvas.activeSelf)
                 cr.SetAlpha(a);
-            }
         }
         if (a < 0.05f)
-            canvas.enabled = false;
-        else
-            canvas.enabled = true;
-
+        {
+            if (canvas.activeSelf)
+                canvas.SetActive(false);
+        }
+        else if (!canvas.activeSelf)
+            canvas.SetActive(true);
     }
     void OnTriggerExit2D(Collider2D c)
     {

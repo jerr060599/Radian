@@ -5,14 +5,19 @@ public class Tamahto : BasicEnemy
 {
     public readonly int SLAMING = 0, CRUSHING = 1, WINDING = 2, DYING = 3, SEEKING = 4, IDLE = 5, STUN = 6, FADING = 7;
     public float agroRadius = 2f, parkRadius = 4f, maxImpulse = 1f, atkDistance = 1f, atkDamage = 0.2f, crushAirTime = 1f;
-    public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f;
+    public float deathTime = 2f, stunTime = 1.5f, atkWindUp = 0.5f, dashLerp = 0.1f, dashW = 0.5f;
     float timer = 0f;
     int curState = 5;
+    GameObject shadow;
     Vector2 dPos, tmp, lastCCPos = Vector2.zero;
-    protected void Update()
+    public override void init()
+    {
+        shadow = GetComponent<AutoOrder>().shadow;
+    }
+    protected void FixedUpdate()
     {
         uiUpdate();
-        timer -= Time.deltaTime;
+        timer -= Time.fixedDeltaTime;
         dPos = CharCtrl.script.pysc.position - pysc.position;
         switch (curState)
         {
@@ -53,7 +58,8 @@ public class Tamahto : BasicEnemy
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 if (timer <= 0f)
                 {
-                    curState = Random.value > 0.6f ? SLAMING : CRUSHING;
+                    curState = Random.value > 0.55f ? SLAMING : CRUSHING;
+                    shadow.SetActive(false);
                     if (curState == CRUSHING)
                     {
                         timer = crushAirTime;
@@ -77,19 +83,29 @@ public class Tamahto : BasicEnemy
                         c.enabled = true;
                     if (dPos.sqrMagnitude < atkDistance * atkDistance)
                         CharCtrl.script.damage(atkDamage);
+                    CameraMovement.script.shake(0.5f);
                     curState = SEEKING;
+                    shadow.SetActive(true);
                 }
                 break;
             case 0:
                 transform.position += (Vector3)tmp * dashLerp;
                 tmp *= 1 - dashLerp;
-                if (tmp.x * tmp.x + tmp.y * tmp.y < 0.2f)
+                if (pysc.rotation < 0)
+                    pysc.rotation = pysc.rotation % 360 + 360;
+                else
+                    pysc.rotation = pysc.rotation % 360;
+                if (tmp.x * tmp.x + tmp.y * tmp.y < 0.2f && Mathf.Min(360 - pysc.rotation, pysc.rotation) < 10)
                 {
+                    pysc.rotation = 0f;
                     tmp = Vector2.zero;
                     if (dPos.sqrMagnitude < atkDistance * atkDistance)
                         CharCtrl.script.damage(atkDamage);
                     curState = SEEKING;
+                    shadow.SetActive(true);
                 }
+                else
+                    pysc.rotation += tmp.x > 0 ? -dashW : dashW;
                 break;
         }
     }
