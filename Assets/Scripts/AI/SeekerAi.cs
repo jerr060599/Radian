@@ -42,6 +42,7 @@ public class SeekerAi : BasicEnemy
                     atking = true;
                     atkTimer = 0.00001f;
                     ani.Play(dPos.x < 0f ? "EnemyMelee" : "EnemyMeleeFlipped");
+                    SoundManager.script.playOn(transform, SoundManager.script.eSwipe, 1f);
                     dashPos = dPos;
                 }
             }

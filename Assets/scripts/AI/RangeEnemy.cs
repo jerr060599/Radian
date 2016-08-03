@@ -9,6 +9,7 @@ public class RangeEnemy : BasicEnemy
     Vector2 dPos;
     public void fire(Transform t)
     {
+        SoundManager.script.playOn(transform, SoundManager.script.deerLaunch, 1f);
         atkTimer = float.PositiveInfinity;
         Vector2 dPos = (Vector2)(t.position) - pysc.position;
         GameObject proj = (GameObject)Instantiate(projectile, transform.position, Quaternion.AngleAxis(-90f, Vector3.forward));
@@ -64,6 +65,7 @@ public class RangeEnemy : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
+        SoundManager.script.playOn(transform, SoundManager.script.deerDeath, 1f);
         ani.Play(dPos.x <= 0 ? "deathFlipped" : "death");
         deathTimer = deathTime;
         foreach (Collider2D c in GetComponents<Collider2D>())
