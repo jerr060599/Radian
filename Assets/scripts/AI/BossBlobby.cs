@@ -148,6 +148,8 @@ public class BossBlobby : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
+        if (curState == FADING || curState == DYING)
+            return;
         SoundManager.script.playOn(transform, SoundManager.script.blobDeath, 1f);
         curState = DYING;
         timer = deathTime;
