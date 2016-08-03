@@ -31,7 +31,8 @@ public class Earthquake : Activatable
             return;
         if (chainedActivatable)
             chainedActivatable.activate(player);
-        Instantiate(prefab, transform.position, Quaternion.identity);
+        if (prefab)
+            Instantiate(prefab, transform.position, Quaternion.identity);
         activated = true;
     }
     void OnTriggerEnter2D(Collider2D c)
