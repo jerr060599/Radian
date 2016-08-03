@@ -25,6 +25,12 @@ public class Blobby : BasicEnemy
         atkTimer -= Time.deltaTime;
         deathTimer -= Time.deltaTime;
         agro = agro ? true : d < range * range;
+        if (!agro)
+        {
+            agro = d < range * range;
+            if (agro)
+                SoundManager.script.playOn(transform, SoundManager.script.blobAgro, 1f);
+        }
         if (deathTimer <= 0f)
             fadeAndDespawn();
         if (agro && deathTimer > deathTime)
@@ -80,6 +86,7 @@ public class Blobby : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
+        SoundManager.script.playOn(transform, SoundManager.script.blobDeath, 1f);
         deathTimer = deathTime;
         ani.Play(dPos.x > 0f ? "death" : "deathFlipped", 0);
     }
