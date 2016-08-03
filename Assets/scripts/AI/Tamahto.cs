@@ -22,6 +22,7 @@ public class Tamahto : BasicEnemy
         switch (curState)
         {
             case 6:
+                pysc.rotation = 0f;
                 ani.Play(dPos.x < 0 ? "stagger" : "staggerFlipped", 0);
                 if (timer <= 0f)
                     curState = SEEKING;
