@@ -24,7 +24,6 @@ public class Blobby : BasicEnemy
         float d = dPos.x * dPos.x + dPos.y * dPos.y;
         atkTimer -= Time.deltaTime;
         deathTimer -= Time.deltaTime;
-        agro = agro ? true : d < range * range;
         if (!agro)
         {
             agro = d < range * range;

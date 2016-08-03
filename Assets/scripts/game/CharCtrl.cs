@@ -61,6 +61,7 @@ public class CharCtrl : MonoBehaviour
         light.barPercent -= amount;
         curA = 1;
         timedUncontrollable = timedInvulnerable = staggerTime;
+        SoundManager.script.playOnListener(variate ? SoundManager.script.playerHit1 : SoundManager.script.playerHit2, 1f);
         if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
             ani.Play(lastInput.x > 0 ? "RightStagger" : "LeftStagger", 0);
         else

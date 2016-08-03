@@ -16,7 +16,12 @@ public class SeekerAi : BasicEnemy
         stunTimer -= Time.deltaTime;
         if (deathTimer <= 0f)
             fadeAndDespawn();
-        agro = agro ? true : (CharCtrl.script.pysc.position - pysc.position).sqrMagnitude <= agroRadius * agroRadius;
+        if (!agro)
+        {
+            agro = dPos.sqrMagnitude <= agroRadius * agroRadius;
+            if (agro)
+                SoundManager.script.playOn(transform, SoundManager.script.batAgro, 1f);
+        }
         if (agro && deathTimer > deathTime)
         {
             if (dPos.sqrMagnitude > parkRadius * parkRadius)
