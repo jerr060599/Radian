@@ -12,7 +12,6 @@ public class PlayerSpawn : Activatable
     {
         if (on)
             return;
-        Debug.Log(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name));
         on = true;
         if (chainedActivatable != null)
             chainedActivatable.activate(player);
@@ -26,7 +25,6 @@ public class PlayerSpawn : Activatable
         effects.SetActive(true);
         if (on)
             GetComponent<AudioSource>().Play();
-        Debug.Log(PlayerPrefs.GetFloat("spawnX_" + SceneManager.GetActiveScene().name));
     }
     public void turnOff()
     {
