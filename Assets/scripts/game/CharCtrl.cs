@@ -59,7 +59,7 @@ public class CharCtrl : MonoBehaviour
         if (invulnerable || timedInvulnerable > 0f)
             return;
         light.barPercent -= amount;
-        curA = 0.6f;
+        curA = 1;
         timedUncontrollable = timedInvulnerable = staggerTime;
         if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
             ani.Play(lastInput.x > 0 ? "RightStagger" : "LeftStagger", 0);
@@ -107,7 +107,7 @@ public class CharCtrl : MonoBehaviour
         meleeTime -= Time.deltaTime;
         animationOverride -= Time.deltaTime;
         timedInvulnerable -= Time.deltaTime;
-        curA *= 0.9f;
+        curA *= 0.95f;
         if (curA < 0.05f)
         {
             if (cr.gameObject.activeSelf)
