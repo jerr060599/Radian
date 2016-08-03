@@ -18,7 +18,8 @@ public class CharCtrl : MonoBehaviour
     public BarCtrl dark;
     public GemCtrl gem;
     public Vector2 feetPos, armPos;
-    float autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f, deathTimer = float.PositiveInfinity;
+    public CanvasRenderer cr;
+    float curA = 0f, autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f, deathTimer = float.PositiveInfinity;
     bool rooted = false, variate = false, overAir = false, noUpdate = false;
     Vector2 lastInput = Vector2.down, lastJuicePosition, dashPos;
     Animator ani, handAni;
@@ -58,6 +59,7 @@ public class CharCtrl : MonoBehaviour
         if (invulnerable || timedInvulnerable > 0f)
             return;
         light.barPercent -= amount;
+        curA = 0.6f;
         timedUncontrollable = timedInvulnerable = staggerTime;
         if (Mathf.Abs(lastInput.x) >= Mathf.Abs(lastInput.y))
             ani.Play(lastInput.x > 0 ? "RightStagger" : "LeftStagger", 0);
@@ -105,6 +107,16 @@ public class CharCtrl : MonoBehaviour
         meleeTime -= Time.deltaTime;
         animationOverride -= Time.deltaTime;
         timedInvulnerable -= Time.deltaTime;
+        curA *= 0.9f;
+        if (curA < 0.05f)
+        {
+            if (cr.gameObject.activeSelf)
+                cr.gameObject.SetActive(false);
+        }
+        else if (cr.gameObject.activeSelf)
+            cr.SetAlpha(curA);
+        else
+            cr.gameObject.SetActive(true);
         if (deathTimer <= 0f)
             respawn();
         if (noUpdate)
