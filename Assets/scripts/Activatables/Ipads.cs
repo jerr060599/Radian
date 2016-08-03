@@ -15,6 +15,8 @@ public class Ipads : Activatable
         txt = canvas.GetComponentInChildren<UnityEngine.UI.Text>();
         cr = canvas.GetComponent<CanvasRenderer>();
         crs = canvas.GetComponentsInChildren<CanvasRenderer>();
+        content = content.Replace("\\n", "\n");
+        content = content.Replace("\\t", "\t");
     }
     public override void activate(CharCtrl player)
     {
