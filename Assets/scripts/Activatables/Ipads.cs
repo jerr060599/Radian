@@ -9,10 +9,12 @@ public class Ipads : Activatable
     float a = 0f;
     bool showing = false;
     CanvasRenderer cr;
+    CanvasRenderer[] crs;
     void Start()
     {
         txt = canvas.GetComponentInChildren<UnityEngine.UI.Text>();
         cr = canvas.GetComponent<CanvasRenderer>();
+        crs = canvas.GetComponentsInChildren<CanvasRenderer>();
         if (chainedActivatable != null)
             nextActivatable = chainedActivatable.GetComponent<Activatable>();
     }
@@ -35,13 +37,21 @@ public class Ipads : Activatable
         {
             a += (1 - a) * 0.1f;
             if (canvas.activeSelf)
+            {
                 cr.SetAlpha(a);
+                for (int i = 0; i < crs.Length; i++)
+                    crs[i].SetAlpha(a);
+            }
         }
         else
         {
             a -= a * 0.1f;
             if (canvas.activeSelf)
+            {
                 cr.SetAlpha(a);
+                for (int i = 0; i < crs.Length; i++)
+                    crs[i].SetAlpha(a);
+            }
         }
         if (a < 0.05f)
         {
