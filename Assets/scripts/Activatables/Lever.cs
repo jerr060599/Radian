@@ -18,8 +18,8 @@ public class Lever : Activatable
 			sr.sprite = activatedTex;
 			activated = true;
 			onActivation (player);
-			if (rg != null)
-				rg.checkout (this, player);
+			if (radioGroup != null)
+				radioGroup.checkout (this, player);
 		}
 		if (chainedActivatable != null)
 			chainedActivatable.activate (player);
