@@ -112,6 +112,8 @@ public class Tamahto : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
+        if (curState == DYING || curState == FADING)
+            return;
         ani.Play(lastCCPos.x <= 0 ? "death" : "deathFlipped");
         timer = deathTime;
         curState = DYING;

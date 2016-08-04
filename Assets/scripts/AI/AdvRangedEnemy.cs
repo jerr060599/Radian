@@ -63,6 +63,8 @@ public class AdvRangedEnemy : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
+        if (deathTimer <= deathTime)
+            return;
         ani.Play(dPos.x <= 0 ? "deathFlipped" : "death");
         deathTimer = deathTime;
         foreach (Collider2D c in GetComponents<Collider2D>())
