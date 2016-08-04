@@ -4,6 +4,7 @@ using System.Collections;
 public class Ipads : Activatable
 {
     public GameObject canvas;
+    public AudioClip sound;
     public string content;
     UnityEngine.UI.Text txt;
     float a = 0f;
@@ -28,6 +29,7 @@ public class Ipads : Activatable
         {
             CharCtrl.script.invulnerable = true;
             txt.text = content;
+            SoundManager.script.playOn(transform, sound);
         }
         falsified = false;
         showing = !showing;

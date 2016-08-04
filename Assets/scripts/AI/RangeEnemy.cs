@@ -70,6 +70,7 @@ public class RangeEnemy : BasicEnemy
     {
         if (deathTimer <= deathTime)
             return;
+        SoundManager.script.playOn(transform, SoundManager.script.deerDeath);
         ani.Play(dPos.x <= 0 ? "deathFlipped" : "death");
         deathTimer = deathTime;
         foreach (Collider2D c in GetComponents<Collider2D>())
