@@ -140,7 +140,11 @@ public class BossBlobby : BasicEnemy
             case 8:
                 if (timer <= 0)
                 {
-                    fadeAndDespawn();
+                    if (fading)
+                        return;
+                    foreach (Collider2D c in GetComponents<Collider2D>())
+                        c.enabled = false;
+                    fading = true;
                     curState = FADING;
                 }
                 break;
@@ -150,6 +154,8 @@ public class BossBlobby : BasicEnemy
     {
         if (curState == FADING || curState == DYING)
             return;
+        if (deathRegistry)
+            deathRegistry.GetComponent<DeathRegistry>().registerDeath();
         SoundManager.script.playOn(transform, SoundManager.script.blobDeath, 1f);
         curState = DYING;
         timer = deathTime;

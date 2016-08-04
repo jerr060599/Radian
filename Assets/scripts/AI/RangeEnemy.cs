@@ -25,7 +25,12 @@ public class RangeEnemy : BasicEnemy
         atkTimer -= Time.deltaTime;
         deathTimer -= Time.deltaTime;
         animationOverride -= Time.deltaTime;
-        agro = agro ? true : d < range * range;
+        if (!agro)
+        {
+            agro = d < range * range;
+            if (agro)
+                SoundManager.script.playOn(transform, SoundManager.script.deerAgro);
+        }
         if (agro && animationOverride < 0f && deathTimer > deathTime)
         {
             if (atkTimer > atkTime)
@@ -42,7 +47,6 @@ public class RangeEnemy : BasicEnemy
                 else
                 {
                     pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
-                    //if (animationOverride <= 0f)
                     ani.Play(dPos.x > 0f ? "idle" : "idleFlipper", 0);
                 }
             else
@@ -64,6 +68,8 @@ public class RangeEnemy : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
+        if (deathTimer <= deathTime)
+            return;
         ani.Play(dPos.x <= 0 ? "deathFlipped" : "death");
         deathTimer = deathTime;
         foreach (Collider2D c in GetComponents<Collider2D>())

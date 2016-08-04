@@ -70,6 +70,8 @@ public class SeekerAi : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
+        if (deathTimer <= deathTime)
+            return;
         if (damageType == MELEE_DAMAGE || damageType == 0)
             ani.Play(dPos.x <= 0 ? "EnemyMeleeDeath" : "EnemyMeleeDeathFlipped");
         else

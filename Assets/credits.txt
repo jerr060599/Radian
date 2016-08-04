@@ -33,9 +33,6 @@ Anthony Ma
 Lead technical design director
 Jerry Hsu
 
-Design technical directors
-Jerry Hsu
-
 Animation technical director
 Jimmy Shi
 

@@ -12,12 +12,12 @@ public class BasicEnemy : MonoBehaviour
     public Rigidbody2D pysc = null;
     public SpriteRenderer sr = null;
     public Animator ani = null;
-    GameObject[] hcs = null;
-    SpriteRenderer[] hcSrs = null;
-    int hcCount = 0;
-    bool fading = false, healthShowing = false;
-    Color curHcC = new Color(1, 1, 1, 0);
-    float heathShowTimer = 0f;
+    protected GameObject[] hcs = null;
+    protected SpriteRenderer[] hcSrs = null;
+    protected int hcCount = 0;
+    protected bool fading = false, healthShowing = false;
+    protected Color curHcC = new Color(1, 1, 1, 0);
+    protected float heathShowTimer = 0f;
     void Start()
     {
         pysc = GetComponent<Rigidbody2D>();
