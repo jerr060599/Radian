@@ -39,4 +39,8 @@ public class PauseMenu : MonoBehaviour
         else
             GetComponent<Canvas>().enabled = true;
     }
+    public void toMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
