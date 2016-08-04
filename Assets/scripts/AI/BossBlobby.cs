@@ -6,7 +6,6 @@ public class BossBlobby : BasicEnemy
     public static readonly int SEEKING = 0, STOMPING = 1, IDLING = 2, VOMIT_WINDING = 3, VOMITING = 4, STUN = 5, AVOIDING = 6, MOUTH_OPENING = 7, DYING = 8, FADING = 9;
     public float range = 10f, projectileAirTime = 1f, avoidDistance = 3f, maxImpulse = 1f, vomitFireRate = 0.5f, seekDistance = 8f, volleyLength = 4f, atkAnimationLength = 1.2f, volleySpacing = 3f, deathTime = 1f, stompRadius = 2f, stompDamage = 0.3f, stompWindup = 1f, stompAirTime = 2f;
     float timer = 0f, timer2 = 0f;
-    //float atkTimer = float.PositiveInfinity, atkWinUpTimer = 0f, volleyTimer = 0f, deathTimer = float.PositiveInfinity;
     public GameObject projectile;
     Vector2 dPos;
     int curState = IDLING;
@@ -134,6 +133,7 @@ public class BossBlobby : BasicEnemy
                 if (timer <= 0f)
                 {
                     curState = VOMITING;
+                    SoundManager.script.playOn(transform, SoundManager.script.blobVomit);
                     timer = volleyLength;
                 }
                 break;
