@@ -9,6 +9,7 @@ public class AdvRangedEnemy : BasicEnemy
     Vector2 dPos;
     public void fire(Rigidbody2D player)
     {
+        SoundManager.script.playOn(transform, SoundManager.script.deerLaunch);
         atkTimer = float.PositiveInfinity;
         Vector2 dPos = player.position + projectileAirTime * player.velocity - pysc.position;
         GameObject proj = (GameObject)Instantiate(projectile, transform.position, Quaternion.AngleAxis(-90f, Vector3.forward));
@@ -65,6 +66,7 @@ public class AdvRangedEnemy : BasicEnemy
     {
         if (deathTimer <= deathTime)
             return;
+        SoundManager.script.playOn(transform, SoundManager.script.deerDeath);
         ani.Play(dPos.x <= 0 ? "deathFlipped" : "death");
         deathTimer = deathTime;
         foreach (Collider2D c in GetComponents<Collider2D>())
