@@ -310,6 +310,7 @@ public class CharCtrl : MonoBehaviour
                         aInRange.activate(this);
                     else
                     {
+                        SoundManager.script.playOnListener(SoundManager.script.lightSwitch, 1f);
                         usingLight = !usingLight;
                         gem.isLight = usingLight;
                         (usingLight ? lightP : darkP).GetComponent<ParticleSystem>().Play();
