@@ -80,7 +80,7 @@ public class Blobby : BasicEnemy
     }
     public override void kill(int damageType = 0)
     {
-        if (deathTimer >= deathTime)
+        if (deathTimer <= deathTime)
             return;
         SoundManager.script.playOn(transform, SoundManager.script.blobDeath, 1f);
         deathTimer = deathTime;
