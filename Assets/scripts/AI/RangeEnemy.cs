@@ -9,6 +9,7 @@ public class RangeEnemy : BasicEnemy
     Vector2 dPos;
     public void fire(Transform t)
     {
+        SoundManager.script.playOn(transform, SoundManager.script.deerLaunch);
         atkTimer = float.PositiveInfinity;
         Vector2 dPos = (Vector2)(t.position) - pysc.position;
         GameObject proj = (GameObject)Instantiate(projectile, transform.position, Quaternion.AngleAxis(-90f, Vector3.forward));

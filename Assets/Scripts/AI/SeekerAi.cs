@@ -72,6 +72,7 @@ public class SeekerAi : BasicEnemy
     {
         if (deathTimer <= deathTime)
             return;
+        SoundManager.script.playOn(transform, SoundManager.script.batDeath);
         if (damageType == MELEE_DAMAGE || damageType == 0)
             ani.Play(dPos.x <= 0 ? "EnemyMeleeDeath" : "EnemyMeleeDeathFlipped");
         else
