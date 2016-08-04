@@ -51,7 +51,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource playBGM(AudioClip clip, float volume = 1)
     {
         if (!clip)
+        {
+            lastBGM = curBGM;
             return curBGM = null;
+        }
         GameObject src = (GameObject)Instantiate(bgmSrc, transform.position, transform.rotation);
         src.transform.SetParent(CharCtrl.script.transform);
         src.GetComponent<AudioSource>().clip = clip;
