@@ -5,7 +5,7 @@ public class SoundManager : MonoBehaviour
 {
     public GameObject defSrc, bgmSrc;
     public static SoundManager script;
-    public AudioClip step1, step2, radianceSource, dash, sword1, sword2, enemyHit1, enemyHit2, teleport, blobDeath, bowDraw, bowRelease, batAgro, blobAgro, deerLaunch, deerDeath, eSwipe, playerHit1, playerHit2, lightSwitch, deerAgro;
+    public AudioClip step1, step2, radianceSource, dash, sword1, sword2, enemyHit1, enemyHit2, teleport, blobDeath, bowDraw, bowRelease, batAgro, blobAgro, deerLaunch, deerDeath, eSwipe, playerHit1, playerHit2, lightSwitch, deerAgro, turtleAgro, turtleDeath;
     public AudioSource lastBGM = null, curBGM = null;
     public float smooth = 0.1f;
     public float bgmVolume = 0f;

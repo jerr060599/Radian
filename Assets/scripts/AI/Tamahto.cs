@@ -31,7 +31,10 @@ public class Tamahto : BasicEnemy
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 ani.Play("idle");
                 if (dPos.sqrMagnitude < agroRadius * agroRadius)
+                {
+                    SoundManager.script.playOn(transform, SoundManager.script.turtleAgro);
                     curState = SEEKING;
+                }
                 break;
             case 4:
                 if (dPos.sqrMagnitude > parkRadius * parkRadius)
@@ -114,6 +117,7 @@ public class Tamahto : BasicEnemy
     {
         if (curState == DYING || curState == FADING)
             return;
+        SoundManager.script.playOn(transform, SoundManager.script.turtleDeath);
         ani.Play(lastCCPos.x <= 0 ? "death" : "deathFlipped");
         timer = deathTime;
         curState = DYING;
@@ -122,7 +126,7 @@ public class Tamahto : BasicEnemy
     }
     public override void damage(int amount, int damageType = 0)
     {
-        if (curState != CRUSHING)
+        if (curState != CRUSHING && curState != SLAMING)
         {
             curState = STUN;
             timer = stunTime;
