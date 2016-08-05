@@ -29,10 +29,7 @@ public class CharCtrl : MonoBehaviour
     CircleCollider2D cc;
     void Awake()
     {
-        if (PlayerPrefs.HasKey("Diff"))
-            diff = PlayerPrefs.GetFloat("Diff");
-        else
-            diff = 1f;
+        diff = PlayerPrefs.GetFloat("Diff", 1f);
         PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
         light = lightBar.GetComponent<BarCtrl>();
         dark = darkBar.GetComponent<BarCtrl>();
