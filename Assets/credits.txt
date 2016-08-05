@@ -1,0 +1,110 @@
+Producer
+Jimmy Shi
+
+Creative director
+Anthony Ma
+
+Lead AI/gameplay programmer
+Jerry Hsu
+
+Mission director
+Jimmy Shi
+
+World level design director
+Jimmy His
+
+Lead programmer
+Jerry Hsu
+
+Technical architect
+Jerry Hsu
+
+Art director
+Anthony Ma
+
+Animation art director
+Anthony Ma
+
+Story by
+Jimmy Shi 
+Jerry Hsu
+Anthony Ma
+
+Lead technical design director
+Jerry Hsu
+
+Animation technical director
+Jimmy Shi
+
+Graphic technical directors
+Jerry Hsu
+
+Game designers
+Jimmy Shi 
+Jerry Hsu
+Anthony Ma
+
+Level designer world
+Jimmy Shi
+
+Lead scriptwriter
+Jimmy Shi
+
+Scripted events
+Jerry Hsu
+
+Ai/gameplay integrators
+Jerry Hsu
+
+Scripted events integrators
+Jerry Hsu 
+
+Technical lead
+Jerry Hsu
+
+Animation programmer
+Jimmy Shi
+
+Ai/gameplay programmer
+Jerry Hsu
+
+Menu interfaces generalist programmer
+Jerry Hsu
+
+Team lead animation gameplay
+Anthony Ma
+
+2D animator - gameplay
+Anthony Ma
+
+2D animator - character
+Jimmy Shi
+
+Level artists
+Jimmy Shi
+
+concepts artists
+Anthony Ma
+Jerry Hsu
+
+team lead texture
+Anthony Ma
+
+team lead lighting
+Jimmy Shi
+
+menus and interfaces graphics artists
+Anthony Ma
+
+Audio artists
+Jimmy Shi
+Anthony Ma
+
+Special thanks to:
+Steve Ucho
+
+For gitin gud
+
+
+
+
