@@ -5,6 +5,7 @@ using System.Collections;
 public class CharCtrl : MonoBehaviour
 {
     public static CharCtrl script = null;
+    public float diff;
     public GameObject death, itemIcon, lightBar, darkBar, gemObject, fireArm, fireHand, lightArrow, darkArrow, shadow, darkP, lightP;
     public string introAnimation = "", sceneChangeOnDeath = "";
     public bool controllable = true, usingLight = true, isDashing = false, arrowLoaded = false, invulnerable = false;
@@ -28,6 +29,10 @@ public class CharCtrl : MonoBehaviour
     CircleCollider2D cc;
     void Awake()
     {
+        if (PlayerPrefs.HasKey("Diff"))
+            diff = PlayerPrefs.GetFloat("Diff");
+        else
+            diff = 1f;
         PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
         light = lightBar.GetComponent<BarCtrl>();
         dark = darkBar.GetComponent<BarCtrl>();
@@ -59,7 +64,7 @@ public class CharCtrl : MonoBehaviour
     {
         if (invulnerable || timedInvulnerable > 0f)
             return;
-        light.barPercent -= amount;
+        light.barPercent -= amount * diff;
         curA = 1;
         timedUncontrollable = timedInvulnerable = staggerTime;
         SoundManager.script.playOnListener(variate ? SoundManager.script.playerHit1 : SoundManager.script.playerHit2, 1f);
@@ -238,7 +243,7 @@ public class CharCtrl : MonoBehaviour
                         foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
                             if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
                             {
-                                be.damage(meleeDamage, BasicEnemy.MELEE_DAMAGE);
+                                be.damage((int)(meleeDamage / diff), BasicEnemy.MELEE_DAMAGE);
                                 corrupt(meleeDamage);
                                 SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit2, 0.8f);
                             }
@@ -333,7 +338,7 @@ public class CharCtrl : MonoBehaviour
     }
     public void corrupt(float damage)
     {
-        dark.barPercent = Mathf.Min(1f, dark.barPercent + damage * darkAcumulation);
+        dark.barPercent = Mathf.Min(1f, dark.barPercent + damage * darkAcumulation / diff);
     }
     public void brake()
     {
