@@ -83,17 +83,17 @@ Jimmy Shi
 Level artists
 Jimmy Shi
 
-concepts artists
+Concepts artists
 Anthony Ma
 Jerry Hsu
 
-team lead texture
+Team lead texture
 Anthony Ma
 
-team lead lighting
+Team lead lighting
 Jimmy Shi
 
-menus and interfaces graphics artists
+Menus and interfaces graphics artists
 Anthony Ma
 
 Audio artists
