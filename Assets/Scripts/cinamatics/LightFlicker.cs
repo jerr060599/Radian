@@ -16,6 +16,12 @@ public class LightFlicker : MonoBehaviour {
 	void Update()
 	{
 		float noise = Mathf.PerlinNoise(random, Time.time);
-		GetComponent<Light>().intensity = Mathf.Lerp(minIntensity, maxIntensity, noise);
+	
+		GetComponent<Light>().range = Mathf.Lerp(5, 20, noise);
+		int enabled = Random.Range (0, 80);
+		if (enabled == 2)
+			GetComponent<Light> ().intensity =0.3f;
+		else
+			GetComponent<Light>().intensity = Mathf.Lerp(minIntensity, maxIntensity, noise);
 	}
 }
