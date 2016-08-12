@@ -8,7 +8,7 @@ public class BarrierDestroy : Activatable
     public override void activate(CharCtrl player)
     {
         killTimer = destroyAfter;
-        var e = GetComponent<ParticleSystem>().emission;
+        var e = GetComponentInChildren<ParticleSystem>().emission;
         e.enabled = false;
         if (chainedActivatable != null)
             chainedActivatable.activate(player);
