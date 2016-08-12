@@ -2,9 +2,14 @@
 
 public class BarrierDestroy : Activatable
 {
-    public float destroyAfter = 2f;
+    public float destroyAfter = 2f, lightFade = 0.7f;
     float killTimer = float.PositiveInfinity;
-    public override void init() { }
+    Light[] larr = null;
+    public override void init()
+    {
+        larr = GetComponentsInChildren<Light>();
+        Debug.Log(larr.Length);
+    }
     public override void activate(CharCtrl player)
     {
         killTimer = destroyAfter;
@@ -16,6 +21,8 @@ public class BarrierDestroy : Activatable
     void Update()
     {
         killTimer -= Time.deltaTime;
+        foreach (Light l in larr)
+            l.intensity *= lightFade;
         if (killTimer <= 0f)
             Destroy(gameObject);
     }
