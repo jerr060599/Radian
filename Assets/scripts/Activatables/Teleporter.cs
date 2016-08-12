@@ -11,17 +11,17 @@ public class Teleporter : Activatable
     }
     public override void activate(CharCtrl player)
     {
-
-		SoundManager.script.playOnListener (SoundManager.script.teleport, 0.8f);
+        SoundManager.script.playOnListener(SoundManager.script.teleport, 0.8f);
         if (chainedActivatable != null)
             chainedActivatable.activate(player);
-        player.transform.position = destination.transform.position + (Vector3)offset;
+        if (destination)
+            player.transform.position = destination.transform.position + (Vector3)offset;
     }
     void OnTriggerEnter2D(Collider2D c)
     {
         if (GetComponent<Animator>() && turnOnAnimation.Length != 0)
         {
-           GetComponent<Animator>().Play(turnOnAnimation, 0);
+            GetComponent<Animator>().Play(turnOnAnimation, 0);
             if (destination)
                 destination.GetComponent<Animator>().Play(turnOnAnimation, 0);
         }
@@ -31,7 +31,7 @@ public class Teleporter : Activatable
         if (GetComponent<Animator>() && turnOffAnimation.Length != 0)
         {
             GetComponent<Animator>().Play(turnOffAnimation, 0);
-           if (destination)
+            if (destination)
                 destination.GetComponent<Animator>().Play(turnOffAnimation, 0);
         }
     }
