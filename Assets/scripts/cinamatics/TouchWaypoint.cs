@@ -7,7 +7,7 @@ public class TouchWaypoint : Waypoint
     {
         if (c.gameObject == CharCtrl.script.gameObject)
         {
-            SoundManager.script.playOn(transform, SoundManager.script.check);
+            //SoundManager.script.playOn(transform, SoundManager.script.check);
             use();
         }
     }
