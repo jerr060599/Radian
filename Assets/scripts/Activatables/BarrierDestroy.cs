@@ -13,14 +13,16 @@ public class BarrierDestroy : Activatable
     public override void activate(CharCtrl player)
     {
         killTimer = destroyAfter;
+        foreach (LightFlicker lf in GetComponentsInChildren<LightFlicker>())
+            lf.enabled = false;
         var e = GetComponentInChildren<ParticleSystem>().emission;
         e.enabled = false;
         if (chainedActivatable != null)
             chainedActivatable.activate(player);
     }
-    void Update()
+    void FixedUpdate()
     {
-        killTimer -= Time.deltaTime;
+        killTimer -= Time.fixedDeltaTime;
         foreach (Light l in larr)
             l.intensity *= lightFade;
         if (killTimer <= 0f)
