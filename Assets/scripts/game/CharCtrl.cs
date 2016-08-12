@@ -12,7 +12,7 @@ public class CharCtrl : MonoBehaviour
     public float spawnLength = 1.2f, arrowSpeed = 8f, charSpeed = 10f, maxBrakeF = 3f, dashDist = 2f, dashCoolDown = 1f, arrowWindUp = 1f, arrowCoolDown = 0.5f, dashLerp = 0.1f, meleeRadius = 2f, meleeField = 0f, meleeCoolDown = 0.5f, deathFallTime = 1f, timedUncontrollable = 0f, timedInvulnerable = 0f, sqrUnitPerSound = 0.1f, arrowKB = 10f, meleeAdv = 10f, shadowDarkness = 0.3f, shadowScale = 1.5f, shadowOffset = 0f, shadowZOffset = 0f, staggerTime = 0.1f, deathAnimationTime = 1f;
     public float arrowCost = 0.05f;
     public float lifeMultiplyer = 2f, darkAcumulation = 0.01f;
-    public int meleeDamage = 1;
+    public int meleeDamage = 1, maxComboCount = 3;
     public int dashLayer = 8, playerLayer = 10, noclipLayer = 16;
     public Rigidbody2D pysc = null;
     public new BarCtrl light;
@@ -22,6 +22,7 @@ public class CharCtrl : MonoBehaviour
     public CanvasRenderer cr;
     float curA = 0f, autoOrderOffset = -0.6f, dashTime = 0f, meleeTime = 0f, arrowTime, animationOverride = 0f, fallTime = 100000000f, deathTimer = float.PositiveInfinity;
     bool rooted = false, variate = false, overAir = false, noUpdate = false;
+    int comboCount = 0;
     Vector2 lastInput = Vector2.down, lastJuicePosition, dashPos;
     Animator ani, handAni;
     SpriteRenderer sr;
@@ -198,6 +199,7 @@ public class CharCtrl : MonoBehaviour
                 {
                     if (input.sqrMagnitude != 0f && animationOverride <= 0f && !arrowLoaded)
                     {
+                        comboCount = 0;
                         rooted = false;
                         lastInput = input;
                         input = input.normalized;
@@ -216,6 +218,7 @@ public class CharCtrl : MonoBehaviour
                     }
                     if (Input.GetKeyDown(Settings.keys[Settings.player, Settings.dash]) && !arrowLoaded && dashTime <= 0f)
                     {
+                        comboCount = 0;
                         float closest = dashDist;
                         lastInput = rPosFromArm;
                         overAir = false;
@@ -234,35 +237,12 @@ public class CharCtrl : MonoBehaviour
                         dashTime = dashCoolDown;
                         SoundManager.script.playOnListener(SoundManager.script.dash, 0.7f);
                     }
-                    if (!arrowLoaded && meleeTime <= 0f && Input.GetMouseButtonDown(0))
-                    {
-                        BasicEnemy be = null;
-                        foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
-                            if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
-                            {
-                                be.damage((int)(meleeDamage / diff), BasicEnemy.MELEE_DAMAGE);
-                                corrupt(meleeDamage);
-                                SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit2, 0.8f);
-                            }
-                        SoundManager.script.playOnListener(variate ? SoundManager.script.sword1 : SoundManager.script.sword2, 0.8f);
-                        meleeTime = meleeCoolDown;
-                        rooted = true;
-                        animationOverride = meleeCoolDown;
-                        if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
-                            if (variate)
-                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
-                            else
-                                ani.Play(rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
-                        else if (variate)
-                            ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
-                        else
-                            ani.Play(rPosFromArm.y > 0 ? "UpAttack2" : "DownAttack2", 0);
-                        lastInput = rPosFromArm;
-                        pysc.AddForce(rPosFromArm * meleeAdv);
-                    }
+                    if (!arrowLoaded && Input.GetMouseButtonDown(0))
+                        comboCount++;
                     if ((light.barPercent > arrowCost || !usingLight) && Input.GetMouseButtonDown(1) && canAfford(arrowCost))
                     {
                         arrowLoaded = true;
+                        comboCount = 0;
                         handAni.Play("boxWindUp", 0);
                         SoundManager.script.playOnListener(SoundManager.script.bowDraw);
                     }
@@ -302,6 +282,33 @@ public class CharCtrl : MonoBehaviour
                         handAni.Play("NoAnimation", 0);
                         arrowTime = 0f;
                         arrowLoaded = false;
+                    }
+                    if (!arrowLoaded && meleeTime <= 0f && comboCount > 0)
+                    {
+                        comboCount--;
+                        BasicEnemy be = null;
+                        foreach (RaycastHit2D rh in Physics2D.CircleCastAll(pysc.position, meleeRadius, Vector2.down, 0f))
+                            if (!rh.collider.isTrigger && (be = rh.collider.gameObject.GetComponent<BasicEnemy>()) && Vector2.Dot((rh.point - pysc.position).normalized, rPosFromArm) >= meleeField)
+                            {
+                                be.damage((int)(meleeDamage / diff), BasicEnemy.MELEE_DAMAGE);
+                                corrupt(meleeDamage);
+                                SoundManager.script.playOnListener(variate ? SoundManager.script.enemyHit1 : SoundManager.script.enemyHit2, 0.8f);
+                            }
+                        SoundManager.script.playOnListener(variate ? SoundManager.script.sword1 : SoundManager.script.sword2, 0.8f);
+                        meleeTime = meleeCoolDown;
+                        rooted = true;
+                        animationOverride = meleeCoolDown;
+                        if (Mathf.Abs(rPosFromArm.x) >= Mathf.Abs(rPosFromArm.y))
+                            if (variate)
+                                ani.Play(rPosFromArm.x > 0 ? "RightAttack1" : "LeftAttack1", 0);
+                            else
+                                ani.Play(rPosFromArm.x > 0 ? "RightAttack2" : "LeftAttack2", 0);
+                        else if (variate)
+                            ani.Play(rPosFromArm.y > 0 ? "UpAttack" : "DownAttack", 0);
+                        else
+                            ani.Play(rPosFromArm.y > 0 ? "UpAttack2" : "DownAttack2", 0);
+                        lastInput = rPosFromArm;
+                        pysc.AddForce(rPosFromArm * meleeAdv);
                     }
                 }
                 else
