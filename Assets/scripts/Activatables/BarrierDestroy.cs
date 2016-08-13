@@ -10,7 +10,6 @@ public class BarrierDestroy : Activatable
     {
         larr = GetComponentsInChildren<Light>();
         sauce = GetComponent<AudioSource>();
-        Debug.Log(larr.Length);
     }
     public override void activate(CharCtrl player)
     {
