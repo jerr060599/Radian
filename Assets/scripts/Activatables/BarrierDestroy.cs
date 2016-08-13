@@ -14,6 +14,7 @@ public class BarrierDestroy : Activatable
     }
     public override void activate(CharCtrl player)
     {
+		GetComponent<Collider2D> ().enabled = false;
         killTimer = destroyAfter;
         foreach (LightFlicker lf in GetComponentsInChildren<LightFlicker>())
             lf.enabled = false;

@@ -1,0 +1,460 @@
+fileFormatVersion: 2
+guid: 5a46ba9d7743bbd479c021d7c2489935
+timeCreated: 1471103901
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: brother_0
+    21300002: brother_1
+    21300004: brother_2
+    21300006: brother_3
+    21300008: brother_4
+    21300010: brother_5
+    21300012: brother_6
+    21300014: brother_7
+    21300016: brother_8
+    21300018: brother_9
+    21300020: brother_10
+    21300022: brother_11
+    21300024: brother_12
+    21300026: brother_13
+    21300028: brother_14
+    21300030: brother_15
+    21300032: brother_16
+    21300034: brother_17
+    21300036: brother_18
+    21300038: brother_19
+    21300040: brother_20
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: brother_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 480
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 480
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 17}
+        - {x: -73, y: 11}
+        - {x: -80, y: -10}
+        - {x: -80, y: -37}
+        - {x: -41, y: -37}
+        - {x: -38, y: -31}
+        - {x: -38, y: 15}
+        - {x: -43, y: 17}
+    - name: brother_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 400
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 17}
+        - {x: -73, y: 11}
+        - {x: -80, y: -10}
+        - {x: -80, y: -37}
+        - {x: -41, y: -37}
+        - {x: -38, y: -31}
+        - {x: -38, y: 15}
+        - {x: -43, y: 17}
+    - name: brother_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_7
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 320
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 17}
+        - {x: -73, y: 11}
+        - {x: -80, y: -10}
+        - {x: -80, y: -37}
+        - {x: -41, y: -37}
+        - {x: -38, y: -31}
+        - {x: -38, y: 15}
+        - {x: -43, y: 17}
+    - name: brother_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 320
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 17}
+        - {x: -73, y: 11}
+        - {x: -80, y: -10}
+        - {x: -80, y: -37}
+        - {x: -41, y: -37}
+        - {x: -38, y: -31}
+        - {x: -38, y: 15}
+        - {x: -43, y: 17}
+    - name: brother_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_10
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 240
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_11
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 240
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_13
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 160
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_14
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 160
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_16
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 80
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_17
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 80
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_19
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    - name: brother_20
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 19}
+        - {x: -80, y: -11}
+        - {x: -80, y: -35}
+        - {x: -75, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 12}
+        - {x: -41, y: 19}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
