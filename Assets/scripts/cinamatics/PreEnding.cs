@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class PreEnding : Activatable
 {
     public GameObject tablet, boss;
@@ -10,9 +10,6 @@ public class PreEnding : Activatable
     }
     public override void activate(CharCtrl player)
     {
-        if (chainedActivatable)
-            chainedActivatable.activate(player);
-        tablet.transform.position = boss.transform.position;
-        tablet.SetActive(true);
+        SceneManager.LoadScene("ending");
     }
 }
