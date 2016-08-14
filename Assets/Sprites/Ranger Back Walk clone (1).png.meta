@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: 901e720b47734a1488c900e86a7d132f
+timeCreated: 1471207149
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ranger Back Walk clone (1)_0
+    21300002: Ranger Back Walk clone (1)_1
+    21300004: Ranger Back Walk clone (1)_2
+    21300006: Ranger Back Walk clone (1)_3
+    21300008: Ranger Back Walk clone (1)_4
+    21300010: Ranger Back Walk clone (1)_5
+    21300012: Ranger Back Walk clone (1)_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ranger Back Walk clone (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: -30}
+        - {x: 14, y: 5}
+        - {x: 13, y: 10}
+        - {x: 2, y: 36}
+        - {x: -32, y: 36}
+        - {x: -44, y: 25}
+        - {x: -44, y: -13}
+        - {x: -41, y: -32}
+        - {x: -13, y: -32}
+        - {x: -9, y: -30}
+        - {x: -7, y: -32}
+        - {x: 9, y: -32}
+    - name: Ranger Back Walk clone (1)_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 240
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: 36}
+        - {x: -44, y: 13}
+        - {x: -44, y: -22}
+        - {x: -38, y: -31}
+        - {x: -29, y: -33}
+        - {x: 14, y: -33}
+        - {x: 14, y: 18}
+        - {x: 5, y: 36}
+    - name: Ranger Back Walk clone (1)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 36}
+        - {x: -44, y: 15}
+        - {x: -44, y: -22}
+        - {x: -25, y: -35}
+        - {x: 12, y: -35}
+        - {x: 14, y: -28}
+        - {x: 14, y: 15}
+        - {x: 2, y: 36}
+    - name: Ranger Back Walk clone (1)_3
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 160
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: -5}
+        - {x: -44, y: -16}
+        - {x: -31, y: -33}
+        - {x: 11, y: -33}
+        - {x: 14, y: -32}
+        - {x: 14, y: 7}
+        - {x: 7, y: 34}
+        - {x: -34, y: 34}
+        - {x: -42, y: 17}
+    - name: Ranger Back Walk clone (1)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 36}
+        - {x: -44, y: 14}
+        - {x: -44, y: -29}
+        - {x: -42, y: -35}
+        - {x: 5, y: -35}
+        - {x: 14, y: -29}
+        - {x: 14, y: 1}
+        - {x: 7, y: 36}
+    - name: Ranger Back Walk clone (1)_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 80
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 10}
+        - {x: 2, y: 36}
+        - {x: -34, y: 36}
+        - {x: -44, y: 14}
+        - {x: -44, y: -12}
+        - {x: -34, y: -37}
+        - {x: -29, y: -37}
+        - {x: -26, y: -36}
+        - {x: -22, y: -37}
+        - {x: 0, y: -37}
+        - {x: 14, y: -25}
+        - {x: 14, y: 0}
+    - name: Ranger Back Walk clone (1)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 8}
+        - {x: 2, y: 34}
+        - {x: -38, y: 34}
+        - {x: -44, y: 12}
+        - {x: -44, y: -25}
+        - {x: -35, y: -35}
+        - {x: -2, y: -35}
+        - {x: 14, y: -27}
+        - {x: 14, y: -2}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
