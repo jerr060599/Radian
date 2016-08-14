@@ -67,7 +67,7 @@ public class Blobby : BasicEnemy
                 pysc.AddForce(Vector2.ClampMagnitude(-pysc.velocity, maxImpulse) * pysc.mass, ForceMode2D.Impulse);
                 ani.Play(dPos.x > 0f ? "atk" : "atkFlipped", 0);
                 if (atkWinUpTimer == 0 && big)
-                    SoundManager.script.playOn(transform, SoundManager.script.blobAgro);
+                    SoundManager.script.playOn(transform, SoundManager.script.blobVomit);
                 atkWinUpTimer += Time.deltaTime;
                 volleyTimer += Time.deltaTime;
             }
