@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Blobby : BasicEnemy
 {
+    public bool big = false;
     public float projectileAirTime = 1f, range = 10f, avoidDistance = 3f, maxImpulse = 1f, atkTime = 0.5f, seekDistance = 8f, atkAnimationLength = 1f, volleyLength = 4f, volleySpacing = 3f, deathTime = 1f;
     float atkTimer = float.PositiveInfinity, atkWinUpTimer = 0f, volleyTimer = 0f, deathTimer = float.PositiveInfinity;
     public GameObject projectile;
@@ -24,7 +25,12 @@ public class Blobby : BasicEnemy
         float d = dPos.x * dPos.x + dPos.y * dPos.y;
         atkTimer -= Time.deltaTime;
         deathTimer -= Time.deltaTime;
-        agro = agro ? true : d < range * range;
+        if (!agro)
+        {
+            agro = d < range * range;
+            if (agro && big)
+                SoundManager.script.playOn(transform, SoundManager.script.blobAgro);
+        }
         if (deathTimer <= 0f)
             fadeAndDespawn();
         if (agro && deathTimer > deathTime)
