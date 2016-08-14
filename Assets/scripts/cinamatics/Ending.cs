@@ -13,12 +13,11 @@ public class Ending : Activatable
         crs = creditCanvas.GetComponentsInChildren<CanvasRenderer>();
         foreach (CanvasRenderer cr in crs)
             cr.SetAlpha(curA);
+        activate(CharCtrl.script);
     }
     public override void activate(CharCtrl player)
     {
         Time.timeScale = 0f;
-        CharCtrl.script.invulnerable = true;
-        CharCtrl.script.controllable = false;
         activated = true;
         creditCanvas.SetActive(true);
     }

@@ -7,6 +7,7 @@ public class EndingScene : MonoBehaviour
     float t, a;
     public GameObject canvas, canvas2;
     public GameObject brother;
+    bool credit = false;
     void Start()
     {
         Cursor.visible = false;
@@ -30,6 +31,11 @@ public class EndingScene : MonoBehaviour
             if (canvas2)
                 canvas2.SetActive(true);
             brother.SetActive(false);
+            if (!credit)
+            {
+
+                credit = true;
+            }
         }
     }
 }
