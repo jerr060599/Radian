@@ -73,12 +73,13 @@ public class CharCtrl : MonoBehaviour
     }
     public void kill()
     {
+        curA = float.PositiveInfinity;
         controllable = false;
         noUpdate = true;
         invulnerable = true;
         deathTimer = deathAnimationTime;
         ani.Play("Death", 0);
-		SoundManager.script.playOn(transform, SoundManager.script.deathCHR);
+        SoundManager.script.playOn(transform, SoundManager.script.deathCHR);
         fireArm.SetActive(false);
     }
     public void respawn()
@@ -120,7 +121,7 @@ public class CharCtrl : MonoBehaviour
                 cr.gameObject.SetActive(false);
         }
         else if (cr.gameObject.activeSelf)
-            cr.SetAlpha(curA);
+            cr.SetAlpha(Mathf.Min(curA, 1));
         else
             cr.gameObject.SetActive(true);
         if (deathTimer <= 0f)
