@@ -78,6 +78,7 @@ public class CharCtrl : MonoBehaviour
         invulnerable = true;
         deathTimer = deathAnimationTime;
         ani.Play("Death", 0);
+		SoundManager.script.playOn(transform, SoundManager.script.deathCHR);
         fireArm.SetActive(false);
     }
     public void respawn()
