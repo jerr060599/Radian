@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Subtitles : MonoBehaviour
 {
     public GameObject subtitle, canvas;
-    bool numbLegs = true;
+    public bool numbLegs = true;
     GameObject spawnedText;
     GameObject SubSpawn;
     public string[] content;
