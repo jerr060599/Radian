@@ -70,7 +70,7 @@ public class SoundManager : MonoBehaviour
     void Update()
     {
         if (curBGM)
-            curBGM.volume += (bgmVolume - curBGM.volume) * smooth;
+            curBGM.volume += (bgmVolume - curBGM.volume) * (1 - smooth);
         if (lastBGM)
         {
             lastBGM.volume = Mathf.Max(lastBGM.volume * smooth - 0.01f, 0f);
