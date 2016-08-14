@@ -4,6 +4,10 @@ using System.Collections;
 public class EditorTools : MonoBehaviour
 {
     public bool resetPlayerPref = false;
+    void Start()
+    {
+        Application.targetFrameRate = 65;
+    }
     void Update()
     {
         if (!Application.isEditor || Application.isPlaying)
