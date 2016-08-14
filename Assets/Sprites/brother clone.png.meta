@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: cea4316dd86e4ab4f915aa6a4b839e9c
+timeCreated: 1471136858
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: brother clone_0
+    21300002: brother clone_1
+    21300004: brother clone_2
+    21300006: brother clone_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: brother clone_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 18}
+        - {x: -78, y: -6}
+        - {x: -80, y: -13}
+        - {x: -80, y: -35}
+        - {x: -72, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 13}
+        - {x: -44, y: 18}
+    - name: brother clone_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 18}
+        - {x: -78, y: -6}
+        - {x: -80, y: -13}
+        - {x: -80, y: -35}
+        - {x: -72, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 13}
+        - {x: -44, y: 18}
+    - name: brother clone_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 18}
+        - {x: -78, y: -6}
+        - {x: -80, y: -13}
+        - {x: -80, y: -35}
+        - {x: -72, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 13}
+        - {x: -44, y: 18}
+    - name: brother clone_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 18}
+        - {x: -78, y: -6}
+        - {x: -80, y: -13}
+        - {x: -80, y: -35}
+        - {x: -72, y: -37}
+        - {x: -39, y: -37}
+        - {x: -39, y: 13}
+        - {x: -44, y: 18}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
