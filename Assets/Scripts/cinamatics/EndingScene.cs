@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class EndingScene : MonoBehaviour
 {
     public GameObject scene1, scene2;
     float t, a;
-    public GameObject canvas, canvas2;
+    public GameObject canvas, canvas2,canvas3;
     public GameObject brother;
     void Start()
     {
@@ -26,11 +26,20 @@ public class EndingScene : MonoBehaviour
             canvas.SetActive(true);
         if (a < -29.5 && a > -31.5)
         {
-            scene2.SetActive(false);
-            if (canvas2)
+        
+			if (canvas2!=null)
                 canvas2.SetActive(true);
-            brother.SetActive(false);
-          
+         
         }
+		if (a < -31.4 && a > -91.5) {
+			scene2.SetActive(false);
+			brother.SetActive(false);
+			canvas2.SetActive(false);
+
+			if (canvas3!=null)
+				canvas3.SetActive(true);
+		}
+		if (a < -91.5)
+			SceneManager.LoadScene ("menu");
     }
 }
