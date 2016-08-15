@@ -23,4 +23,12 @@ public class Dialog : Activatable
             index = 0;
         }
     }
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject == CharCtrl.script.gameObject)
+        {
+            sr.sprite = diags[0];
+            index = Mathf.Min(index + 1, diags.Length - 1);
+        }
+    }
 }
