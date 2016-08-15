@@ -14,6 +14,7 @@ public class LoadScene : MonoBehaviour
 		GetComponent<AudioSource> ().Play ();
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetFloat("Diff", 0.5f);
+
         SceneManager.LoadScene(scene);
     }
     public void startLegend()
