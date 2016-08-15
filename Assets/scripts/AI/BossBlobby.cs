@@ -59,6 +59,7 @@ public class BossBlobby : BasicEnemy
                         CharCtrl.script.damage(stompDamage);
                     CameraMovement.script.shake(0.5f);
                     curState = SEEKING;
+                    SoundManager.script.playOn(transform, SoundManager.script.turtleStomp);
                 }
                 break;
             case 2:
@@ -124,6 +125,7 @@ public class BossBlobby : BasicEnemy
                     pysc.GetComponent<Rigidbody2D>().velocity = new Vector2(dPos.x / stompAirTime,
                             (dPos.y - Physics2D.gravity.y * (pysc.GetComponent<Rigidbody2D>().gravityScale) * stompAirTime * stompAirTime / 2) / stompAirTime);
                     curState = STOMPING;
+                    SoundManager.script.playOn(transform, SoundManager.script.turtleJump);
                     timer = stompAirTime;
                 }
                 break;

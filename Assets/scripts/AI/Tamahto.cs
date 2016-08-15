@@ -47,6 +47,7 @@ public class Tamahto : BasicEnemy
                     lastCCPos = dPos;
                     curState = WINDING;
                     timer = atkWindUp;
+                    SoundManager.script.playOn(transform, SoundManager.script.turtleSpike);
                 }
                 break;
             case 3:
@@ -73,6 +74,7 @@ public class Tamahto : BasicEnemy
                         lastCCPos += CharCtrl.script.pysc.velocity * crushAirTime;
                         pysc.GetComponent<Rigidbody2D>().velocity = new Vector2(lastCCPos.x / crushAirTime,
                             (lastCCPos.y - Physics2D.gravity.y * (pysc.GetComponent<Rigidbody2D>().gravityScale) * crushAirTime * crushAirTime / 2) / crushAirTime);
+                        SoundManager.script.playOn(transform, SoundManager.script.turtleJump);
                     }
                     else
                         tmp = lastCCPos;
@@ -87,6 +89,7 @@ public class Tamahto : BasicEnemy
                         c.enabled = true;
                     if (dPos.sqrMagnitude < atkDistance * atkDistance)
                         CharCtrl.script.damage(atkDamage);
+                    SoundManager.script.playOn(transform, SoundManager.script.turtleStomp);
                     CameraMovement.script.shake(0.5f);
                     curState = SEEKING;
                     shadow.SetActive(true);
@@ -105,6 +108,7 @@ public class Tamahto : BasicEnemy
                     tmp = Vector2.zero;
                     if (dPos.sqrMagnitude < atkDistance * atkDistance)
                         CharCtrl.script.damage(atkDamage);
+                    SoundManager.script.playOn(transform, SoundManager.script.turtleStomp);
                     curState = SEEKING;
                     shadow.SetActive(true);
                 }
