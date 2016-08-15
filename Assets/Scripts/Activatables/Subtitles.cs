@@ -12,6 +12,7 @@ public class Subtitles : MonoBehaviour
     public float t;
     float a;
     GameObject Text;
+	public bool ending;
     int index;
     public bool once;
     bool show = true;
@@ -41,6 +42,7 @@ public class Subtitles : MonoBehaviour
         else if (sText.enabled)
         {
             sText.enabled = false;
+			if(!ending)
             CharCtrl.script.controllable = true;
         }
     }
@@ -48,6 +50,7 @@ public class Subtitles : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" && show)
         {
+			if(!ending)
             CharCtrl.script.controllable = !numbLegs;
             index = 0;
             if (once)
