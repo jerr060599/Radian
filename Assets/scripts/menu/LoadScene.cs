@@ -6,12 +6,21 @@ public class LoadScene : MonoBehaviour
     public GameObject diff, menu;
     public void onctinue()
     {
-		GetComponent<AudioSource> ().Play ();
-        SceneManager.LoadScene(PlayerPrefs.GetString("lastScene"));
+        if (PlayerPrefs.HasKey("lastScene"))
+        {
+            GetComponent<AudioSource>().Play();
+            SceneManager.LoadScene(PlayerPrefs.GetString("lastScene"));
+        }
+        else
+        {
+            GetComponent<AudioSource>().Play();
+            menu.SetActive(false);
+            diff.SetActive(true);
+        }
     }
     public void startEpic()
     {
-		GetComponent<AudioSource> ().Play ();
+        GetComponent<AudioSource>().Play();
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetFloat("Diff", 0.5f);
 
@@ -19,20 +28,20 @@ public class LoadScene : MonoBehaviour
     }
     public void startLegend()
     {
-		GetComponent<AudioSource> ().Play ();
+        GetComponent<AudioSource>().Play();
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetFloat("Diff", 1f);
         SceneManager.LoadScene(scene);
     }
     public void back()
     {
-		GetComponent<AudioSource> ().Play ();
+        GetComponent<AudioSource>().Play();
         menu.SetActive(true);
         diff.SetActive(false);
     }
     public void diffSel()
     {
-		GetComponent<AudioSource> ().Play ();
+        GetComponent<AudioSource>().Play();
         menu.SetActive(false);
         diff.SetActive(true);
     }
