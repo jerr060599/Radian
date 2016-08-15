@@ -7,6 +7,7 @@ public class EditorTools : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 65;
+        Cursor.visible = true;
     }
     void Update()
     {
