@@ -28,7 +28,7 @@ public class Dialog : Activatable
         if (c.gameObject == CharCtrl.script.gameObject)
         {
             sr.sprite = diags[0];
-            index = Mathf.Min(index + 1, diags.Length - 1);
+            index = Mathf.Min(1, diags.Length - 1);
         }
     }
 }
