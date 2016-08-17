@@ -31,7 +31,7 @@ public class EndingScene : MonoBehaviour
                 canvas2.SetActive(true);
          
         }
-		if (a < -31.4 && a > -91.5) {
+		if (a < -31.4 && a > -51.5) {
 			scene2.SetActive(false);
 			brother.SetActive(false);
 			canvas2.SetActive(false);
@@ -39,7 +39,7 @@ public class EndingScene : MonoBehaviour
 			if (canvas3!=null)
 				canvas3.SetActive(true);
 		}
-		if (a < -91.5)
+		if (a < -51.5)
 			SceneManager.LoadScene ("menu");
     }
 }
